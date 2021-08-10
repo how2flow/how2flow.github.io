@@ -2,7 +2,6 @@
 premalink: /documents/linux/device-tree/
 title: Devicetree
 toc: true
-toc_sticky: false
 ---
 
 ## info

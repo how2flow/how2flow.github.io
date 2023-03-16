@@ -1,5 +1,5 @@
 ---
-permalink: /blog/
+permalink: /pages/blog/
 title: "Blog"
 excerpt: "Blog page."
 toc: true

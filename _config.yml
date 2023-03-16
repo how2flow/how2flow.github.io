@@ -19,7 +19,7 @@ url                      : "https://how2flow.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : "how2flow/how2flow.github.io"
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
-logo                     : "/assets/images/logo-profile.png"
+logo                     : "/assets/images/logo.png"
 masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
 breadcrumbs              : true
 breadcrumbs              : "Home"
@@ -82,7 +82,7 @@ facebook:
   username               :
   app_id                 :
   publisher              :
-og_image                 : /asset/images/og-flow.png
+og_image                 : /asset/images/og.png
 # For specifying social profiles
 # - https://developers.google.com/structured-data/customize/social-profiles
 social:
@@ -251,6 +251,16 @@ compress_html:
     envs: development
 
 
+# Collections
+collections:
+  documents:
+    output: true
+    permalink: /:collection/:path/
+  portfolio:
+    output: true
+    permalink: /:collection/:path/
+
+
 # Defaults
 defaults:
   # _posts
@@ -267,8 +277,31 @@ defaults:
       show_date: true
   # _pages
   - scope:
-      path: "_pages"
+      path: ""
       type: pages
     values:
       layout: single
       author_profile: true
+  # _documents
+  - scope:
+      path: ""
+      type: documents
+    values:
+      layout: single
+      read_time: false
+      author_profile: true
+      share: true
+      comments: true
+      classes: wide
+      toc_sticky: true
+      toc_label: Index
+  # _portfolio
+  - scope:
+      path: ""
+      type: portfolio
+    values:
+      layout: single
+      read_time: false
+      author_profile: true
+      share: true
+      comments: true

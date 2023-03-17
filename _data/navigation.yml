@@ -9,3 +9,26 @@ main:
     url: /portfolio/
   - title: "Help"
     url: /pages/help/
+
+side_main:
+  - title: "Apps"
+    children:
+      - title: "PPA"
+        url: /pages/how2flow-launchpad/
+      - title: "File Server"
+        url: /pages/how2flow-file-server/
+
+  - title: "Documents"
+    children:
+      - title: "Table of Contents"
+        url: /documents/
+
+  - title: "Project"
+    children:
+      - title: "kernel-scripts"
+        url: "https://github.com/how2flow/kernel-scripts"
+
+  - title: "Etc"
+    children:
+      - title: "License"
+        url: /documents/license/

@@ -105,26 +105,29 @@ author:
   bio              : "Steve Jeong"
   location         : "Seoul in Republic of Korea"
   links:
-    - label: "Email"
+    - label: "" # Email
       icon: "fas fa-fw fa-envelope-square"
       url: "mailto:how2soft@gmail.com"
-    - label: "GitHub"
+      itemprop: "sameAs"
+    - label: "" # GitHub
       icon: "fab fa-fw fa-github"
       url: "https://github.com/how2flow"
-    - label: "Youtube"
+      itemprop: "sameAs"
+    - label: "" # Youtube
       icon: "fab fa-fw fa-youtube"
       url: "https://youtube.com/@how2flow"
+      itemprop: "sameAs"
 
 # Site Footer
 footer:
   links:
-    - label: "Email"
+    - label: "" # Email
       icon: "fas fa-fw fa-envelope-square"
       url: "mailto:how2soft@gmail.com"
-    - label: "GitHub"
+    - label: "" # Github
       icon: "fab fa-fw fa-github"
       url: "https://github.com/how2flow"
-    - label: "Youtube"
+    - label: "" # Youtube
       icon: "fab fa-fw fa-youtube"
       url: "https://youtube.com/@how2flow"
 
@@ -192,7 +195,7 @@ sass:
 
 # Outputting
 permalink: /:categories/:title/
-paginate: 5 # amount of posts to show
+paginate: null # amount of posts to show
 paginate_path: /page:num/
 timezone: Asia/Seoul
 
@@ -263,6 +266,14 @@ collections:
 
 # Defaults
 defaults:
+  # default
+  - scope:
+      path: ""
+    values:
+      layout: home
+      author_profile: true
+      sidebar:
+        nav: "side_main"
   # _posts
   - scope:
       path: ""

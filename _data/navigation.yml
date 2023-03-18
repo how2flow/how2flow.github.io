@@ -1,22 +1,20 @@
 main:
-  - title: "About"
-    url: /pages/about/
-  - title: "Blog"
-    url: /pages/blog/
+  - title: "Apps"
+    url: /apps/
   - title: "Documents"
     url: /documents/
-  - title: "Portfolio"
-    url: /portfolio/
+  - title: "Project"
+    url: /project/
   - title: "Help"
-    url: /pages/help/
+    url: /help/
 
 side_main:
   - title: "Apps"
     children:
       - title: "PPA"
-        url: /pages/how2flow-launchpad/
+        url: "https://launchpad.net/~how2flow/"
       - title: "File Server"
-        url: /pages/how2flow-file-server/
+        url: "https://apps.how2flow.net/"
 
   - title: "Documents"
     children:

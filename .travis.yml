@@ -5,7 +5,15 @@ script:
   - bundle exec jekyll algolia --source docs --destination docs/_site --config docs/_config.yml
 branches:
   only:
-    # Change this to gh-pages if you're deploying using the gh-pages branch
-    - master
+    # Change this to main if you're deploying using the main branch
+
+    # The other repo is the master,
+    # but the reason why the page repo uses the main is because:
+
+    # The default wrench of gerrit still uses the master,
+    # but github-page does not need to be managed in conjunction with gerrit,
+    # so use the main wrench according to github's standard.
+
+    - main
 rvm:
  - 2.4

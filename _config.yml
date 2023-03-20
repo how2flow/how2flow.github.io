@@ -8,6 +8,8 @@
 # Custom vars
 en: ""
 ko: "color:blue; font-size:70%"
+warn: "color:yellow; font-size:110%"
+important: "color:red; font-size:120%"
 
 # Site theme
 remote_theme             : "mmistakes/minimal-mistakes@4.24.0"

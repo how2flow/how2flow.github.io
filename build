@@ -1,8 +1,9 @@
 #!/bin/bash 
 
-# set build env
-# $ sudo apt install ruby-bundler
-# $ gem install bundler
-# $ bundle
+set -e
 
-bundle exec jekyll serve
+if ! command -v bundle > /dev/null; then
+  gem install bundler && bundle install
+fi
+
+bundle exec jekyll serve --host 0.0.0.0

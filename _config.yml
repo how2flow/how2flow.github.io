@@ -5,9 +5,10 @@
 # For technical reasons, this file is *NOT* reloaded automatically when you use
 # `jekyll serve`. If you change this file, please restart the server process.
 
-# Custom vars
-en: ""
-ko: "color:blue; font-size:70%"
+# Custom Style vars
+en: "color:black; font-size:80%"
+ko: "color:blue; font-size:60%"
+info: "color:black; font-size:40%"
 warn: "color:yellow; font-size:110%"
 important: "color:red; font-size:120%"
 

@@ -7,10 +7,6 @@ excerpt: "Documents tables"
 These are the contents that I studied and organized.<br>
 I use English and <span style="{{ site.ko }}">Korean</span>.
 
-e.g.<br>
-<span style="{{ site.en }}">hello, I'm steve.</span><br>
-<span style="{{ site.ko }}">안녕하세요 저는 스티브입니다.</span>
-
 ## List
 
 | **Index** | Contents | **Index** | Contents | **Index** | Contents | **Index** | Contents |

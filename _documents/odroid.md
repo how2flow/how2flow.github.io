@@ -1,5 +1,5 @@
 ---
-permalink: /documents/odroid
+permalink: /documents/odroid/
 title: "Odroid"
 excerpt: "Odroid Series"
 ---

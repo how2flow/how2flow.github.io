@@ -1,6 +1,5 @@
 User-agent: *
 
 Allow: /
-Disallow: /assets/
 
-Sitemap: https://how2flow.github.io/sitemap.xml
+Sitemap: https://www.how2flow.net/sitemap.xml

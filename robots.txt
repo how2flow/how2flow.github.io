@@ -3,4 +3,4 @@ User-agent: *
 Allow: /
 Disallow: /assets/
 
-Sitemap: https://how2flow.net/sitemap.xml
+Sitemap: https://how2flow.github.io/sitemap.xml

@@ -1,5 +1,5 @@
 ---
-permalink: /documents/gpio/can
+permalink: /documents/gpio/can/
 title: Contoller Area Network
 toc: true
 ---

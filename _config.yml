@@ -203,7 +203,7 @@ sass:
 
 # Outputting
 permalink: /:categories/:title/
-paginate: null # amount of posts to show
+paginate: 5 # amount of posts to show
 paginate_path: /page:num/
 timezone: Asia/Seoul
 
@@ -306,7 +306,7 @@ defaults:
       path: ""
       type: documents
     values:
-      layout: single
+      layout: docs
       read_time: false
       author_profile: true
       share: true

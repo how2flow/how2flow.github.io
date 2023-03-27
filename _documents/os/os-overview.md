@@ -4,8 +4,6 @@ title: Overview
 toc: true
 ---
 
-<a href="{{ site.baseurl }}/documents/os-index/">Return to Index</a><br>
-
 ## Chap1. Overview
 
 This post is an overview. Just think about it like "Most of them have this and that" and move on.<br>

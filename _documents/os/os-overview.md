@@ -1,6 +1,6 @@
 ---
-permalink: /documents/os-overview/
-title: Operating System
+permalink: /documents/os/overview/
+title: Overview
 toc: true
 ---
 

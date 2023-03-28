@@ -24,7 +24,7 @@ side_main:
   - title: "Project"
     children:
       - title: "kernel-scripts"
-        url: "https://github.com/how2flow/kernel-scripts"
+        url: "/project/kernel-scripts/"
 
   - title: "Etc"
     children:

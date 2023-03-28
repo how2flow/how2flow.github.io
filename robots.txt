@@ -2,5 +2,4 @@ User-agent: *
 
 Allow: /
 
-Sitemap: https://how2flow.github.io/sitemap.xml
 Sitemap: https://www.how2flow.net/sitemap.xml

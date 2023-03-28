@@ -264,7 +264,13 @@ compress_html:
 
 # Collections
 collections:
+  apps:
+    output: true
+    permalink: /:collection/:path/
   documents:
+    output: true
+    permalink: /:collection/:path/
+  project:
     output: true
     permalink: /:collection/:path/
   portfolio:
@@ -301,6 +307,15 @@ defaults:
     values:
       layout: single
       author_profile: true
+  # _apps
+    scope:
+      path: ""
+      type: apps
+    values:
+      layout: single
+      read_time: false
+      author_profile: true
+      share: false
   # _documents
   - scope:
       path: ""
@@ -324,3 +339,14 @@ defaults:
       author_profile: true
       share: true
       comments: true
+  # _project
+  - scope:
+      path: ""
+      type: project
+    values:
+      layout: docs
+      read_time: false
+      author_profile: true
+      share: true
+      comments: true
+      classes: wide

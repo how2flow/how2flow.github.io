@@ -23,7 +23,7 @@ title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : "how2flow"
 description              : "An Embedded engineer's site."
-url                      : "https://how2flow.net" # "https://how2flow.github.io"
+url                      : "https://how2flow.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : "how2flow/how2flow.github.io"
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"

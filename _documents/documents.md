@@ -5,7 +5,6 @@ excerpt: "Documents tables"
 ---
 
 These are the contents that I studied and organized.<br>
-I use English and <span style="{{ site.ko }}">Korean</span>.
 
 ## List
 

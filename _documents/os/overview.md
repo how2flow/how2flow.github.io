@@ -24,12 +24,12 @@ Before we get into the OS, let's take a look at the CPU and computer structure.<
 These are structure summaries of the CPU and Computer.<br>
 
 <p align="center">
-  <img src="/assets/images/os/computer.png" alt="computer" width="640" height="480"><br>
+  <img src="/assets/images/os/overview/computer.png" alt="computer" width="640" height="480"><br>
   <br>
   <span style="{{ site.en }}">picture [1-1] Computer structure</span>
 </p>
 <p align="center">
-  <img src="/assets/images/os/cpu.png" alt="cpu" width="640" height="480"><br>
+  <img src="/assets/images/os/overview/cpu.png" alt="cpu" width="640" height="480"><br>
   <span style="{{ site.en }}">picture [1-2] CPU structure</span>
 </p>
 <br>
@@ -41,7 +41,7 @@ Various inputs and commands are passed through the bus to memory and registers, 
 
 The memory is hierarchical.<br>
 <p align="center">
-  <img src="/assets/images/os/memory-hierarchy.png" alt="hierarchy" width="640" height="480"><br>
+  <img src="/assets/images/os/overview/memory-hierarchy.png" alt="hierarchy" width="640" height="480"><br>
   <span style="{{ site.en }}">picture [2] Memory hierarchy</span>
 </p>
 <br>
@@ -61,8 +61,8 @@ There's one I need to make sure before start os.<br>
 OS is an omnipotent system, but it's like a program.<br>
 
 <div style="display:flex; justify-content:center; align-items:center;">
-  <img src="/assets/images/os/call.png" alt="call" width="320" height="320" style="margin: 0 80px;">
-  <img src="/assets/images/os/command.png" alt="command" width="320" height="320" style="margin-right:80px;">
+  <img src="/assets/images/os/overview/call.png" alt="call" width="320" height="320" style="margin: 0 80px;">
+  <img src="/assets/images/os/overview/command.png" alt="command" width="320" height="320" style="margin-right:80px;">
 </div>
 <div style="display:flex; justify-content:center;">
   <span style="margin: 0 240px 0 0; font-size:60%">picture [3-1] OS is a program</span>
@@ -149,4 +149,4 @@ Typically, there is a round-robin method.<br>
 It literally means multiple cores.<br>
 OS documentation is based on <span sytle="{{ site.important }}">single core.</span><br>
 
-<a href="{{ site.baseurl }}/documents/os-process/">Next =></a><br>
+<a href="{{ site.baseurl }}/documents/os/process/">Next =></a><br>

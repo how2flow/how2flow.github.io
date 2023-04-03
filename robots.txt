@@ -2,4 +2,4 @@ User-agent: *
 
 Allow: /
 
-Sitemap: https://www.how2flow.net/sitemap.xml
+Sitemap: /sitemap.xml

@@ -1,0 +1,19 @@
+/* sidebar  */
+.author__urls {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 0;
+  margin-top: 15px;
+  margin-right: -10px;
+  padding-left: 30px;
+  padding-right: 0;
+
+  li {
+    display: inline-block;
+    margin-right: 5px;
+    margin-bottom: 0;
+  }
+}

@@ -111,7 +111,7 @@ author:
   name             : "how2flow"
   avatar           : "/assets/images/profile.png"
   bio              : "Steve Jeong"
-  location         : "Seoul"
+# location         : "Seoul"
   links:
     - label: "" # Email
       icon: "fas fa-fw fa-envelope-square"

@@ -17,3 +17,39 @@
     margin-bottom: 0;
   }
 }
+
+/* syntax */
+pre, code {
+  font-family: "Source Code Pro", "Roboto Mono", "Nanum Gothic", Consolas, Courier, monospace;
+  font-size: 16px;
+  line-height: 1.5em;
+  background-color: #f7f7f7;
+  color: #333;
+  padding: 1em;
+  border-radius: 4px;
+  overflow: auto;
+}
+
+pre code {
+  padding: 0;
+  background-color: transparent;
+  border: none;
+}
+
+.highlighter-rouge {
+  color: #d14;
+}
+
+.highlighter-rouge .highlight {
+  color: #d14;
+  background-color: #f7f7f7;
+}
+
+.highlighter-rouge .highlight-code {
+  color: #d14;
+  background-color: #f7f7f7;
+}
+
+.highlighter-rouge .highlight-source-shell {
+  color: #75715e;
+}

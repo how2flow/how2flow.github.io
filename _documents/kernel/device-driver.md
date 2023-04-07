@@ -4,7 +4,7 @@ title: "Device driver"
 toc: true
 ---
 
-## Device New Attribution
+## New Device Attribute
 
 To test the behavior of a device by reading or writing data.<br>
 `DEVICE_ATTR`is define an attribute of device.<br>
@@ -18,17 +18,15 @@ Steps:
 ### make device attribute
 
 device attribute format:<br>
-`DEVICE_ATTR(_name, _flag, _show, _store)`
+`DEVICE_ATTR(_name, _flag, _show, _store)`<br>
 <br>
 parameters:<br>
 `_name`: device attribute name. it will attach a prefix(`dev_attr_`)<br>
 `_flag`: node permission flag. ex) `644`, `755` ...<br>
 `_show`: the function pointer to hand over values to userspace from kernel.<br>
 `_store`: the function pointer to hand over values to kernel from userspace.<br>
-<br>
-If necessary, Device or platform device information can be utilized<br>
-with `dev_get_drvdata` or `to_platform_device`<br>
-```c
+
+```
 static ssize_t foo_show(struct device *dev, struct device_attribute *attr, char *buf)
 {
 	int count;
@@ -57,7 +55,7 @@ DEVICE_ATTR(bar, 644, foo_show, foo_store);
 
 If an attribute is created, create file at `probe` and remove at `remove`.
 
-```c
+```
 static int xyz_probe(struct platform_device *pdev)
 {
 	...
@@ -97,6 +95,7 @@ But I tried to change the speed dynamically through **speed node** like N2 and C
 
 This is diff of i2c driver code.<br>
 source: <a href="https://github.com/hardkernel/linux/blob/odroidm1-4.19.y/drivers/i2c/busses/i2c-rk3x.c">github</a>
+
 ```
 commit 8d8b92a83016fdc9b135abe6245e382240657ffe
 Author: Steve Jeong <how2soft@gmail.com>

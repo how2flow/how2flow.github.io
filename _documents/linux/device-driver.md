@@ -1,5 +1,5 @@
 ---
-permalink: /documents/kernel/device-driver
+permalink: /documents/linux/device-driver
 title: "Device driver"
 toc: true
 ---

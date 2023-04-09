@@ -105,3 +105,102 @@ Nothing is fixed, efficiency is important.<br>
 | Waiting(=blocked) | The standby state requires other resources, including the CPU. |
 | Suspend | Processes that are queued have been transferred to the HDD due to infrequently used processes or memory over due to processes. |
 
+### Tables
+
+The OS has several tables to manage the process.<br>
+
+<p align="center">
+  <img src="/documents/images/os/process/tables.png" alt="tables" width="640" height="480"><br>
+  <span style="{{ site.en }}">picture [5] Tables</span>
+</p>
+<br>
+
+#### Memory table
+
+Memory table has main memory for running programs, virtual memory and protection attributes.<br>
+Virtual memory will be covered in more detail in <a href"/documents/os/memory/">here</a><br>
+
+#### I/O table
+
+Exists to deceive that the process has a complete monopoly on I/O.<br>
+The OS needs to know the status of the I/O and the source and purpose of the I/O.<br>
+Hardware interruptions occur in I/O.<br>
+
+#### File table
+
+The file address must be saved separately for the process to access the file and perform operations such as read/write.<br>
+It is stored separately in the file table, also known as the **F**ile **A**llocation **T**able, Each OS has its own way.<br>
+Recently, many **NTFS** methods have been adopted, but this is the traditional method of storing files on hard disks.<br>
+
+<p align="center">
+  <img src="/documents/images/os/process/hdd.png" alt="hdd" width="640" height="480"><br>
+  <span style="{{ site.en }}">picture [6] FAT</span>
+</p>
+<br>
+
+Memory is too large to be managed per address in bytes (address).<br>
+This picture shows saving the file in blocks.<br>
+The "memo.txt" file is split into blocks and stored separately.<br>
+The OS uses FAT to find data and use files.<br>
+In Linux, it is also called a file system.<br>
+
+### Struct of Process
+
+#### Memory
+
+The process consists largely of attributes and locations.<br>
+
+<p align="center">
+  <img src="/documents/images/os/process/struct.png" alt="struct" width="640" height="480"><br>
+  <span style="{{ site.en }}">picture [6] Process Struct</span>
+</p>
+<br>
+
+code is read-only layer. ('text')<br>
+Global, static, array, structure vars, and so on are stored in the data area. (+ bss)<br>
+User functions are in stack area. It gets bigger or smaller by its user functions.<br>
+
+<p align="center">
+  <img src="/documents/images/os/process/phym.png" alt="phym" width="640" height="480"><br>
+  <span style="{{ site.en }}">picture [7] Virtual memory vs Physical memory</span>
+</p>
+<br>
+
+It's actually not saved as pretty.<br>
+Don't be confused with the logical image.<br>
+
+#### Process creation & interrupt
+
+A new process is created by the needs of the OS.<br>
+
+```
+1. Assigns Process ID
+2. Assigns memory
+3. Initialize PCB
+4. Link functions: win: (*.dll) linux: (*.so) ...
+5. Data Structuring & Scaling
+```
+
+An **interrupt** occurs and another process is created/executed or terminated.<br>
+<br>
+Interrupt includes<br>
+```
+- exception
+- interrupt (H/W)
+- software interrupt (os)
+```
+
+The exception is an real unexpected move.<br>
+(poweroff, div with 0 etc ...)<br>
+<br>
+interrupt is related to hardware I/O operation.<br>
+(Print complete, timer(scheduling), etc ...)<br>
+<br>
+software interrupt is a call from the OS.<br>
+It usually happens when `context-change` or change `permissions`.
+When a software interrupt is operated by an interrupt handler(ISR), a system call (or supervisor call) operates.<br>
+
+#### Permissions: user mode vs system mode
+
+user mode: Minimum permissions not affecting the system.<br>
+system mode: All rights on the system. <br>

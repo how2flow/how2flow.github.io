@@ -13,7 +13,7 @@ warn: "color:yellow; font-size:110%"
 important: "color:red; font-size:120%"
 
 # Site theme
-remote_theme             : "mmistakes/minimal-mistakes@4.24.0"
+remote_theme             : "how2flow/minimal-mistakes@sticky"
 minimal_mistakes_skin    : "contrast"
 
 # Site Settings

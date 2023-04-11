@@ -1,5 +1,5 @@
 ---
-permalink: /documents/license/
+permalink: /documents/License/
 title: "License"
 excerpt: "MIT License"
 ---

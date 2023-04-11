@@ -1,0 +1,28 @@
+/*
+// Define a variable for font size
+$font-size: 1em;
+
+// Define a mixin for setting font size
+@mixin set-font-size {
+  font-size: $font-size;
+}
+
+// Apply the mixin to paragraphs, list items, and description lists
+.page__content p,
+.page__content li,
+.page__content dl {
+  @include set-font-size;
+}
+*/
+html {
+  font-size: 1em;
+}
+
+// h
+h1, h2, h3, h4, h5, h6 {
+  margin: 2em 0 1em;
+}
+
+.page__content p {
+  margin: 0 0 0.5em;
+}

@@ -1,0 +1,38 @@
+.sidebar__right.sticky {
+  @include breakpoint($large) {
+    max-height: calc(100vh - 7em);
+    overflow-y: auto;
+  }
+
+  &::-webkit-scrollbar {
+    width: 2px;
+    height: 2px;
+    position: absolute;
+    top: 0;
+    right: -2px;
+  }
+
+  // WARNING: This is not working
+  &:hover::-webkit-scrollbar-thumb {
+    opacity: 1 !important;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+
+  }
+
+  &:hover {
+    background-color: $primary-color;
+  }
+}
+
+.sidebar {
+  li {
+    font-size: 0.85em;
+  }
+}
+
+.toc__menu {
+  font-size: 0.9em;
+}

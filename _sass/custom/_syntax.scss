@@ -1,0 +1,33 @@
+pre, code {
+  font-family: "Source Code Pro", "Roboto Mono", "Nanum Gothic", Consolas, Courier, monospace;
+  font-size: 12px;
+  line-height: 1.5em;
+  background-color: #f7f7f7;
+  color: #333;
+  padding: 0;
+  border-radius: 1px;
+  overflow: auto;
+}
+
+pre code {
+  padding: 0;
+  background-color: transparent;
+  border: none;
+}
+
+div.highlighter-rouge,
+figure.highlight {
+  position: relative;
+  margin-bottom: 2em;
+}
+
+.highlighter-rouge,
+.highlight,
+.highlight-code {
+  color: #d14;
+  background-color: #f7f7f7;
+}
+
+.highlight-source-shell {
+  color: #75715e;
+}

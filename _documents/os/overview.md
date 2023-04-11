@@ -1,10 +1,11 @@
 ---
 permalink: /documents/os/overview/
 title: Overview
+excerpt: "Operating System Overview"
 toc: true
 ---
 
-## Chap1. Overview
+## Overview
 
 This post is an overview. Just think about it like "Most of them have this and that" and move on.<br>
 The concepts shown here will be covered in detail in a later posting.<br>
@@ -26,11 +27,11 @@ These are structure summaries of the CPU and Computer.<br>
 <p align="center">
   <img src="/documents/images/os/overview/computer.png" alt="computer" width="640" height="480"><br>
   <br>
-  <span style="{{ site.en }}">picture [1-1] Computer structure</span>
+  <span style="{{ site.img }}">picture [1-1] Computer structure</span>
 </p>
 <p align="center">
   <img src="/documents/images/os/overview/cpu.png" alt="cpu" width="640" height="480"><br>
-  <span style="{{ site.en }}">picture [1-2] CPU structure</span>
+  <span style="{{ site.img }}">picture [1-2] CPU structure</span>
 </p>
 <br>
 
@@ -42,7 +43,7 @@ Various inputs and commands are passed through the bus to memory and registers, 
 The memory is hierarchical.<br>
 <p align="center">
   <img src="/documents/images/os/overview/memory-hierarchy.png" alt="hierarchy" width="640" height="480"><br>
-  <span style="{{ site.en }}">picture [2] Memory hierarchy</span>
+  <span style="{{ site.img }}">picture [2] Memory hierarchy</span>
 </p>
 <br>
 
@@ -83,7 +84,7 @@ If you look at the overall structure briefly,
 | ABI | **A**pplication **B**inary **I**nterface | os |
 | ISA | **I**nstruction **S**et **A**rchitecture | hardware |
 
-<span style="margin: 0 0 0 160px; {{ site.en }}">table [1] library</span>
+<span style="margin: 0 0 0 160px; {{ site.img }}">table [1] library</span>
 <br><br>
 
 It can be represented like above.
@@ -100,7 +101,7 @@ I'll describe the concept of OS with the development steps of OS.<br>
 | step 2| simple batch system|
 | step 1| serial process|
 
-<span style="margin: 0 0 0 60px; {{ site.en }}">table [2] steps of upgrade</span>
+<span style="margin: 0 0 0 60px; {{ site.img }}">table [2] steps of upgrade</span>
 <br>
 
 ---

@@ -4,7 +4,10 @@
 
 @charset "utf-8";
 
-@import "custom"; // custom partials
+@import "custom/_author";
+@import "custom/_variables";
 
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
+
+@import "custom/list"; // custom partials

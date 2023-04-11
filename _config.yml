@@ -5,12 +5,9 @@
 # For technical reasons, this file is *NOT* reloaded automatically when you use
 # `jekyll serve`. If you change this file, please restart the server process.
 
-# Custom Style vars
-en: "color:black; font-size:80%"
-ko: "color:blue; font-size:60%"
-info: "color:black; font-size:40%"
-warn: "color:yellow; font-size:110%"
-important: "color:red; font-size:120%"
+# var
+img: "color:black; font-size:90%"
+code: "color:red; background-color:#f5f5f5"
 
 # Site theme
 remote_theme             : "mmistakes/minimal-mistakes@4.24.0"
@@ -18,7 +15,7 @@ minimal_mistakes_skin    : "contrast"
 
 # Site Settings
 locale                   : "en-US"
-title                    : "How To Flow?"
+title                    : "How To Flow"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : "how2flow"
@@ -34,9 +31,9 @@ breadcrumbs              : "Home"
 breadcrumbs_separator    : "/"
 words_per_minute         : 200
 comments:
-  provider               : # false (default), "disqus", "discourse", "facebook", "staticman", "staticman_v2", "utterances", "giscus", "custom"
+  provider               : disqus # false (default), "disqus", "discourse", "facebook", "staticman", "staticman_v2", "utterances", "giscus", "custom"
   disqus:
-    shortname            : # https://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-
+    shortname            : "https-how2flow-net" # https://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-
   discourse:
     server               : # https://meta.discourse.org/t/embedding-discourse-comments-via-javascript/31963 , e.g.: meta.discourse.org
   facebook:
@@ -65,9 +62,9 @@ atom_feed:
   hide                   : true
 search                   : true
 search_full_content      : # true, false (default)
-search_provider          : google
+search_provider          : lunr
 lunr:
-  search_within_pages    : # true, false (default)
+  search_within_pages    : true # true, false (default)
 algolia:
   application_id         : # YOUR_APPLICATION_ID
   index_name             : # YOUR_INDEX_NAME
@@ -78,7 +75,7 @@ google:
   instant_search         : # false (default), true
 # SEO Related
 google_site_verification : 9LKKGJUwLYfqaZ6dOej17YCM9u3urYQskujx515DKaw
-bing_site_verification   :
+bing_site_verification   : AD001A16D2F44A7C4F968A344E2D2DD0
 naver_site_verification  : 20e70b3bd163ddf469f0ec561a468c7473169947
 yandex_site_verification :
 baidu_site_verification  :
@@ -90,7 +87,7 @@ facebook:
   username               :
   app_id                 :
   publisher              :
-og_image                 : /asset/images/og.png
+og_image                 : "/assets/images/og.png"
 # For specifying social profiles
 # - https://developers.google.com/structured-data/customize/social-profiles
 social:
@@ -102,7 +99,7 @@ social:
 analytics:
   provider               : "google-gtag" # false (default), "google", "google-universal", "google-gtag", "custom"
   google:
-    tracking_id          : "G-DM3E7FM2K4"
+    tracking_id          : "G-HF7F6MRZRK"
     anonymize_ip         : # true, false (default)
 
 
@@ -115,7 +112,7 @@ author:
   links:
     - label: "" # Email
       icon: "fas fa-fw fa-envelope-square"
-      url: "mailto:how2soft@gmail.com"
+      url: "mailto:steve@how2flow.net"
       itemprop: "sameAs"
     - label: "" # GitHub
       icon: "fab fa-fw fa-github"
@@ -131,7 +128,7 @@ footer:
   links:
     - label: "" # Email
       icon: "fas fa-fw fa-envelope-square"
-      url: "mailto:how2soft@gmail.com"
+      url: "mailto:steve@how2flow.net"
     - label: "" # Github
       icon: "fab fa-fw fa-github"
       url: "https://github.com/how2flow"
@@ -142,6 +139,7 @@ footer:
 # Reading Files
 include:
   - .htaccess
+  - _documents
   - _pages
 exclude:
   - "*.sublime-project"
@@ -203,7 +201,7 @@ sass:
 
 # Outputting
 permalink: /:categories/:title/
-paginate: 5 # amount of posts to show
+paginate: 4 # amount of posts to show
 paginate_path: /page:num/
 timezone: Asia/Seoul
 
@@ -267,6 +265,9 @@ collections:
   apps:
     output: true
     permalink: /:collection/:path/
+  diary:
+    output: true
+    permalink: /:collection/:path/
   documents:
     output: true
     permalink: /:collection/:path/
@@ -286,17 +287,29 @@ defaults:
     values:
       layout: home
       author_profile: true
+      comments: true
       sidebar:
         nav: "side_main"
+      toc_label: contents
+      toc_sticky: true
+      excerpt: "This is the personal space of the Linux/Embedded developer 'Steve Jeong'."
   # _posts
   - scope:
       path: ""
       type: posts
     values:
       layout: single
-      author_profile: true
       read_time: true
-      comments: true
+      share: true
+      related: true
+      show_date: true
+  # _diary
+  - scope:
+      path: ""
+      type: diary
+    values:
+      layout: single
+      read_time: true
       share: true
       related: true
       show_date: true
@@ -314,7 +327,6 @@ defaults:
     values:
       layout: single
       read_time: false
-      author_profile: true
       share: false
   # _documents
   - scope:
@@ -323,11 +335,7 @@ defaults:
     values:
       layout: docs
       read_time: false
-      author_profile: true
       share: true
-      comments: true
-      toc_label: Index
-      toc_sticky: true
   # _portfolio
   - scope:
       path: ""
@@ -335,9 +343,8 @@ defaults:
     values:
       layout: single
       read_time: false
-      author_profile: true
       share: true
-      comments: true
+      comments: false
   # _project
   - scope:
       path: ""
@@ -345,7 +352,4 @@ defaults:
     values:
       layout: docs
       read_time: false
-      author_profile: true
       share: true
-      comments: true
-      classes: wide

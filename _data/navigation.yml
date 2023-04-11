@@ -1,32 +1,35 @@
 main:
-  - title: "Apps"
-    url: /apps/
+  - title: "About"
+    url: /about/
+  - title: "Posts"
+    url: /posts/
   - title: "Documents"
     url: /documents/
-  - title: "Project"
-    url: /project/
   - title: "Help"
     url: /help/
 
 side_main:
-  - title: "Apps"
+  - title: "About"
+    url: /about/
     children:
-      - title: "PPA"
-        url: "https://launchpad.net/~how2flow/"
-      - title: "File Server"
-        url: "https://apps.how2flow.net/"
+      - title: "Diary"
+        url: /diary/
+
+  - title: "Posts"
+    url: /posts/
+    children:
+      - title: "Categories"
+        url: /posts/categories/
+      - title: "(translate)"
+        url: /posts/translation/
 
   - title: "Documents"
+    url: /documents/
     children:
       - title: "Table of Contents"
         url: /documents/
 
-  - title: "Project"
-    children:
-      - title: "kernel-scripts"
-        url: "/project/kernel-scripts/"
-
   - title: "Etc"
     children:
       - title: "License"
-        url: /documents/license/
+        url: /documents/License/

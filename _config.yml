@@ -65,9 +65,9 @@ atom_feed:
   hide                   : true
 search                   : true
 search_full_content      : # true, false (default)
-search_provider          : google
+search_provider          : lunr
 lunr:
-  search_within_pages    : # true, false (default)
+  search_within_pages    : true # true, false (default)
 algolia:
   application_id         : # YOUR_APPLICATION_ID
   index_name             : # YOUR_INDEX_NAME

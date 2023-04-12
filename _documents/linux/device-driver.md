@@ -97,17 +97,17 @@ This is diff of i2c driver code.<br>
 source: <a href="https://github.com/hardkernel/linux/blob/odroidm1-4.19.y/drivers/i2c/busses/i2c-rk3x.c">github</a>
 
 ```
-commit 8d8b92a83016fdc9b135abe6245e382240657ffe
+commit d997a909258b4dc02b7def2b64de6e51f07e40fb
 Author: Steve Jeong <how2soft@gmail.com>
 Date:   Fri Apr 7 12:03:14 2023 +0900
 
-    ODROID-M1: driver/i2c: Add driver "speed" attribution.
-    
+    ODROID-M1: driver/i2c: Add driver "speed" attribution
+
     for change i2c bus freq dynamically.
-    
+
     e.g.
-      $ echo "400000" > /sys/bus/i2c/devices/i2c-0/device/speed
-    
+      $ echo 400000 | sudo tee /sys/bus/i2c/devices/i2c-0/device/speed
+
     Signed-off-by: Steve Jeong <how2soft@gmail.com>
     Change-Id: Ifcccf9bb61ed65133b64c803b53fb4e46d470e26
 
@@ -118,55 +118,54 @@ index 62715a318fde..be119745bae5 100644
 @@ -1288,6 +1288,32 @@ static const struct of_device_id rk3x_i2c_match[] = {
  };
  MODULE_DEVICE_TABLE(of, rk3x_i2c_match);
- 
+
 +static ssize_t rk3x_i2c_get_speed(struct device *dev, struct device_attribute *attr, char *buf)
 +{
-+	struct rk3x_i2c *i2c = dev_get_drvdata(dev);
-+	struct i2c_timings *t = &i2c->t;
++       struct rk3x_i2c *i2c = dev_get_drvdata(dev);
++       struct i2c_timings *t = &i2c->t;
 +
-+	return snprintf(buf, PAGE_SIZE, "%u\n", t->bus_freq_hz);
++       return snprintf(buf, PAGE_SIZE, "%u\n", t->bus_freq_hz);
 +}
 +
 +static ssize_t rk3x_i2c_set_speed(struct device *dev, struct device_attribute *attr, const char *buf, size_t count)
 +{
-+	struct rk3x_i2c *i2c = dev_get_drvdata(dev);
-+	struct i2c_timings *t = &i2c->t;
-+	int ret, freq;
++       struct rk3x_i2c *i2c = dev_get_drvdata(dev);
++       struct i2c_timings *t = &i2c->t;
++       int ret, freq;
 +
-+	ret = kstrtoint(buf, 10, &freq);
-+	if (ret < 0)
-+		return ret;
++       ret = kstrtoint(buf, 10, &freq);
++       if (ret < 0)
++               return ret;
 +
-+	t->bus_freq_hz = (uint32_t)freq;
-+	rk3x_i2c_adapt_div(i2c, clk_get_rate(i2c->clk));
++       t->bus_freq_hz = (uint32_t)freq;
++       rk3x_i2c_adapt_div(i2c, clk_get_rate(i2c->clk));
 +
-+	return count;
++       return count;
 +}
 +
 +DEVICE_ATTR(speed, S_IRUGO | S_IWUSR, rk3x_i2c_get_speed, rk3x_i2c_set_speed);
 +
  static int rk3x_i2c_probe(struct platform_device *pdev)
  {
- 	struct device_node *np = pdev->dev.of_node;
+        struct device_node *np = pdev->dev.of_node;
 @@ -1303,6 +1329,11 @@ static int rk3x_i2c_probe(struct platform_device *pdev)
- 	if (!i2c)
- 		return -ENOMEM;
+        if (!i2c)
+                return -ENOMEM;
  
-+	ret = device_create_file(&pdev->dev, &dev_attr_speed);
-+	if (ret < 0) {
-+		dev_err(&pdev->dev, "Failed to create speed attribute file: %d\n", ret);
-+	}
++       ret = device_create_file(&pdev->dev, &dev_attr_speed);
++       if (ret < 0) {
++               dev_err(&pdev->dev, "Failed to create speed attribute file: %d\n", ret);
++       }
 +
- 	match = of_match_node(rk3x_i2c_match, np);
- 	i2c->soc_data = match->data;
+        match = of_match_node(rk3x_i2c_match, np);
+        i2c->soc_data = match->data;
  
 @@ -1454,6 +1485,7 @@ static int rk3x_i2c_remove(struct platform_device *pdev)
  
- 	i2c_del_adapter(&i2c->adap);
+        i2c_del_adapter(&i2c->adap);
  
-+	device_remove_file(&pdev->dev, &dev_attr_speed);
- 	clk_notifier_unregister(i2c->clk, &i2c->clk_rate_nb);
- 	unregister_pre_restart_handler(&i2c->i2c_restart_nb);
- 	clk_unprepare(i2c->pclk);
++       device_remove_file(&pdev->dev, &dev_attr_speed);
+        clk_notifier_unregister(i2c->clk, &i2c->clk_rate_nb);
+        unregister_pre_restart_handler(&i2c->i2c_restart_nb);
+        clk_unprepare(i2c->pclk);
 ```
-

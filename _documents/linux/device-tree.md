@@ -64,7 +64,7 @@ Let's configure the device tree with rk3568 of rockchip.
 ```
 ```
 
-#### node
+#### name@unit-address
 
 `compatible`: Uniquely identify machines. It usually has a "manufacturer,system" value.<br>
 
@@ -107,12 +107,13 @@ It has the form `name@unit-address`.<br>
 name is ASCII string. Use generic. This is because there are often multiple identical devices.<br>
 If you want to add `3com`, use name `ethernet` instead of `3com`.<br>
 unit-address is used to access the device. for example, suppose 3com's address is 0x10000000.<br>
+
 `ethernet@0x10000000`<br>
 
 Nodes can be mapped to labels for easy maintenance. `label`: `name@unit-address`<br>
 Like `3com: ethernet@0x10000000`.<br>
 
-#### addressing
+#### reg
 Devices that can be addressed encode address information into the device tree using the following properties<br>
 
 `reg`<br>
@@ -120,7 +121,8 @@ Devices that can be addressed encode address information into the device tree us
 `#size-cells`<br>
 <br>
 `reg` is tuple.<br>
-`reg = < addr1 addr1-size addr2 addr2-size ...>
+
+`reg = < addr1 addr1-size addr2 addr2-size ...>`<br>
 
 address and field size are variable.<br>
 The `#address-cells` and `#size-cells` of the parent node are used to indicate how many cells are in each field.<br>
@@ -128,7 +130,7 @@ One field value has a maximum of 32 bits,<br>
 32bit system's `#address-cells` and `#size-cells` are 1.<br>
 64bit system's `#address-cells` and `#size-cells` are 2.<br>
 
-Add uart0 node.<br>
+Add i2c0 node.<br>
 
 ```
 /dts-v1/;
@@ -170,7 +172,7 @@ first is address, second is size.<br>
 So, i2c0's address is 0xfdd40000 and size is 0x1000.<br>
 i2c0: 0xfdd40000 ~ 0xfdd41000<br>
 
-#### Cpu addressing
+Add Cpu addressing<br>
 
 Each CPU is assigned a unique single ID and does not have a size.
 
@@ -215,7 +217,7 @@ Each CPU is assigned a unique single ID and does not have a size.
 };
 ```
 
-#### Memory-mapped devices
+Add Memory-mapped devices
 
 Devices such as i2c and uart are mapped to memory addresses in the device tree.
 
@@ -244,7 +246,7 @@ Devices such as i2c and uart are mapped to memory addresses in the device tree.
 };
 ```
 
-#### Non-Memory-mapped device
+Add other devices<br>
 
 Have an address range, but can't access it directly from the CPU.<br>
 mapped like cpus.
@@ -288,7 +290,7 @@ mapped like cpus.
 ```
 spidev is a non-memory mapping device and is accessed via spi0.<br>
 
-#### Ranges
+#### ranges
 
 The root node always describes the CPU's perspective on address space.<br>
 The child node of the root already uses the address domain of the CPU, so explicit mapping is not required.<br>
@@ -380,17 +382,15 @@ scmi_shmem is mapped at sram@0<br>
 The scmi_shmem is mapped from 0x0010f000 to 0x0010f100<br>
 via 'ranges' in the 'sram@10f000'.
 
-#### Interrupt
+#### interrupts
 
 How To define and use interrupts in device-tree.<br>
 Interrupt information into the device tree using the following properties<br>
-<br>
 
 `interrupts`<br>
 `interrupt-controller`<br>
 `interrupt-parent`<br>
 `#interrupt-cells`<br>
-<br>
 
 `interrupts` is tuples like 'reg'.<br>
 It has informations about interrupt number, interrupt conditions<br>

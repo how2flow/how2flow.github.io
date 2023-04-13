@@ -130,8 +130,7 @@ One field value has a maximum of 32 bits,<br>
 32bit system's `#address-cells` and `#size-cells` are 1.<br>
 64bit system's `#address-cells` and `#size-cells` are 2.<br>
 
-Add i2c0 node.<br>
-
+##### Add a device addr.
 ```
 /dts-v1/;
 
@@ -172,10 +171,7 @@ first is address, second is size.<br>
 So, i2c0's address is 0xfdd40000 and size is 0x1000.<br>
 i2c0: 0xfdd40000 ~ 0xfdd41000<br>
 
-Add Cpu addressing<br>
-
-Each CPU is assigned a unique single ID and does not have a size.
-
+##### Add Cpu addr
 ```
 /dts-v1/;
 
@@ -217,10 +213,7 @@ Each CPU is assigned a unique single ID and does not have a size.
 };
 ```
 
-Add Memory-mapped devices
-
-Devices such as i2c and uart are mapped to memory addresses in the device tree.
-
+##### Add mapped addr
 ```
 /dts-v1/;
 
@@ -246,11 +239,7 @@ Devices such as i2c and uart are mapped to memory addresses in the device tree.
 };
 ```
 
-Add other devices<br>
-
-Have an address range, but can't access it directly from the CPU.<br>
-mapped like cpus.
-
+##### Add not mapped addr
 ```
 /dts-v1/;
 
@@ -296,7 +285,7 @@ The root node always describes the CPU's perspective on address space.<br>
 The child node of the root already uses the address domain of the CPU, so explicit mapping is not required.<br>
 <br>
 But, nodes that are not direct children of the root don't use the address domain of the CPU.<br>
-So, they need to translate addresses from one domain to another with `ranges`
+So, they need to translate address from one domain to another with `ranges`
 <br>
 
 ranges = <tuple1 tuple2 ...><br>

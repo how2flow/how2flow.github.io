@@ -226,9 +226,7 @@ i2c0: 0xfdd40000 ~ 0xfdd41000<br>
 	#address-cells = <2>;
 	#size-cells = <2>;
 
-	cpus {
-		...
-	};
+	/* cpus, ... */
 
 	i2c0: i2c@fdd40000 {
 		compatible = "rockchip,rk3568-i2c";
@@ -252,9 +250,7 @@ i2c0: 0xfdd40000 ~ 0xfdd41000<br>
 	#address-cells = <2>;
 	#size-cells = <2>;
 
-	cpus {
-		...
-	};
+	/* cpus, ... */
 
 	i2c0: i2c@fdd40000 {
 		compatible = "rockchip,rk3568-i2c";
@@ -265,7 +261,7 @@ i2c0: 0xfdd40000 ~ 0xfdd41000<br>
 		compatible = "rockchip,rk3568-uart";
 		reg = <0x0 0xfdd50000 0x0 0x100>;
 	};
-	
+
 	spi0: spi@fe610000 {
 		compatible = "rockchip,rk3568-spi", "rockchip,rk3066-spi";
 		reg = <0x0 0xfe610000 0x0 0x1000>;
@@ -308,9 +304,7 @@ This is an example that show how to use <span style="{{ site.code }}">ranges</sp
 	#address-cells = <2>;
 	#size-cells = <2>;
 
-	cpus {
-		...
-	};
+	/* cpus ... */
 
 	sram@10f000 {
 		compatible = "mmio-sram";
@@ -334,7 +328,7 @@ This is an example that show how to use <span style="{{ site.code }}">ranges</sp
 		compatible = "rockchip,rk3568-uart";
 		reg = <0x0 0xfdd50000 0x0 0x100>;
 	};
-	
+
 	spi0: spi@fe610000 {
 		compatible = "rockchip,rk3568-spi", "rockchip,rk3066-spi";
 		reg = <0x0 0xfe610000 0x0 0x1000>;
@@ -408,13 +402,7 @@ such as <span style="{{ site.code }}">#address-cells</span> or <span style="{{ s
 	#address-cells = <2>;
 	#size-cells = <2>;
 
-	cpus {
-		...
-	};
-
-	sram@10f000 {
-		...
-	};
+	/* cpus, sram ...*/
 
 	gic: interrupt-controller@fd400000 {
 		compatible = "arm,gic-v3";
@@ -438,11 +426,10 @@ such as <span style="{{ site.code }}">#address-cells</span> or <span style="{{ s
 		interrupt-parent = <&gic>;
 		interrupts = <GIC_SPI 116 IRQ_TYPE_LEVEL_HIGH>;
 	};
-	
+
 	spi0: spi@fe610000 {
 		compatible = "rockchip,rk3568-spi", "rockchip,rk3066-spi";
 		reg = <0x0 0xfe610000 0x0 0x1000>;
-		interrupt-parent = <&gic>;
 		interrupts = <GIC_SPI 103 IRQ_TYPE_LEVEL_HIGH>;
 		#address-cells = <1>;
 		#size-cells = <0>;
@@ -454,4 +441,320 @@ such as <span style="{{ site.code }}">#address-cells</span> or <span style="{{ s
 		};
 	};
 };
+```
+
+<span style="{{ site.code }}">gic</span> is interrupt controller.<br>
+<span style="{{ site.code }}">i2c0</span>, <span style="{{ site.code }}">uart0</span>, <span style="{{ site.code }}">spi0</span> have interrupt pin.<br>
+interrupt pins are defined by <span style="{{ site.code }}">interrupt</span> and the gic device properties are inherited by the <span style="{{ site.code }}">interrupt-parent</span> .<br>
+<span style="{{ site.code }}">spi0</span> doesn't have <span style="{{ site.code }}">interrupt-parent</span> .<br>
+In this case, it can inherit interrupt properties from the parent( <span style="{{ site.code }}">/</span> ) node.
+
+#### clocks
+
+<span style="{{ site.code }}">clock</span> is the property that defines the clock of the device.<br>
+
+`clocks`<br>
+`clock-name`<br>
+`#clock-cells`<br>
+`clock-frequency`<br>
+
+<span style="{{ site.code }}">clocks</span> get properties of clock.<br>
+<span style="{{ site.code }}">clock-name</span> set clock name.<br>
+<span style="{{ site.code }}">#clock-cells</span> how many use cells for setting clock cell.<br>
+<span style="{{ site.code }}">clock-frequency</span> set clock frequency.<br>
+
+If you look closely at the names of the properties, you'll see,<br>
+The same pattern is repeated over and over again and again.<br>
+
+There are two cases of defining clocks.<br>
+If a device has vendor's clock driver or not.<br>
+case 1. If yes, compatible vendor's driver<br>
+case 2. If no, fixed-clock.<br>
+
+##### compatible vendor's driver
+
+define clocks using a clock device driver of rk3568.
+
+```
+/dts-v1/;
+
+#include <dt-bindings/clock/rk3568-cru.h>
+#include <dt-bindings/interrupt-controller/arm-gic.h>
+#include <dt-bindings/interrupt-controller/irq.h>
+
+\ {
+	compatible = "rockchip,rk3568";
+
+	#address-cells = <2>;
+	#size-cells = <2>;
+
+	/* cpus, sram, gic ...*/
+
+	pmucru: clock-controller@fdd00000 {
+		compatible = "rockchip, rk3568-pmucru";
+		reg = <0x0 0xfdd00000 0x0 0x1000>;
+		rockchip,grf = <&grf>;
+		rockchip,pmugrf = <&pmugrf>;
+		#clock-cells = <1>;
+		#reset-cells <1>;
+
+		assigned-clocks = <&pmucru SCLK_32K_IOE>;
+		assigned-clock-parents = <&pmucru CLK_RTC_32K>;
+	};
+
+	cru: clock-controller@fdd20000 {
+		compatible = "rockchip, rk3568-cru";
+		reg = <0x0 0xfdd20000 0x0 0x1000>;
+		rockchip,grf = <&grf>;
+		#clock-cells = <1>;
+		#reset-cells <1>;
+
+		assigned-clocks =
+			...
+
+		assigned-clock-rates =
+			...
+
+		assigned-clock-parents =
+			...
+	};
+
+	i2c0: i2c@fdd40000 {
+		compatible = "rockchip,rk3568-i2c";
+		reg = <0x0 0xfdd40000 0x0 0x1000>;
+		clocks = <&pmucru CLK_I2C0>, <&pmucru PCLK_I2C0>;
+		clock-names = "i2c", "pclk";
+		interrupt-parent = <&gic>;
+		interrupts = <GIC_SPI 46 IRQ_TYPE_LEVEL_HIGH>;
+	};
+
+	uart0: serial@fdd50000 {
+		compatible = "rockchip,rk3568-uart";
+		reg = <0x0 0xfdd50000 0x0 0x100>;
+		clocks = <&pmucru SCLK_UART0>, <&pmucru PCLK_UART0>;
+		clock-names = "baudclk", "apb_pclk";
+		interrupt-parent = <&gic>;
+		interrupts = <GIC_SPI 116 IRQ_TYPE_LEVEL_HIGH>;
+	};
+
+	spi0: spi@fe610000 {
+		compatible = "rockchip,rk3568-spi", "rockchip,rk3066-spi";
+		reg = <0x0 0xfe610000 0x0 0x1000>;
+		interrupts = <GIC_SPI 103 IRQ_TYPE_LEVEL_HIGH>;
+		#address-cells = <1>;
+		#size-cells = <0>;
+		clocks = <&cru CLK_SPI0>, <&cru PCLK_SPI0>;
+		clock-names = "spiclk", "apb_pclk";
+
+		spidev: spidev@0 {
+			compatible = "odroid,spi-dev";
+			reg = <0>;
+			spi-max-frequency = <100000000>;
+		};
+	};
+};
+```
+
+##### fixed-clock
+
+define clocks using fixed-clock. This is not vendor related.
+
+```
+/dts-v1/;
+
+#include <dt-bindings/clock/rk3568-cru.h>
+#include <dt-bindings/interrupt-controller/arm-gic.h>
+#include <dt-bindings/interrupt-controller/irq.h>
+
+\ {
+	compatible = "rockchip,rk3568";
+
+	#address-cells = <2>;
+	#size-cells = <2>;
+
+	/* cpus, sram, gic, pmucru, cru, i2c0, uart0 ... */
+
+	mcp2515_clk: mcp2515_clk {
+		compatible = "fixed-clock";
+		#clock-cells = <0>;
+		clock-frequency = <8000000>;
+	};
+
+	spi0: spi@fe610000 {
+		compatible = "rockchip,rk3568-spi", "rockchip,rk3066-spi";
+		reg = <0x0 0xfe610000 0x0 0x1000>;
+		interrupts = <GIC_SPI 103 IRQ_TYPE_LEVEL_HIGH>;
+		#address-cells = <1>;
+		#size-cells = <0>;
+		clocks = <&cru CLK_SPI0>, <&cru PCLK_SPI0>;
+		clock-names = "spiclk", "apb_pclk";
+
+		spidev: spidev@0 {
+			compatible = "odroid,spi-dev";
+			reg = <0>;
+			spi-max-frequency = <100000000>;
+		};
+
+		mcp2515: mcp2515@0 {
+			compatible = "microchip, mcp2515";
+			clocks = <&mcp2515_clk>;
+			reg = <1>;
+			spi-max-frequency = <10000000>;
+		};
+	};
+};
+```
+
+Add the mcp2515 node and mcp2515 clock.<br>
+However, it is better to use overlays than to add them directly to the tree.
+
+#### pinctrl
+
+It is responsible for assigning devices to pins.<br>
+
+`pinctrl-names`<br>
+`pinctrl-n`<br>
+
+<span style="{{ site.code }}">pinctrl-names</span> and <span style="{{ site.code }}">pinctrl-n</span> can be defined as one or more strings.<br>
+<span style="{{ site.code }}">pinctrl-names</span> defines the state of pin.<br>
+basically, state are 'default', 'init', 'idle', 'sleep'<br>
+in <span style="{{ site.code }}">include/linux/pinctrl/pinctrl-state.h</span> .<br>
+
+You can modify and customize pin states by modifying kernel code.<br>
+Related information will be posted in another post.<br>
+<span style="{{ site.code }}">pinctrl-n</span> Defines the pin information.<br>
+If the pin is in the n'th <span style="{{ site.code }}">pinctrl-names state</span> ,<br>
+the device is assigned a pin of <span style="{{ site.code }}">pintrl-n</span> .
+
+```
+device: device@10000000 {
+	...
+	pinctrl-names = "default", "sleep";
+	pinctrl-0 = <&pin1>; /* if pin state is default, */
+	pinctrl-1 = <&pin2>; /* if pin state is sleep, */
+	...
+};
+```
+
+Pinctrl is very important for I/O setting.<br>
+This is an example of rk3568.
+
+```
+/dts-v1/;
+
+#include <dt-bindings/clock/rk3568-cru.h>
+#include <dt-bindings/interrupt-controller/arm-gic.h>
+#include <dt-bindings/interrupt-controller/irq.h>
+#include <dt-bindings/pinctrl/rockchip.h>
+
+\ {
+	compatible = "rockchip,rk3568";
+
+	#address-cells = <2>;
+	#size-cells = <2>;
+
+	/* cpus, sram, gic, pmucru, cru ... */
+
+	i2c0: i2c@fdd40000 {
+		compatible = "rockchip,rk3568-i2c";
+		reg = <0x0 0xfdd40000 0x0 0x1000>;
+		clocks = <&pmucru CLK_I2C0>, <&pmucru PCLK_I2C0>;
+		clock-names = "i2c", "pclk";
+		interrupt-parent = <&gic>;
+		interrupts = <GIC_SPI 46 IRQ_TYPE_LEVEL_HIGH>;
+		pinctrl-names = "default";
+		pinctrl-0 = <&i2c0_xfer>;
+	};
+
+	uart0: serial@fdd50000 {
+		compatible = "rockchip,rk3568-uart";
+		reg = <0x0 0xfdd50000 0x0 0x100>;
+		clocks = <&pmucru SCLK_UART0>, <&pmucru PCLK_UART0>;
+		clock-names = "baudclk", "apb_pclk";
+		interrupt-parent = <&gic>;
+		interrupts = <GIC_SPI 116 IRQ_TYPE_LEVEL_HIGH>;
+		pinctrl-names = "default";
+		pinctrl-0 = <&uart0_xfer>;
+	};
+
+	spi0: spi@fe610000 {
+		compatible = "rockchip,rk3568-spi", "rockchip,rk3066-spi";
+		reg = <0x0 0xfe610000 0x0 0x1000>;
+		interrupts = <GIC_SPI 103 IRQ_TYPE_LEVEL_HIGH>;
+		#address-cells = <1>;
+		#size-cells = <0>;
+		clocks = <&cru CLK_SPI0>, <&cru PCLK_SPI0>;
+		clock-names = "spiclk", "apb_pclk";
+		pinctrl-names = "default", "high_speed";
+		pinctrl-0 = <&spi0m0_cs0 &spi0m0_cs1 &spi0m0_pins>;
+		pinctrl-1 = <&spi0m0_cs0 &spi0m0_cs1 &spi0m0_pins_hs>;
+
+		spidev: spidev@0 {
+			compatible = "odroid,spi-dev";
+			reg = <0>;
+			spi-max-frequency = <100000000>;
+		};
+	};
+};
+```
+
+### PCI
+
+PCi has a unique memory mapping method and various properties.
+
+#### pcie2x1
+
+This is an pci example of rk3568
+
+```
+	pcie2x1: pcie@fe260000 {
+		compatible = "rockchip,rk3568-pcie", "snps,dw-pcie";
+		#address-cells = <3>;
+		#size-cells = <2>;
+		bus-range = <0x0 0xf>;
+		clocks = <&cru ACLK_PCIE20_MST>, <&cru ACLK_PCIE20_SLV>,
+			<&cru ACLK_PCIE20_DBI>, <&cru PCLK_PCIE20>,
+			<&cru CLK_PCIE20_AUX_NDFT>;
+		clock-names = "aclk_mst", "aclk_slv",
+			  "aclk_dbi", "pclk", "aux";
+		device_type = "pci";
+		interrupts = <GIC_SPI 75 IRQ_TYPE_LEVEL_HIGH>,
+			<GIC_SPI 74 IRQ_TYPE_LEVEL_HIGH>,
+			<GIC_SPI 73 IRQ_TYPE_LEVEL_HIGH>,
+			<GIC_SPI 72 IRQ_TYPE_LEVEL_HIGH>,
+			<GIC_SPI 71 IRQ_TYPE_LEVEL_HIGH>;
+		interrupt-names = "sys", "pmc", "msg", "legacy", "err";
+		#interrupt-cells = <1>;
+		interrupt-map-mask = <0 0 0 7>;
+		interrupt-map = <0 0 0 1 &pcie2x1_intc 0>,
+			<0 0 0 2 &pcie2x1_intc 1>,
+			<0 0 0 3 &pcie2x1_intc 2>,
+			<0 0 0 4 &pcie2x1_intc 3>;
+		linux,pci-domain = <0>;
+		num-ib-windows = <6>;
+		num-ob-windows = <2>;
+		max-link-speed = <2>;
+		msi-map = <0x0 &its 0x0 0x1000>;
+		num-lanes = <1>;
+		phys = <&combphy2_psq PHY_TYPE_PCIE>;
+		phy-names = "pcie-phy";
+		power-domains = <&power RK3568_PD_PIPE>;
+		ranges = <0x00000800 0x0 0x00000000 0x3 0x00000000 0x0 0x800000
+			0x81000000 0x0 0x00800000 0x3 0x00800000 0x0 0x100000
+			0x83000000 0x0 0x00900000 0x3 0x00900000 0x0 0x3f700000>;
+		reg = <0x3 0xc0000000 0x0 0x400000>,
+			<0x0 0xfe260000 0x0 0x10000>;
+		reg-names = "pcie-dbi", "pcie-apb";
+		resets = <&cru SRST_PCIE20_POWERUP>;
+		reset-names = "pipe";
+		status = "disabled";
+
+		pcie2x1_intc: legacy-interrupt-controller {
+			interrupt-controller;
+			#address-cells = <0>;
+			#interrupt-cells = <1>;
+			interrupt-parent = <&gic>;
+			interrupts = <GIC_SPI 72 IRQ_TYPE_EDGE_RISING>;
+		};
+	};
 ```

@@ -17,18 +17,18 @@ pre code {
 
 .highlighter-rouge {
   color: #d14;
-}
 
-.highlighter-rouge .highlight {
-  color: #d14;
-  background-color: #f7f7f7;
-}
+  .highlight {
+    color: #d14;
+    background-color: #f7f7f7;
+  }
 
-.highlighter-rouge .highlight-code {
-  color: #d14;
-  background-color: #f7f7f7;
-}
+  .highlight-code {
+    color: #d14;
+    background-color: #f7f7f7;
+  }
 
-.highlighter-rouge .highlight-source-shell {
-  color: #75715e;
+  .highlight-source-shell {
+    color: #75715e;
+  }
 }

@@ -14,6 +14,9 @@ $font-size: 1em;
   @include set-font-size;
 }
 */
+html {
+  font-size: 18px;
+}
 
 // h
 h1, h2, h3, h4, h5, h6 {

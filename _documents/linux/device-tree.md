@@ -14,7 +14,7 @@ This is how the device tree appeared.<br>
 
 ## How to write device-tree?
 
-The path to the device tree is `arch/$ARCH/boot/dts/$vendor/..`
+The path to the device tree is <span style="{{ site.code }}">arch/$ARCH/boot/dts/$vendor/..</span>
 
 ### Format
 If you open any dts file in that path, you can check the following codes.
@@ -53,10 +53,10 @@ If you open any dts file in that path, you can check the following codes.
 
 ```
 
-`/`: root<br>
-`node-A, B`: child node of root.<br>
-`child-node-A, B`: child node of 'node-B'<br>
-`property`: key-values include empty or some bytes.
+<span style="{{ site.code }}">/</span> : root<br>
+<span style="{{ site.code }}">node-A, B</span> : child node of root.<br>
+<span style="{{ site.code }}">child-node-A, B</span> : child node of 'node-B'<br>
+<span style="{{ site.code }}">property</span> : key-values include empty or some bytes.
 
 ### Property
 
@@ -66,7 +66,7 @@ Let's configure the device tree with rk3568 of rockchip.
 
 #### name@unit-address
 
-`compatible`: Uniquely identify machines. It usually has a "manufacturer,system" value.<br>
+<span style="{{ site.code }}">compatible</span> : Uniquely identify machines. It usually has a "manufacturer,system" value.<br>
 
 ```
 \ {
@@ -74,7 +74,7 @@ Let's configure the device tree with rk3568 of rockchip.
 };
 ```
 
-`cpus`: Describing each CPUs.<br>
+<span style="{{ site.code }}">cpus</span>: Describing each CPUs.<br>
 
 ```
 /dts-v1/;
@@ -102,16 +102,19 @@ Let's configure the device tree with rk3568 of rockchip.
 };
 ```
 
-`node`: Unit that defines devices.<br>
-It has the form `name@unit-address`.<br>
+<span style="{{ site.code }}">node</span> : Unit that defines devices.<br>
+It has the form <span style="{{ site.code }}">name@unit-address</span> .<br>
 name is ASCII string. Use generic. This is because there are often multiple identical devices.<br>
-If you want to add `3com`, use name `ethernet` instead of `3com`.<br>
+If you want to add <span style="{{ site.code }}">3com</span>, use name <span style="{{ site.code }}">ethernet</span> instead of <span style="{{ site.code }}">3com</span> .<br>
 unit-address is used to access the device. for example, suppose 3com's address is 0x10000000.<br>
 
 `ethernet@0x10000000`<br>
 
-Nodes can be mapped to labels for easy maintenance. `label`: `name@unit-address`<br>
-Like `3com: ethernet@0x10000000`.<br>
+Nodes can be mapped to labels for easy maintenance.<br>
+
+`label : name@unit-address`<br>
+
+Like <span style="{{ site.code }}">3com: ethernet@0x10000000</span> .<br>
 
 #### reg
 Devices that can be addressed encode address information into the device tree using the following properties<br>
@@ -119,16 +122,16 @@ Devices that can be addressed encode address information into the device tree us
 `reg`<br>
 `#address-cells`<br>
 `#size-cells`<br>
-<br>
-`reg` is tuple.<br>
+
+<span style="{{ site.code }}">reg</span> is tuple.<br>
 
 `reg = < addr1 addr1-size addr2 addr2-size ...>`<br>
 
 address and field size are variable.<br>
-The `#address-cells` and `#size-cells` of the parent node are used to indicate how many cells are in each field.<br>
+The <span style="{{ site.code }}">#address-cells</span> and <span style="{{ site.code }}">#size-cells</span> of the parent node are used to indicate how many cells are in each field.<br>
 One field value has a maximum of 32 bits,<br>
-32bit system's `#address-cells` and `#size-cells` are 1.<br>
-64bit system's `#address-cells` and `#size-cells` are 2.<br>
+32bit system's <span style="{{ site.code }}">#address-cells</span> and <span style="{{ site.code }}">#size-cells</span> are 1.<br>
+64bit system's <span style="{{ site.code }}">#address-cells</span> and <span style="{{ site.code }}">#size-cells</span> are 2.<br>
 
 ##### Add a device addr.
 ```
@@ -165,8 +168,8 @@ One field value has a maximum of 32 bits,<br>
 };
 ```
 
-parent node's `#address-cells` is 2 and `#size-cells`is also 2,<br>
-The first tuple is [0x0 0xfdd40000]. the second is [0x0 0x1000].<br>
+parent node's <span style="{{ site.code }}">#address-cells</span> is 2 and <span style="{{ site.code }}">#size-cells</span> is also 2,<br>
+The first tuple is <span style="{{ site.code }}">0x0 0xfdd40000</span>. the second is <span style="{{ site.code }}">0x0 0x1000</span> .<br>
 first is address, second is size.<br>
 So, i2c0's address is 0xfdd40000 and size is 0x1000.<br>
 i2c0: 0xfdd40000 ~ 0xfdd41000<br>
@@ -285,16 +288,16 @@ The root node always describes the CPU's perspective on address space.<br>
 The child node of the root already uses the address domain of the CPU, so explicit mapping is not required.<br>
 <br>
 But, nodes that are not direct children of the root don't use the address domain of the CPU.<br>
-So, they need to translate address from one domain to another with `ranges`
+So, they need to translate address from one domain to another with <span style="{{ site.code }}">ranges</span> .
 <br>
 
 ranges = <tuple1 tuple2 ...><br>
 The tuple value of ranges is determined by<br>
-the `#address cell` of the parent node, the `#address cell` of the child node, <br>
-and the `#size cell` of the child node.<br>
+the <span style="{{ stie.code }}">#address cell</span> of the parent node, the <span style="{{ site.code }}">#address cell</span> of the child node, <br>
+and the <span style="{{ site.code }}">#size cell</span> of the child node.<br>
 <br>
 
-This is an example that show how to use `ranges` in sram node.
+This is an example that show how to use <span style="{{ site.code }}">ranges</span> in sram node.
 
 ```
 /dts-v1/;
@@ -354,15 +357,15 @@ ranges have tuples<br>
 parent is root, child is scmi_shmem.<br>
 
 In the above,<br>
-`ranges = <0 0x0 0x0010f000 0x1000>;`<br>
+<span style="{{ site.code }}">ranges = <0 0x0 0x0010f000 0x1000>;</span><br>
 
-tuple1 = `0`<br>
+tuple1 = <span style="{{ site.code }}">0</span><br>
 '0' is address to map.<br>
 
-tuple2 = `0x0 0x0010f000`<br>
+tuple2 = <span style="{{ site.code }}">0x0 0x0010f000</span><br>
 '0x0 0x0010f000' is to be mapped address of parent.<br>
 
-tuple3 = `0x1000`<br>
+tuple3 = <span style="{{ site.code }}">0x1000</span><br>
 '0x1000' is the size of address to map<br>
 
 In conclusion,<br>
@@ -381,17 +384,17 @@ Interrupt information into the device tree using the following properties<br>
 `interrupt-parent`<br>
 `#interrupt-cells`<br>
 
-`interrupts` is tuples like 'reg'.<br>
+<span style="{{ site.code }}">interrupts</span> is tuples like 'reg'.<br>
 It has informations about interrupt number, interrupt conditions<br>
 
-`interrupt-controller` has no value.<br>
+<span style="{{ site.code }}">interrupt-controller</span> has no value.<br>
 This property specifies that the node is an interrupt device.<br>
 
-`interrupt-parent` include an node what is interrupt-controller.<br>
-The node referenced must have an `interrupt-controller` property.<br>
+<span style="{{ site.code }}">interrupt-parent</span> include an node what is interrupt-controller.<br>
+The node referenced must have an <span style="{{ site.code }}">interrupt-controller</span> property.<br>
 
-`#interrupt-cells` defines how many cells to represent an interrupt,<br>
-such as '#address-cells' or 'size-cells'.
+<span style="{{ site.code }}">#interrupt-cells</span> defines how many cells to represent an interrupt,<br>
+such as <span style="{{ site.code }}">#address-cells</span> or <span style="{{ site.code }}">size-cells</span> .
 
 ```
 /dts-v1/;

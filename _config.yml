@@ -5,6 +5,9 @@
 # For technical reasons, this file is *NOT* reloaded automatically when you use
 # `jekyll serve`. If you change this file, please restart the server process.
 
+# var
+code: "color:red; background-color:#f5f5f5; font-size:75%"
+
 # Site theme
 remote_theme             : "how2flow/minimal-mistakes@sticky"
 minimal_mistakes_skin    : "contrast"

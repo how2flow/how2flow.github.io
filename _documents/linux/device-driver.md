@@ -7,7 +7,7 @@ toc: true
 ## New Device Attribute
 
 To test the behavior of a device by reading or writing data.<br>
-`DEVICE_ATTR`is define an attribute of device.<br>
+<span style="{{ site.code }}">DEVICE_ATTR</span> is define an attribute of device.<br>
 
 ```
 Steps:
@@ -18,20 +18,16 @@ Steps:
 ### make device attribute
 
 device attribute format:<br>
-`DEVICE_ATTR(_name, _flag, _show, _store)`<br>
-<br>
+<span style="{{ site.code }}">DEVICE_ATTR(_name, _flag, _show, _store)</span><br>
+
 parameters:<br>
-`_name`:<br>
-device attribute name. it will attach a prefix(`dev_attr_`)<br>
+<span style="{{ site.code }}">_name</span> : device attribute name. it will attach a prefix(<span style="{{ site.code }}">dev_attr_</span>)<br>
 
-`_flag`:<br>
-node permission flag. ex) `644`, `755` ...<br>
+<span style="{{ site.code }}">_flag</span> : node permission flag. ex) <span style="{{ site.code }}">644</span>, <span style="{{ site.code }}">755</span> ...<br>
 
-`_show`:<br>
-the function pointer to hand over values to userspace from kernel.<br>
+<span style="{{ site.code }}">_show</span> : the function pointer to hand over values to userspace from kernel.<br>
 
-`_store`:<br>
-the function pointer to hand over values to kernel from userspace.<br>
+<span style="{{ site.code }}">_store</span>: the function pointer to hand over values to kernel from userspace.<br>
 
 ```
 static ssize_t foo_show(struct device *dev, struct device_attribute *attr, char *buf)
@@ -60,7 +56,7 @@ DEVICE_ATTR(bar, 644, foo_show, foo_store);
 
 ### create & remove file.
 
-If an attribute is created, create file at `probe` and remove at `remove`.
+If an attribute is created, create file at <span style="{{ site.code }}">probe</span> and remove at <span style="{{ site.code }}">remove</span>.
 
 ```
 static int xyz_probe(struct platform_device *pdev)
@@ -90,13 +86,13 @@ static int xyz_remove(struct platform_device *pdev)
 
 ### example
 Let me give an example.<br>
-<br>
+
 <a href="https://forum.odroid.com/viewtopic.php?p=368607#p368607">How to change i2c speed and use i2c-1 port</a><br>
-<br>
+
 The situation was that someone wanted to change the speed of the i2c on the odroid-m1 board.<br>
 At first, I was told me to solve it by entering a value in the **speed node** of i2c like N2/C4,<br>
 but M1 did not have a **speed node.**<br>
-<br>
+
 So I suggested adding clock-frequency on the device-tree.<br>
 But I tried to change the speed dynamically through **speed node** like N2 and C4.<br>
 

@@ -68,4 +68,4 @@ An example of can oscilloscope Waveform (between CAN-rx and GND).
                f        f                                                          D
 ```
 
-This message is <span style="color:blue; font-size:120%">ID: 500 DATA: 11 22 33</span>
+This message is <span style="{{ site.code }}">ID: 500 DATA: 11 22 33</span>

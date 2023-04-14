@@ -21,10 +21,17 @@ device attribute format:<br>
 `DEVICE_ATTR(_name, _flag, _show, _store)`<br>
 <br>
 parameters:<br>
-`_name`: device attribute name. it will attach a prefix(`dev_attr_`)<br>
-`_flag`: node permission flag. ex) `644`, `755` ...<br>
-`_show`: the function pointer to hand over values to userspace from kernel.<br>
-`_store`: the function pointer to hand over values to kernel from userspace.<br>
+`_name`:<br>
+device attribute name. it will attach a prefix(`dev_attr_`)<br>
+
+`_flag`:<br>
+node permission flag. ex) `644`, `755` ...<br>
+
+`_show`:<br>
+the function pointer to hand over values to userspace from kernel.<br>
+
+`_store`:<br>
+the function pointer to hand over values to kernel from userspace.<br>
 
 ```
 static ssize_t foo_show(struct device *dev, struct device_attribute *attr, char *buf)

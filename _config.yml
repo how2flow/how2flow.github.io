@@ -6,6 +6,7 @@
 # `jekyll serve`. If you change this file, please restart the server process.
 
 # var
+img: "color:black; font-size:90%"
 code: "color:red; background-color:#f5f5f5; font-size:75%"
 
 # Site theme

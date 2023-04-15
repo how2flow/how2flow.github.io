@@ -111,7 +111,7 @@ The OS has several tables to manage the process.<br>
 
 <p align="center">
   <img src="/documents/images/os/process/tables.png" alt="tables" width="640" height="480"><br>
-  <span style="{{ site.en }}">picture [5] Tables</span>
+  <span style="{{ site.en }}">picture [6] Tables</span>
 </p>
 <br>
 
@@ -134,7 +134,7 @@ Recently, many **NTFS** methods have been adopted, but this is the traditional m
 
 <p align="center">
   <img src="/documents/images/os/process/hdd.png" alt="hdd" width="640" height="480"><br>
-  <span style="{{ site.en }}">picture [6] FAT</span>
+  <span style="{{ site.en }}">picture [7] FAT</span>
 </p>
 <br>
 
@@ -152,7 +152,7 @@ The process consists largely of attributes and locations.<br>
 
 <p align="center">
   <img src="/documents/images/os/process/struct.png" alt="struct" width="640" height="480"><br>
-  <span style="{{ site.en }}">picture [6] Process Struct</span>
+  <span style="{{ site.en }}">picture [8] Process Struct</span>
 </p>
 <br>
 
@@ -162,7 +162,7 @@ User functions are in stack area. It gets bigger or smaller by its user function
 
 <p align="center">
   <img src="/documents/images/os/process/phym.png" alt="phym" width="640" height="480"><br>
-  <span style="{{ site.en }}">picture [7] Virtual memory vs Physical memory</span>
+  <span style="{{ site.en }}">picture [9] Virtual memory vs Physical memory</span>
 </p>
 <br>
 
@@ -204,3 +204,40 @@ When a software interrupt is operated by an interrupt handler(ISR), a system cal
 
 user mode: Minimum permissions not affecting the system.<br>
 system mode: All rights on the system. <br>
+
+##### system(kernel) mode
+
+Process Management
+
+```
+Process creation and termination # process isolation
+Process scheduling and dispatching
+Process switching # context switching
+Process syncronization and support for interprocess comunication # IPC
+Management of Process Control Blocks
+```
+<span style="{{ site.code }}">IPC</span>: There are times when resource sharing between processes is necessary.<br>
+
+Memory Management
+
+```
+Allocation of address space to process
+Swapping
+Page and segment management
+```
+<span style="{{ site.code }}">Page</span> , <span style="{{ site.code }}">segment</span> - related content will be posted <a href="/documents/os/memory">here.</a><br>
+
+I/O Management
+
+```
+Buffer Management # buffer is the memory of devices.
+Allocation of I/O channels and devices to process
+```
+
+Support functions
+
+```
+Interrupt handling
+Accounting
+Monitoring
+```

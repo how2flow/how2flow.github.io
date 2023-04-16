@@ -118,7 +118,7 @@ The OS has several tables to manage the process.<br>
 #### Memory table
 
 Memory table has main memory for running programs, virtual memory and protection attributes.<br>
-Virtual memory will be covered in more detail in <a href"/documents/os/memory/">here</a><br>
+Virtual memory will be covered in more detail in <a href="/documents/os/memory/">here</a><br>
 
 #### I/O table
 

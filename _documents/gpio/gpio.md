@@ -1,6 +1,7 @@
 ---
 permalink: /documents/gpio/
 title: General Purpose Input/Output
+excerpt: "how to flow gpio, gpio alt."
 toc: true
 ---
 

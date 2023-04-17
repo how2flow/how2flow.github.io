@@ -1,6 +1,7 @@
 ---
 premalink: /documents/linux/device-tree/
 title: Device tree
+excerpt: "how to flow device tree. device, device-tree, overlays ..."
 toc: true
 ---
 

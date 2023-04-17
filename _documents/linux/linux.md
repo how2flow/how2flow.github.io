@@ -1,6 +1,7 @@
 ---
 permalink: /documents/linux/
 title: Linux
+excerpt: "Linux systems"
 toc: true
 ---
 

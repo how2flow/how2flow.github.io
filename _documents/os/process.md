@@ -1,6 +1,7 @@
 ---
 permalink: /documents/os/process/
 title: Process
+excerpt: "what is process? what's role in os?"
 toc: true
 ---
 

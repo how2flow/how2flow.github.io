@@ -1,6 +1,7 @@
 ---
 permalink: /documents/gpio/can/
-title: Contoller Area Network
+title: CAN-bus
+excerpt: "how to flow CAN. can, can protocols, can bus, can network"
 toc: true
 ---
 

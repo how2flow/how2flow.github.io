@@ -31,9 +31,9 @@ breadcrumbs              : "Home"
 breadcrumbs_separator    : "/"
 words_per_minute         : 200
 comments:
-  provider               : # false (default), "disqus", "discourse", "facebook", "staticman", "staticman_v2", "utterances", "giscus", "custom"
+  provider               : disqus # false (default), "disqus", "discourse", "facebook", "staticman", "staticman_v2", "utterances", "giscus", "custom"
   disqus:
-    shortname            : # https://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-
+    shortname            : "https-how2flow-net" # https://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-
   discourse:
     server               : # https://meta.discourse.org/t/embedding-discourse-comments-via-javascript/31963 , e.g.: meta.discourse.org
   facebook:
@@ -283,6 +283,7 @@ defaults:
     values:
       layout: home
       author_profile: true
+      comments: true
       sidebar:
         nav: "side_main"
   # _posts
@@ -293,7 +294,6 @@ defaults:
       layout: single
       author_profile: true
       read_time: true
-      comments: true
       share: true
       related: true
       show_date: true
@@ -322,7 +322,6 @@ defaults:
       read_time: false
       author_profile: true
       share: true
-      comments: true
       toc_label: Index
       toc_sticky: true
   # _portfolio
@@ -334,7 +333,7 @@ defaults:
       read_time: false
       author_profile: true
       share: true
-      comments: true
+      comments: false
   # _project
   - scope:
       path: ""
@@ -344,5 +343,3 @@ defaults:
       read_time: false
       author_profile: true
       share: true
-      comments: true
-      classes: wide

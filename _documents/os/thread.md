@@ -1,7 +1,7 @@
 ---
 permalink: /documents/os/thread/
 title: Thread
-excerpt: "what is thread? what's role in os?"
+excerpt: "What is the thread? What's its role in os?"
 toc: true
 ---
 

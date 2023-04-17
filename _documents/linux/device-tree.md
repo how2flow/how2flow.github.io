@@ -1,6 +1,6 @@
 ---
 premalink: /documents/linux/device-tree/
-title: Devicetree
+title: Device tree
 toc: true
 ---
 
@@ -69,7 +69,7 @@ Let's configure the device tree with rk3568 of rockchip.
 <span style="{{ site.code }}">compatible</span> : Uniquely identify machines. It usually has a "manufacturer,system" value.<br>
 
 ```
-\ {
+/ {
 	compatible = "rockchip,rk3568";
 };
 ```
@@ -79,7 +79,7 @@ Let's configure the device tree with rk3568 of rockchip.
 ```
 /dts-v1/;
 
-\ {
+/ {
 	compatible = "rockchip,rk3568";
 
 	cpus {
@@ -137,7 +137,7 @@ One field value has a maximum of 32 bits,<br>
 ```
 /dts-v1/;
 
-\ {
+/ {
 	compatible = "rockchip,rk3568";
 
 	#address-cells = <2>;
@@ -178,7 +178,7 @@ i2c0: 0xfdd40000 ~ 0xfdd41000<br>
 ```
 /dts-v1/;
 
-\ {
+/ {
 	compatible = "rockchip,rk3568";
 
 	#address-cells = <2>;
@@ -220,7 +220,7 @@ i2c0: 0xfdd40000 ~ 0xfdd41000<br>
 ```
 /dts-v1/;
 
-\ {
+/ {
 	compatible = "rockchip,rk3568";
 
 	#address-cells = <2>;
@@ -244,7 +244,7 @@ i2c0: 0xfdd40000 ~ 0xfdd41000<br>
 ```
 /dts-v1/;
 
-\ {
+/ {
 	compatible = "rockchip,rk3568";
 
 	#address-cells = <2>;
@@ -289,16 +289,15 @@ So, they need to translate address from one domain to another with <span style="
 
 ranges = <tuple1 tuple2 ...><br>
 The tuple value of ranges is determined by<br>
-the <span style="{{ stie.code }}">#address cell</span> of the parent node, the <span style="{{ site.code }}">#address cell</span> of the child node, <br>
+the <span style="{{ site.code }}">#address cell</span> of the parent node, the <span style="{{ site.code }}">#address cell</span> of the child node, <br>
 and the <span style="{{ site.code }}">#size cell</span> of the child node.<br>
-<br>
 
 This is an example that show how to use <span style="{{ site.code }}">ranges</span> in sram node.
 
 ```
 /dts-v1/;
 
-\ {
+/ {
 	compatible = "rockchip,rk3568";
 
 	#address-cells = <2>;
@@ -396,7 +395,7 @@ such as <span style="{{ site.code }}">#address-cells</span> or <span style="{{ s
 #include <dt-bindings/interrupt-controller/arm-gic.h>
 #include <dt-bindings/interrupt-controller/irq.h>
 
-\ {
+/ {
 	compatible = "rockchip,rk3568";
 
 	#address-cells = <2>;
@@ -482,7 +481,7 @@ define clocks using a clock device driver of rk3568.
 #include <dt-bindings/interrupt-controller/arm-gic.h>
 #include <dt-bindings/interrupt-controller/irq.h>
 
-\ {
+/ {
 	compatible = "rockchip,rk3568";
 
 	#address-cells = <2>;
@@ -566,7 +565,7 @@ define clocks using fixed-clock. This is not vendor related.
 #include <dt-bindings/interrupt-controller/arm-gic.h>
 #include <dt-bindings/interrupt-controller/irq.h>
 
-\ {
+/ {
 	compatible = "rockchip,rk3568";
 
 	#address-cells = <2>;
@@ -647,7 +646,7 @@ This is an example of rk3568.
 #include <dt-bindings/interrupt-controller/irq.h>
 #include <dt-bindings/pinctrl/rockchip.h>
 
-\ {
+/ {
 	compatible = "rockchip,rk3568";
 
 	#address-cells = <2>;
@@ -698,13 +697,47 @@ This is an example of rk3568.
 };
 ```
 
+#### aliases
+
+Nodes typically refer to the entire path.<br>
+To refer to uart0, need path.<br>
+path is <span sytle="{{ site.code }}">/serial@fdd50000</span> .<br>
+
+A longer path will be required to reference the child nodes of a particular node.<br>
+So it gives specific nodes an alias through <span sytle="{{ site.code }}">aliases</span> .<br>
+
+```
+/ {
+	...
+
+	aliases {
+		serial0 = &uart0;
+	}
+	...
+
+};
+```
+Node switching is also possible when utilized well.
+```
+/ {
+	...
+
+	aliases {
+		serial0 = &uart1;
+	}
+	...
+
+};
+```
+
+## Example
+
+Let me give you a complicated example.<br>
+
 ### PCI
 
 PCi has a unique memory mapping method and various properties.
-
-#### pcie2x1
-
-This is an pci example of rk3568
+This is an pcie2x1 example of rk3568
 
 ```
 	pcie2x1: pcie@fe260000 {
@@ -758,3 +791,98 @@ This is an pci example of rk3568
 		};
 	};
 ```
+
+Except for almost the attributes you've never seen before,<br>
+There's something in this code that you need to look at as unique and special.<br>
+
+<span style ="{{ site.code }}">bus-ranges</span> and <span style="{{ site.code }}">#address-cells = 3</span> .<br>
+
+<span style ="{{ site.code }}">bus-ranges</span> is bus numbering of pci.<br>
+```
+Since the PCI bus has a structure that puts a bridge circuit between the CPU and the bus,
+VESA Unlike the local bus, even if the type of CPU is different,
+it can be connected to any CPU as long as the corresponding bridge circuit is equipped.
+[네이버 지식백과] PCI [peripheral component interconnect] (IT용어사전, 한국정보통신기술협회)
+```
+first cell is index of bus and second cell provides the maximum bus number for all sub-pci buses.<br>
+
+<span style ="{{ site.code }}">#address-cells = 3</span> is for translation address.<br>
+Similar to the local bus described earlier,<br>
+the PCI address space is completely separate from the CPU address space.<br>
+So It must be imported from a PCI address to a CPU address.<br>
+
+```
+/ {
+	#address-cells = <2>;
+	...
+
+	pcie2x1 {
+		...
+
+		#address-cells = <3>;
+		#size-cells = <2>;
+		...
+
+		ranges = <0x00000800 0x0 0x00000000 0x3 0x00000000 0x0 0x800000 /* first */
+			0x81000000 0x0 0x00800000 0x3 0x00800000 0x0 0x100000 /* second */
+			0x83000000 0x0 0x00900000 0x3 0x00900000 0x0 0x3f700000>; /* third */
+	};
+	...
+
+};
+```
+
+Why does the device-tree need three 32-bit cells to address PCI?<br>
+pci has 3cell. <span style="{{ site.code }}">phys.hi</span> , <span style="{{ site.code }}">phys.mid</span> and <span style="{{ site.code }}">phys.low</span> .<br>
+Of course, pci address-bit is 64-bit, what is encoded in the address is <span style="{{ site.code }}">phys.mid</span> and <span style="{{ site.code }}">phys.low</span> .<br>
+<span style="{{ site.code }}">phys.hi</span> is feild of pci properties.
+
+```
+# pci feild (phys.hi)
+
+npt000ss bbbbbbbb dddddfff rrrrrrrr
+
+n: Relocateable Flag. (0 means relocation, 1 means impossible)
+p: Prefetch Flag. (0 means impossible 1 means possible)
+t: Aliased Flag.
+ss: space code
+  00: compositional space
+  01: I/O space
+  10: 32bit memory space
+  11: 64bit memory space
+bbbbbbbb: sub-bus
+ddddd: IDSEL number.
+fff: function number.
+rrrrrrrr: registration number. used in configuration cycle.
+```
+
+important flag is 'p' and 'ss'.<br>
+<span style="{{ site.code }}">p</span> and <span style="{{ site.code }}">ss</span> determine the PCI address space to access.<br>
+
+Look at the first of ranges,
+
+```
+# first
+
+0x00000800 0x0 0x00000000 0x3 0x00000000 0x0 0x800000
+```
+pci field: <span style="{{ site.code }}">0x00000800</span><br>
+```
+npt000ss bbbbbbbb dddddfff rrrrrrrr
+00000000 00000000 00001000 00000000
+```
+
+PCI address: <span style="{{ site.code}}">0x0 0x00000000</span><br>
+It is <span style="{{ site.code }}">PCI@0x000000000</span> .<br>
+
+CPU address to map: <span style="{{ site.code}}">0x3 0x00000000</span><br>
+It is <span style="{{ site.code }}">CPU@0x300000000</span> .<br>
+
+PCI size: <span style="{{ site.code}}">0x0 0x800000</span><br>
+0x800000 is 8MB.<br>
+
+Map PCI address 0x000000000 to CPU address 0x300000000.<br>
+The size is 8 MB.<br>
+<span style="{{ site.code }}">PCI@{0x000000000 ~ 0x000800000} => CPU@{0x300000000 ~ 0x300800000}</span> .<br>
+
+The second and third interpretations are the same.<br>

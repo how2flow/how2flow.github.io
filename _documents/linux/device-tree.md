@@ -701,7 +701,7 @@ This is an example of rk3568.
 
 Nodes typically refer to the entire path.<br>
 To refer to uart0, need path.<br>
-path is <span sytle="{{ site.code }}">/serial@fdd50000</span> .<br>
+path is <span style="{{ site.code }}">/serial@fdd50000</span> .<br>
 
 A longer path will be required to reference the child nodes of a particular node.<br>
 So it gives specific nodes an alias through <span sytle="{{ site.code }}">aliases</span> .<br>

@@ -2,6 +2,7 @@
 permalink: /documents/os/
 title: Operating System
 excerpt: "how to flow Operating System."
+comments: false
 toc: true
 ---
 

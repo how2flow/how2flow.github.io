@@ -292,7 +292,6 @@ defaults:
       type: posts
     values:
       layout: single
-      author_profile: true
       read_time: true
       share: true
       related: true
@@ -311,7 +310,6 @@ defaults:
     values:
       layout: single
       read_time: false
-      author_profile: true
       share: false
   # _documents
   - scope:
@@ -320,7 +318,6 @@ defaults:
     values:
       layout: docs
       read_time: false
-      author_profile: true
       share: true
       toc_label: Index
       toc_sticky: true
@@ -331,7 +328,6 @@ defaults:
     values:
       layout: single
       read_time: false
-      author_profile: true
       share: true
       comments: false
   # _project
@@ -341,5 +337,4 @@ defaults:
     values:
       layout: docs
       read_time: false
-      author_profile: true
       share: true

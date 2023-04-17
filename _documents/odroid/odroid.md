@@ -2,6 +2,7 @@
 permalink: /documents/odroid/
 title: "Odroid"
 excerpt: "Odroid Series"
+comments: false
 ---
 
 ## Series

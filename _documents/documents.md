@@ -2,6 +2,7 @@
 permalink: /documents/
 title: "Documents"
 excerpt: "Documents tables"
+comments: false
 ---
 
 These are the contents that I studied and organized.<br>

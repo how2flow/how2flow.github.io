@@ -2,6 +2,7 @@
 permalink: /documents/License/
 title: "License"
 excerpt: "MIT License"
+comments: false
 ---
 
 The MIT License (MIT)

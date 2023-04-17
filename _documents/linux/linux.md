@@ -2,6 +2,7 @@
 permalink: /documents/linux/
 title: Linux
 excerpt: "Linux systems"
+comments: false
 toc: true
 ---
 

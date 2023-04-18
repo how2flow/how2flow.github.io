@@ -10,7 +10,7 @@ img: "color:black; font-size:90%"
 code: "color:red; background-color:#f5f5f5; font-size:75%"
 
 # Site theme
-remote_theme             : "how2flow/minimal-mistakes@sticky"
+remote_theme             : "mmistakes/minimal-mistakes@4.24.0"
 minimal_mistakes_skin    : "contrast"
 
 # Site Settings

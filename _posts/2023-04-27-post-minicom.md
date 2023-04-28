@@ -37,6 +37,7 @@ minicom: cannot open /dev/modem: No such file or directory
 
 실행을 하는데 다음과 에러로그를 만납니다.<br>
 <span style="{{ site.code }}">minicom: cannot open /dev/modem: No such file or directory</span><br>
+
 구글링을 해보면 <span style="{{ site.code }}">-s</span> 옵션을 사용하면 해결된다고 합니다.
 ```
 $ sudo minicom --help
@@ -78,6 +79,7 @@ Report bugs to <minicom-devel@lists.alioth.debian.org>.
 ```
 <span style="{{ site.code }}">-s</span> 옵션은 minicom을 setup mode로 실행하는 것을 확인할 수 있습니다.<br>
 <span style="{{ site.code }}">-s</span> 외에도 <span style="{{ site.code }}">-D</span>, <span style="{{ site.code }}">-b</span> 옵션도 자주 사용합니다.<br>
+<br>
 
 셋업모드로 실행합니다.
 ```

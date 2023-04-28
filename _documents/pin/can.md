@@ -39,10 +39,9 @@ If the same bit comes out five times in a row, the next bit must use one opposit
 ```
 
 ## Example
-
 An example of can oscilloscope Waveform (between CAN-rx and GND).
 <div style="text-align:center;">
-  <img src="/assets/images/can.jpg" alt="can-example" width="640" height="480">
+  <img src="/documents/images/pin/can.jpg" alt="can-example" width="640" height="480">
 </div>
 
 - Raw data

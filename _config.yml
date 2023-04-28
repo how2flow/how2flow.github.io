@@ -288,6 +288,7 @@ defaults:
         nav: "side_main"
       toc_label: Index
       toc_sticky: true
+      excerpt: "how2flow's site."
   # _posts
   - scope:
       path: ""

@@ -14,6 +14,25 @@
 
   gtag('config', 'G-DM3E7FM2K4');
 </script>
+
+<!-- Kakao Talk msg API (gtag.js) -->
+{% if page.share %}
+  <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+  <script>
+      Kakao.init("f042597d17020df924ce9f06ac4abca6");
+      function sendLink() {
+        Kakao.Link.sendCustom({
+          templateId: 93183,
+          templateArgs: {
+            title: "{{ page.title }}",
+            description: "{{ page.excerpt }}",
+            url: "{{ page.url }}",
+          },
+        });
+      }
+  </script>
+{% endif %}
+
 <!-- insert favicons. use https://realfavicongenerator.net/ -->
 
 <!-- end custom head snippets -->

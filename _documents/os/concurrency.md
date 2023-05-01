@@ -214,3 +214,203 @@ So it should never be solved by timing.<br>
 - No assumptions are made about relative process speeds or number of prcesses.
 - A process remains inside its critical section for a finite time only.
 ```
+
+## Mutual Exclusive Implementing
+
+### Hardware Support
+
+Atomic operations shall be implemented in critical sections.<br>
+
+#### Interrupt disable/enable (Uni process)
+```
+Turn off interrupt before entering critical section and turn on interrupt when critical section is finished.
+```
+However, processes that are not related to shared resources are all put on waiting.<br>
+In addition, even if it is a process that uses shared resources, threads before using resources are also in a waiting state.<br>
+It is very inefficient.<br>
+When the interrupt is turned off, it does not work on the multiprocessor.<br>
+
+#### Compare & Swap Instruction
+
+also called a <span style="{{ site.code }}">compare and exchange instruction</span> .
+
+first, make a flag and make two simple code.<br>
+Assume that it enters the foo function and is called at the end of the bar function.<br>
+```
+/* Program 1 */
+ 1 int flag;
+ 2
+ 3 foo() { // enter
+ 4 	while (flag == 0);
+ 5 		flag = 0;
+ 6 }
+ 7
+ 8 bar() { // exit
+ 9 	flag = 1;
+10 }
+```
+```
+/* Program 2 */
+ 1 int flag;
+ 2
+ 3 foo() { // enter
+ 4 	while (flag == 0);
+ 5 		flag = 0;
+ 6 }
+ 7
+ 8 bar() { // exit
+ 9 	flag = 1;
+10 }
+```
+
+It looks like it's been implemented,<br>
+If there is an interruption at line 4, and context switching occurs,<br>
+Both programs will enter the critical section.<br>
+
+You can also interrupt disable/enable line 4 up and down,<br>
+but it has become a little more efficient from the initial description,<br>
+and the problem remains the same.<br>
+
+So there is a command that supports reading and writing flag values at once.<br>
+That's what a <span style="{{ site.code }}">compare and swap is</span> .
+```
+ 1  /* program mutualexclusion */
+ 2 const int n = /* number of processes */;
+ 3 int flag; /* 0: allow 1: disallow */
+ 4
+ 5 void foo(int i) {
+ 6 	while (true) {
+ 7 		while (compare_and_swap(&flag, 0, 1) == 1); /* read & write at once */
+ 8 		/* critical section */
+ 9 		flag = 0;
+10 		/* remainder */
+11 	}
+12 }
+
+void main() {
+	flag = 0;
+	parbegin (P(1), P(2), ... , P(n));
+}
+```
+
+another way is <span style="{{ site.code }}">exchange</span> .
+```
+ 1 /* program mutualexclusion */
+ 2 const int n = /* number of processes */;
+ 3 int flag;
+ 4 
+ 5 void bar(int i) {
+ 6 	while (true) {
+ 7 		int keyi = 1;
+ 8 		do exchange (&keyi, &flag)
+ 9 		while (keyi != 0);
+10  		/* critical section */
+11  		flag = 0;
+12  		/* remainder */
+13  	}
+14 }
+15  
+16 void main() {
+17 	flag = 0;
+18 	parbegin (P(1), P(2), ... , P(n));
+19 }
+```
+
+##### advantages & disadvantages
+
+advantages
+```
+- Applicable to any number of processes on either a uni or multi.
+- Simple and easy to verfy.
+- It can be used to support mulitple critical sections by its own variable.
+```
+
+disadvantages
+```
+- Busy waiting
+- Starvation
+- Deadlock
+```
+
+### Ways of Mutual Exclusive
+
+| Name | Info |
+|:---|:---|
+| Semaphore | general |
+| Binary Semaphore | Use Binary Semapore var |
+| Mutex | Lock & unlock only in one process. |
+| Condition Variable | support by program language |
+| Monitor | support by program language |
+| Event Flags |
+| Maliboxes/Messages | synchronize by communication |
+| Spinlocks | use in multiprocessor |
+
+## Semaphore
+
+It is variable. type is integer.<br>
+The value of the semaphore is the number of accessible processes.<br>
+It has some operations.
+```
+- Initialize to a nonnegative integer value
+- Use semWait # decrement
+- Use semSignal # increment
+```
+
+### example of Semaphore
+
+```
+ 1 struct semaphore {
+ 2 	int count;
+ 3 	queueType queue; // FIFO
+ 4 };
+ 5
+ 6 void semWait(semaphore s) {
+ 7 	s.count--;
+ 8 	if (s.count < 0) {
+ 9 		/* place this process in s.queue */
+10 		/* block this process */
+11 	}
+12 }
+13
+14 void semSignal(semaphore s) {
+15 	s.count++;
+16 	if (s.count <= 0) {
+17 		/* remove a process from s.queue */
+18 		/* place process on ready list */
+19 	}
+20 }
+```
+The fact that Semaphore's value has become negative means that it is impossible to enter.<br>
+The negative value of the semaphore is the number of blocked because they did not enter.<br>
+
+When a semaphore signal is called and one process exits the critical section,<br>
+The first (or higher priority) process that is blocked is caught in the ready queue.<br>
+
+### example of Binary Semaphore
+
+```
+ 1 struct binary_semaphore {
+ 2 	int value = 0;
+ 3 	queueType queue;
+ 4 };
+ 5
+ 6 void semWait(binary_semaphore s) {
+ 7 	if (s.value == 1)
+ 8 		s.value = 0;
+ 9 	else {
+10 		/* place this process in s.queue */
+11 		/* block this process */
+12 	}
+13 }
+14
+15 void semSignal(binary_semaphore s) {
+16 	if (s.queue is empty())
+17 		s.value = 1;
+18 	else {
+19 		/* remove a process from s.queue */
+20 		/* place process on ready list */
+21 	}
+22 }
+```
+
+### examples of Semaphore Machanism

@@ -19,7 +19,7 @@ The OS swindles the process that it monopolizes all resources, but in reality,<b
 resources are limited and used by everyone.<br>
 Traffic arrangement is necessary when trying to take limited resources with each other.<br>
 
-Limited resources should be mutually exclusive. And you have to synchronize what you use.<br>
+Limited resources should be mutual exclusion. And you have to synchronize what you use.<br>
 It is necessary to ensure concurrency.<br>
 
 ### multiple process
@@ -98,14 +98,14 @@ However, if context switching occurs as follows, the result will be different.<b
 <br>
 
 So This case needs <span style="{{ site.code }}">mutual exclusion</span> .<br>
-The exclusive use of <span style="{{ site.code }}">a</span> should be guaranteed.<br>
+The exclusion use of <span style="{{ site.code }}">a</span> should be guaranteed.<br>
 <br>
 
 Here's an example.<br>
 
 <p align="center">
-  <img src="/documents/images/os/concurrency/mutualexclusive.png" alt="mutual_ex" width="640" height="480"><br>
-  <span style="{{ site.img }}">picture [3] Mutual Exclusive</span>
+  <img src="/documents/images/os/concurrency/mutualexclusion.png" alt="mutual_ex" width="640" height="480"><br>
+  <span style="{{ site.img }}">picture [3] Mutual Exclusion</span>
 </p>
 <br>
 
@@ -122,7 +122,7 @@ Like hanging a sign while using the toilet and putting it down when you're done 
 Raise the flag when the process uses shared resources and lower the flag when it is finished.<br>
 The flag is usually used as a variable, and an example is a 'semaphore'<br>
 
-The problem with ensuring this mutual exclusivity is that there are different types and<br>
+The problem with ensuring this mutual exclusion is that there are different types and<br>
 numbers of shared resources, processes, and the shared resources required by each process.<br>
 <br>
 
@@ -146,8 +146,8 @@ It's called <span style="{{ site.code }}">starvation</span> .<br>
 #### summary
 The state in which there are shared resources and various processes want to use each other is called <span style="{{ site.code }}">race condition</span> .<br>
 In order to solve the <span style="{{ site.code }}">race condition</span> , the <span style="{{ site.code }}">critical section</span> should be made into an <span style="{{ site.code }}">atomic operation</span> .<br>
-It is said to support <span style="{{ site.code }}">mutual exclusive</span> .<br>
-When <span style="{{ site.code }}">mutual exclusivity</span> is guaranteed, a <span style="{{ site.code }}">deadlock</span> occurs that is waiting for the other party's work to be completed.<br>
+It is said to support <span style="{{ site.code }}">mutual exclusion</span> .<br>
+When <span style="{{ site.code }}">mutual exclusion</span> is guaranteed, a <span style="{{ site.code }}">deadlock</span> occurs that is waiting for the other party's work to be completed.<br>
 If you give priority to resolve deadlocks, A process that continues to fall behind priorities and is unable to allocate resources is called <span style="{{ site.code }}">starvation</span> .<br>
 
 ### Principles of Concurrency
@@ -215,13 +215,13 @@ So it should never be solved by timing.<br>
 - A process remains inside its critical section for a finite time only.
 ```
 
-## Mutual Exclusive Implementing
+## Mutual Exclusion Implementing
 
 ### Hardware Support
 
 Atomic operations shall be implemented in critical sections.<br>
 
-#### Interrupt disable/enable (Uni process)
+#### blocking interrupt
 ```
 Turn off interrupt before entering critical section and turn on interrupt when critical section is finished.
 ```
@@ -267,7 +267,7 @@ It looks like it's been implemented,<br>
 If there is an interruption at line 4, and context switching occurs,<br>
 Both programs will enter the critical section.<br>
 
-You can also interrupt disable/enable line 4 up and down,<br>
+You can also blocking interrupt line 4 up and down,<br>
 but it has become a little more efficient from the initial description,<br>
 and the problem remains the same.<br>
 
@@ -332,7 +332,7 @@ disadvantages
 - Deadlock
 ```
 
-### Ways of Mutual Exclusive
+### Ways of Mutual Exclusion
 
 | Name | Info |
 |:---|:---|
@@ -414,3 +414,48 @@ The first (or higher priority) process that is blocked is caught in the ready qu
 ```
 
 ### examples of Semaphore Machanism
+
+It is an image representing a semaphore operation.<br>
+It can be seen that the state of the process changes<br>
+while ensuring mutual exclusion as shared resources are used and access to critical sections.<br>
+
+<p align="center">
+  <img src="/documents/images/os/concurrency/semaphoreq1.png" alt="semaphoreq1" width="640" height="480"><br>
+  <span style="{{ site.img }}">picture [5-1] Semaphore Queue 1</span>
+</p>
+<p align="center">
+  <img src="/documents/images/os/concurrency/semaphoreq2.png" alt="semaphoreq2" width="640" height="480"><br>
+  <span style="{{ site.img }}">picture [5-2] Semaphore Queue 2</span>
+</p>
+<br>
+
+The semaphore variable value is equal to the number of processes waiting in the blocked queue.<br>
+It may not be a unicore system, or it may vary depending on the situation.<br>
+
+### semaphore vs blocking interrupt
+
+I assume that there is a process that performs +1 and -1 on the shared resource,<br>
+and the result is a program that wants the same value as the first one.<br>
+Let's compare inter-exclusion with blocking interrupt and semaphore.<br>
+
+<p align="center">
+  <img src="/documents/images/os/concurrency/sharedi1.png" alt="sharedi1" width="640" height="480"><br>
+  <span style="{{ site.img }}">picture [6-1] No ensure mutual exclsion</span>
+</p>
+<br>
+<p align="center">
+  <img src="/documents/images/os/concurrency/sharedi2.png" alt="sharedi2" width="640" height="480"><br>
+  <span style="{{ site.img }}">picture [6-2] Blocking Interrupt</span>
+</p>
+<br>
+<p align="center">
+  <img src="/documents/images/os/concurrency/sharedi3.png" alt="sharedi3" width="640" height="480"><br>
+  <span style="{{ site.img }}">picture [6-3] Using Semaphore </span>
+</p>
+<br>
+
+Blocking interrupts requires waiting for processes that are not related to shared resources when a process approaches a critical section.<br>
+It's inefficient. Above all, it cannot be used in multi-core systems.<br>
+
+Semapore does not block interruptions,<br>
+so it is free to switch processes and can be applied to multi-core systems.<br>

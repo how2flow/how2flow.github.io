@@ -1,5 +1,5 @@
 ---
-permalink: /posts/minicom
+permalink: /posts/minicom/
 title: minicom 사용하기
 categories:
   - linux

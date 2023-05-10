@@ -15,20 +15,19 @@ pre code {
   border: none;
 }
 
-.highlighter-rouge {
+div.highlighter-rouge,
+figure.highlight {
+  position: relative;
+  margin-bottom: 2em;
+}
+
+.highlighter-rouge,
+.highlight,
+.highlight-code {
   color: #d14;
+  background-color: #f7f7f7;
+}
 
-  .highlight {
-    color: #d14;
-    background-color: #f7f7f7;
-  }
-
-  .highlight-code {
-    color: #d14;
-    background-color: #f7f7f7;
-  }
-
-  .highlight-source-shell {
-    color: #75715e;
-  }
+.highlight-source-shell {
+  color: #75715e;
 }

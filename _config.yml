@@ -288,7 +288,7 @@ defaults:
         nav: "side_main"
       toc_label: Index
       toc_sticky: true
-      excerpt: "how2flow's site."
+      excerpt: "how2flow's site. how to use *? how to fix *? on Linux System."
   # _posts
   - scope:
       path: ""

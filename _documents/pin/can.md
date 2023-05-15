@@ -1,7 +1,7 @@
 ---
 permalink: /documents/pin/can/
 title: CAN-bus
-excerpt: "how to flow CAN. can, can protocols, can bus, can network"
+excerpt: "How to flow CAN. can, can protocols, can bus, can network"
 toc: true
 ---
 

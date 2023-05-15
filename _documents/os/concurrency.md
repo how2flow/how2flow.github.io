@@ -1,6 +1,7 @@
 ---
 permalink: /documents/os/concurrency/
 title: Concurrency
+excerpt: "How to ensure Operating System Concurrency?"
 toc: true
 ---
 

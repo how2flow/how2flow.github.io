@@ -1,11 +1,11 @@
 ---
 permalink: /posts/minicom/
-title: minicom 사용하기
+title: "minicom 사용하기"
 categories:
-  - linux
-  - debian
-  - apt
+  - Apt
+  - Ubuntu
 tags:
+  - apt
   - minicom
   - serial
   - uart

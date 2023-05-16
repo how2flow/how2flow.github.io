@@ -7,9 +7,9 @@ toc: true
 ---
 
 ## Index
-<a href="{{ site.baseurl }}/documents/os/overview/">Chap.1 Overview</a><br>
-<a href="{{ site.baseurl }}/documents/os/process/">Chap.2 Process</a><br>
-<a href="{{ site.baseurl }}/documents/os/thread/">Chap.3 Thread</a><br>
-<a href="{{ site.baseurl }}/documents/os/concurrency/">Chap.4 Concurrency</a><br>
-<a href="{{ site.baseurl }}/documents/os/deadlock_and_starvation/">Chap.5 Deadlock & Starvation</a><br>
-<a href="{{ site.baseurl }}/documents/os/memory/">Chap.6 Memory</a><br>
+Chap1. <a href="{{ site.baseurl }}/documents/os/overview/">Overview</a><br>
+Chap2. <a href="{{ site.baseurl }}/documents/os/process/">Process</a><br>
+Chap3. <a href="{{ site.baseurl }}/documents/os/thread/">Thread</a><br>
+Chap4. <a href="{{ site.baseurl }}/documents/os/concurrency/">Concurrency</a><br>
+Chap5. <a href="{{ site.baseurl }}/documents/os/deadlock_and_starvation/">Deadlock & Starvation</a><br>
+Chap6. <a href="{{ site.baseurl }}/documents/os/memory/">Memory</a><br>

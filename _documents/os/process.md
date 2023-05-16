@@ -5,7 +5,7 @@ excerpt: "What is the process? What's its role in os?"
 toc: true
 ---
 
-## Chap 2. Process
+## Process
 
 ### process
 

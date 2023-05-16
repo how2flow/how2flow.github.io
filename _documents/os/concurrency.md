@@ -5,7 +5,7 @@ excerpt: "How to ensure Operating System Concurrency?"
 toc: true
 ---
 
-## Chap 4. Concurrency
+## Concurrency
 
 Dispatchers ensure process isolation.<br>
 Allocate time to run the thread.<br>

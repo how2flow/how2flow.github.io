@@ -5,7 +5,7 @@ excerpt: "Operating System Overview"
 toc: true
 ---
 
-## Chap1. Overview
+## Overview
 
 This post is an overview. Just think about it like "Most of them have this and that" and move on.<br>
 The concepts shown here will be covered in detail in a later posting.<br>

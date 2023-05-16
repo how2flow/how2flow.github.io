@@ -5,7 +5,7 @@ excerpt: "What is the thread? What's its role in os?"
 toc: true
 ---
 
-## Chap 3. Thread
+## Thread
 
 thread is Like a process, it means one execution unit.<br>
 A unit smaller than a process.<br>

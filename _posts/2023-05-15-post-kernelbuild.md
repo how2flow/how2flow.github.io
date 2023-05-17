@@ -1,6 +1,6 @@
 ---
 permalink: /posts/kernel-build/
-title: "커널 빌드 & 설치하기 (라즈베리파이 4)"
+title: "리눅스 커널 빌드 & 설치하기 (with 라즈베리파이 4)"
 categories:
   - Kernel
   - Linux

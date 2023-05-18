@@ -2,7 +2,6 @@
 permalink: /posts/minicom/
 title: "[Linux] Ubuntu minicom 사용하기"
 categories:
-  - Apt
   - Ubuntu
 tags:
   - apt

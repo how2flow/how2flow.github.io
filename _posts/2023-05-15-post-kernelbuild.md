@@ -2,14 +2,12 @@
 permalink: /posts/kernel-build/
 title: "[Linux] 리눅스 커널 빌드 & 설치하기 (with 라즈베리파이 4)"
 categories:
-  - Kernel
   - Linux
-  - Raspberry Pi
 tags:
   - build
   - make
   - raspberry
-  - raspberry pi 4
+  - "raspberry pi 4"
 toc: true
 ---
 

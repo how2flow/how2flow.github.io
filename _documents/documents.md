@@ -1,20 +1,65 @@
 ---
 permalink: /documents/
 title: "Documents"
-excerpt: "Documents tables"
+excerpt: "Documents Of everything I learned"
 comments: false
+toc: true
 ---
 
 These are the contents that I studied and organized.<br>
 
-## List
+## Table
 
 | **Index** | Contents | **Index** | Contents | **Index** | Contents | **Index** | Contents |
 | :---: | :--- | :---: | :--- | :---: | :--- | :---: | :--- |
-| **A** | <a href="{{ site.baseurl }}/documents/algorithm/">Algorithm</a><br><a href="{{ site.baseurl }}/documents/apache2/">Apache2</a> | **H** | <a href="{{ site.baseurl }}/documents/hardkernel/">Hardkernel</a> | **O** | <a href="{{ site.baseurl }}/documents/os/">OS</a><br><a href="{{ site.baseurl }}/documents/odroid/">ODROID</a>| **V** | |
-| **B** | | **I** | | **P** | <a href="{{ site.baseurl }}/documents/pin/">Pin</a> | **W** | <a href="{{ site.baseurl }}/documents/wiringpi/">wiringPi</a> |
-| **C** | | **J** | <a href="{{ site.baseurl }}/documents/jenkins/">Jenkins</a> | **Q** | | **X** | |
-| **D** | <a href="{{ site.baseurl }}/documents/deb/">Deb</a><br><a href="{{ site.baseurl }}/documents/docker/">Docker</a> | **K** | | **R** | <a href="{{ site.baseurl }}/documents/rknpu/">RKNPU</a> | **Y** | |
-| **E** | | **L** | <a href="{{ site.baseurl }}/documents/linux/">Linux</a> | **S** | <a href="{{ site.baseurl }}/documents/shell/">Shell</a> | **Z** | |
+| **A** | [Algorithm](/documents/algorithm/)<br>[Apache2](/documents/apache2/) | **H** | | **O** | [OS](/documents/os/)<br>[ODROID](/documents/odroid/) | **V** | |
+| **B** | [Bash](/documents/bash/) | **I** | | **P** | [Pin](/documents/pin/) | **W** | [wiringPi](/documents/wiringpi/) |
+| **C** | | **J** | | **Q** | | **X** | |
+| **D** | [Deb](/documents/deb/)<br>[Docker](/documents/docker/) | **K** | | **R** | | **Y** | |
+| **E** | | **L** | [Linux](/documents/linux/) | **S** | | **Z** | |
 | **F** | | **M** | | **T** | | **-** | |
-| **G** | <a href="{{ site.baseurl }}/documents/git/">Git</a><br> | **N** | <a href="{{ site.baseurl }}/documents/network/">Network</a> | **U** | <a href="{{ site.baseurl }}/documents/uboot/">Uboot</a><br><a href="{{ site.baseurl }}/documents/ubuntu/">Ubuntu</a> | **-** | |
+| **G** | [Git](/documents/git/) | **N** | [Network](/documents/network/) | **U** | [Uboot](/documents/uboot/)<br>[Ubuntu](/documents/ubuntu/) | **-** | |
+
+### A
+
+- [Algorithm](/documents/algorithm/)
+- [Apache2](/documents/apache2/)
+
+### B
+
+- [Bash](/documents/bash/)
+
+### D
+
+- [Deb](/documents/deb/)
+- [Docker](/documents/docker/)
+
+### G
+
+- [Git](/documents/git/)
+
+### L
+
+- [Linux](/documents/linux/)
+
+### N
+
+- [Network](/documents/network/)
+
+### O
+
+- [OS](/documents/os/)
+- [ODROID](/documents/odroid/)
+
+### P
+
+- [Pin](/documents/pin/)
+
+### U
+
+- [Uboot](/documents/uboot/)
+- [Ubuntu](/documents/ubuntu/)
+
+### W
+
+- [wiringPi](/documents/wiringpi/)

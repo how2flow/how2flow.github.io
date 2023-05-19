@@ -20,4 +20,4 @@ toc: true
 
 ### Redhat
 
-comming soon..<br>
+[rpm](/documents/linux/rpm/)

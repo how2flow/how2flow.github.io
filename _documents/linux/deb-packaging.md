@@ -355,6 +355,3 @@ You have to be a debian contributor first and the process is cumbersome.<br>
 So, many people are use PPA.<br>
 PPA is **P**ersonal **P**ackage **A**rchive.<br>
 [Launchpad](https://launchpad.net) is a representative platform for supporting PPA.<br>
-
-We will cover it at the [Launchpad doc](/documents/linux/launchpad/).<br>
-

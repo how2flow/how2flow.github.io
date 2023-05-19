@@ -15,51 +15,49 @@ These are the contents that I studied and organized.<br>
 | **A** | [Algorithm](/documents/algorithm/)<br>[Apache2](/documents/apache2/) | **H** | | **O** | [OS](/documents/os/)<br>[ODROID](/documents/odroid/) | **V** | |
 | **B** | [Bash](/documents/bash/) | **I** | | **P** | [Pin](/documents/pin/) | **W** | [wiringPi](/documents/wiringpi/) |
 | **C** | | **J** | | **Q** | | **X** | |
-| **D** | [Deb](/documents/deb/)<br>[Docker](/documents/docker/) | **K** | | **R** | | **Y** | |
+| **D** | [Docker](/documents/docker/) | **K** | | **R** | | **Y** | |
 | **E** | | **L** | [Linux](/documents/linux/) | **S** | | **Z** | |
 | **F** | | **M** | | **T** | | **-** | |
-| **G** | [Git](/documents/git/) | **N** | [Network](/documents/network/) | **U** | [Uboot](/documents/uboot/)<br>[Ubuntu](/documents/ubuntu/) | **-** | |
+| **G** | [Git](/documents/git/) | **N** | [Network](/documents/network/) | **U** | [Uboot](/documents/uboot/) | **-** | |
 
 ### A
 
-- [Algorithm](/documents/algorithm/)
-- [Apache2](/documents/apache2/)
+[Algorithm](/documents/algorithm/)
+[Apache2](/documents/apache2/)
 
 ### B
 
-- [Bash](/documents/bash/)
+[Bash](/documents/bash/)
 
 ### D
 
-- [Deb](/documents/deb/)
-- [Docker](/documents/docker/)
+[Docker](/documents/docker/)
 
 ### G
 
-- [Git](/documents/git/)
+[Git](/documents/git/)
 
 ### L
 
-- [Linux](/documents/linux/)
+[Linux](/documents/linux/)
 
 ### N
 
-- [Network](/documents/network/)
+[Network](/documents/network/)
 
 ### O
 
-- [OS](/documents/os/)
-- [ODROID](/documents/odroid/)
+[OS](/documents/os/)
+[ODROID](/documents/odroid/)
 
 ### P
 
-- [Pin](/documents/pin/)
+[Pin](/documents/pin/)
 
 ### U
 
-- [Uboot](/documents/uboot/)
-- [Ubuntu](/documents/ubuntu/)
+[Uboot](/documents/uboot/)
 
 ### W
 
-- [wiringPi](/documents/wiringpi/)
+[wiringPi](/documents/wiringpi/)

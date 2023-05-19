@@ -7,7 +7,7 @@
 
 # var
 img: "color:black; font-size:90%"
-code: "color:red; background-color:#f5f5f5; font-size:105%"
+code: "color:red; background-color:#f5f5f5"
 
 # Site theme
 remote_theme             : "mmistakes/minimal-mistakes@4.24.0"

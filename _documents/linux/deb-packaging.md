@@ -51,13 +51,14 @@ Let's create a Debian package with a simple example.<br>
 I'm going to make a package that prints a hello message when put in the <span style="{{ site.code }}">welcome</span> command.<br>
 I will implement hello message in C language with <span style="{{ site.code }}">automake</span> .<br>
 
-You can name the package what you want. I chose <span style="{{ site.code }}">deb-welcome</span> .<br>
+You can name the package what you want. I chose <span style="{{ site.code }}">deb-welcome</span> .<br><br>
 
 Make debian package directory
 ```
 $ mkdir -p deb-welcome/debian
 $ cd deb-welcome
 ```
+<br><br>
 
 Make package requirements files
 ```
@@ -68,7 +69,7 @@ $ touch debian/changelog && \
   touch debian/deb-welcome.install && \
   touch debian/rules
 ```
-<br>
+<br><br>
 
 Edit debian/control
 ```

@@ -296,7 +296,6 @@ Package test
 $ welcome
 hello???
 ```
-<br><br>
 
 #### Output deb file
 

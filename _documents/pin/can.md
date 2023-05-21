@@ -160,7 +160,7 @@ A CAN node enters the Bus Off state if the TEC exceeds 255
 An example of can oscilloscope Waveform (between CAN-rx and GND).
 
 <p align="center">
-  <img src="/documents/images/pin/can/can-example.jpg" alt="can-example" width="640" height="480"><br>
+  <img src="/documents/images/pin/can/can-example.png" alt="can-example" width="640" height="480"><br>
   <span style="{{ site.img }}">picture [5] CAN example</span>
 </p>
 <br>

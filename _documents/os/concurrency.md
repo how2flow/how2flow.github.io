@@ -460,3 +460,20 @@ It's inefficient. Above all, it cannot be used in multi-core systems.<br>
 
 Semapore does not block interruptions,<br>
 so it is free to switch processes and can be applied to multi-core systems.<br>
+
+## Semaphore Problems
+
+Here's an example of how Semaphore is actually applied.<br>
+
+### Producer/Consumer
+
+General Statement
+```
+one or more producers are generating data and placing these in a buffer
+a single comsumer is taking items out of the buffer one at a time
+only one producer or consumer may access the buffer at any one time
+```
+
+The problem:<br>
+ensure that the producer can't add adata into full buffer.<br>
+and consumer can't remove data from an empty buffer.<br>

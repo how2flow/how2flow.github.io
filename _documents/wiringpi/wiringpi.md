@@ -8,7 +8,7 @@ toc: true
 
 ## Index
 
-Chap1. <a href="{{ site.baseurl }}/documents/wiringpi/logical-operation/">Logical Operation</a><br>
-Chap2. <a href="{{ site.baseurl }}/documents/wiringpi/bit-operation-programming/">Bit Operation Programming</a><br>
-Chap3. <a href="{{ site.baseurl }}/documents/wiringpi/api/">wiringPi API</a><br>
-Chap4. <a href="{{ site.baseurl }}/documents/wiringpi/code/">wiringPi code</a><br>
+Chap1. [Logical Operation](/documents/wiringpi/logical-operation/)<br>
+Chap2. [Bit Operation Programming](/documents/wiringpi/bit-operation-programming/)<br>
+Chap3. [wiringPi API](/documents/wiringpi/api/)<br>
+Chap4. [wiringPi code](/documents/wiringpi/code/)<br>

@@ -123,26 +123,3 @@ and if any is different, represents 0.
 | 1 | 0 | 0 |
 | 1 | 1 | 1 |
 
-### Shift operation
-
-Shift operations change binary values by moving them.<br>
-There are <span style="{{ site.code }}"><<</span> and <span style="{{ site.code }}">>></span> .<br>
-
-The direction of movement is the same as the shape<br>
-
-<span style="{{ site.code }}"><<</span> moves binaries by filling the right-end with 0.<br>
-If the memory size is exceeded, the highest digit is discarded first.<br>
-For each space move, the value is <span style="{{ site.code }}">value x 2</span> .
-```
-input: 0b00001010 << 2
-result: 0b00101000
-```
-
-<span style="{{ site.code }}">>></span> moves binaries by filling the left-end with 0.<br>
-If the memory size is exceeded, the highest digit is discarded first.<br>
-For each space move, the value is <span style="{{ site.code }}">value / 2</span> .
-```
-input: 0b00001010 >> 2
-result: 0b00000010
-```
-

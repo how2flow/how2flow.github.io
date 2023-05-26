@@ -1,7 +1,7 @@
 ---
 permalink: /documents/wiringpi/preview/
 title: How to use wiringPi?
-excerpt: "wiringPi API, wiringPi usage with ODROIDs"
+excerpt: "wiringPi API, wiringPi usage"
 comments: false
 toc: true
 ---
@@ -104,6 +104,9 @@ I only cover some of the most commonly used functions.<br>
 | SPI | wiringPiSPISetMode |
 | SPI | wiringPiSPISetup |
 | ... | ... |
+
+Bold text will be covered in detail in the [wiringPi code part](/documents/wiringpi/code/).
+
 
 ### test code
 

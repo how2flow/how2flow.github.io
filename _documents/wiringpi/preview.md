@@ -1,6 +1,6 @@
 ---
 permalink: /documents/wiringpi/preview/
-title: How to use wiringPi?
+title: "How to use wiringPi?"
 excerpt: "wiringPi API, wiringPi usage"
 comments: false
 toc: true
@@ -12,8 +12,8 @@ This document introduces the basic usage and API of wiringpi with examples.<br>
 Wiringpi is a package made to control gpio 40pin in <span style="{{ site.code }}">Raspberry Pi</span>.<br>
 
 <p align="center">
-  <img src="/documents/images/wiringpi/raspberrypi.png" alt="raspberrypi" width="640" height="480"><br>
-  <span style="{{ site.img }}">raspberry Pi 4</span>
+  <img src="/documents/images/wiringpi/rpi-header.png" alt="raspberrypi" width="320" height="240"><br>
+  <span style="{{ site.img }}">[picture 1] gpio header</span>
 </p>
 <br>
 

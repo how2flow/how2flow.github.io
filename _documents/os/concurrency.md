@@ -461,19 +461,105 @@ It's inefficient. Above all, it cannot be used in multi-core systems.<br>
 Semapore does not block interruptions,<br>
 so it is free to switch processes and can be applied to multi-core systems.<br>
 
-## Semaphore Problems
+## ETC
 
-Here's an example of how Semaphore is actually applied.<br>
+A system example that guarantees automatic-exclusive and synchronization like semaphores.<br>
 
-### Producer/Consumer
+### Monitors
 
-General Statement
+Programming language constrcut that provides equivalent functionality<br>
+to that of semaphores and is easier to control.<br>
+
+#### Program languages
+
+Pascal, Pascal-Plus, Modula-2, Modula-3, and Java<br>
+
+#### Characteristics
+
+Local data vars are accessible only by the Monitor's procedures and not by any external procedure.<br>
+Process enters monitor by invoking one of its procedures(functions).<br>
+Only one process may be executing in the monitor at a time.<br>
+
+#### synchronization
+
+Achieved by the use of <span style="{{ site.code }}">Condition variables</span> that are combined within the monitor and accessible only within the monitor.<br>
+<span style="{{ site.code}}">Condition variables</span> are operated on by two functions:
 ```
-one or more producers are generating data and placing these in a buffer
-a single comsumer is taking items out of the buffer one at a time
-only one producer or consumer may access the buffer at any one time
+cwait(c): suspend execution of the calling process on condition c.
+csignal(c): resume execution of some process blocked after a cwait on the same condition.
 ```
 
-The problem:<br>
-ensure that the producer can't add adata into full buffer.<br>
-and consumer can't remove data from an empty buffer.<br>
+### Message Passing
+
+Direct communication between processes with <span style="{{ site.code }}">IPC</span> .<br>
+
+<p align="center">
+  <img src="/documents/images/os/concurrency/ipc.png" alt="ipc" width="640" height="480"><br>
+  <span style="{{ site.img }}">picture [7] Message Passing </span>
+</p>
+<br>
+
+works with <span style="{{ site.code }}">Distributed systems</span> and <span style="{{ site.code }}">shared memory multiprocessor</span> and <span style="{{ site.code }}">Uniprocessor systems</span> .<br>
+
+#### format
+
+The actual function is normally provided in the form of a pair of primitives:
+```
+send(destination, message)
+receive(source, message)
+```
+
+<p align="center">
+  <img src="/documents/images/os/concurrency/message-format.png" alt="message-format" width="640" height="480"><br>
+  <span style="{{ site.img }}">picture [8] Message Format</span>
+</p>
+<br>
+
+Message Passing are exchanged in TLV format after the source and destination addresses are determined.<br>
+
+<p align="center">
+  <img src="/documents/images/os/concurrency/TLV.png" alt="message-format" width="640" height="480"><br>
+  <span style="{{ site.img }}">picture [9] TLV</span>
+</p>
+<br>
+
+There are fixed and variable message lengths.<br>
+It is usually used variable types because processes don't know the length of messages that are actually exchanged.<br>
+<span style="{{ site.code }}">CRC</span> is optional.<br>
+
+#### addressing
+
+There are two types of addressing: direct and indirect.<br>
+
+<p align="center">
+  <img src="/documents/images/os/concurrency/direct-addressing.png" alt="direct-addressing" width="320" height="240">
+  <img src="/documents/images/os/concurrency/indirect-addressing.png" alt="indirect-addressing" width="320" height="240"><br>
+  <span style="{{ site.img }}">picture [10] addressing</span>
+</p>
+<br>
+
+The direct format is a method of designating and using a send/receive process with a <span style="{{ site.code }}">PID</span>, etc.<br>
+The redirect format is used in <span style="{{ site.code }}">broadcasts</span> that are sprayed to an unspecified number of people, or in systems that send messages and do not require feedback, etc.<br>
+
+#### mailbox-code
+
+This is an example of mutualexclusion with mailbox.
+```
+ 1 const int n = /* number of processes */
+ 2 void P(int i) {
+ 3 	message msg;
+ 4 	while (true) {
+ 5 		receive (box, msg);
+ 6 		/* critical section */
+ 7 		send (box, msg);
+ 8 		/* remainder */
+ 9 	}
+10 void main() {
+11 	create_mailbox (box);
+12 	send(box, null);
+13 	parbegin (P(1), P(2), P(3), ..., P(n));
+14 }
+}
+```
+
+

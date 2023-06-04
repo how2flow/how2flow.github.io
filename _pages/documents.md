@@ -3,6 +3,7 @@ permalink: /documents/
 title: "Documents"
 excerpt: "Documents Of everything I learned"
 comments: false
+layout: single
 toc: true
 ---
 
@@ -19,45 +20,3 @@ These are the contents that I studied and organized.<br>
 | **E** | | **L** | [Linux](/documents/linux/) | **S** | | **Z** | |
 | **F** | | **M** | | **T** | | **-** | |
 | **G** | [Git](/documents/git/) | **N** | [Network](/documents/network/) | **U** | [Uboot](/documents/uboot/) | **-** | |
-
-### A
-
-[Algorithm](/documents/algorithm/)
-[Apache2](/documents/apache2/)
-
-### B
-
-[Bash](/documents/bash/)
-
-### D
-
-[Docker](/documents/docker/)
-
-### G
-
-[Git](/documents/git/)
-
-### L
-
-[Linux](/documents/linux/)
-
-### N
-
-[Network](/documents/network/)
-
-### O
-
-[OS](/documents/os/)
-[ODROID](/documents/odroid/)
-
-### P
-
-[Pin](/documents/pin/)
-
-### U
-
-[Uboot](/documents/uboot/)
-
-### W
-
-[wiringPi](/documents/wiringpi/)

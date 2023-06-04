@@ -1,6 +1,9 @@
 ---
-permalink: /posts/kernel-build/
-title: "[Linux] 리눅스 커널 빌드 & 설치하기 (with 라즈베리파이 4)"
+permalink: /study/kernel-build/
+title: "[Linux] 커널 빌드 & 설치 (with 라즈베리파이 4)"
+excerpt: "리눅스 커널 빌드 (with rpi4)"
+header:
+  teaser: /study/images/raspberrypi.png
 categories:
   - Linux
 tags:
@@ -13,7 +16,7 @@ toc: true
 
 간단한 것부터 하나씩 포스팅 해보려고 노력중입니다..<br>
 github page는 관리가 좀 귀찮은 단점이 있네요.<br>
-[Documents](documents/linux/kernel-build/)에도 업로드 예정입니다.<br>
+[Documents](/documents/linux/kernel-build/)에도 업로드 예정입니다.<br>
 
 ## 리눅스 커널 빌드 및 설치
 
@@ -30,7 +33,7 @@ github page는 관리가 좀 귀찮은 단점이 있네요.<br>
 예시는 <span style="{{ site.code}}">raspberry Pi 4</span> , <span style="{{ site.code }}">5.4.y</span> 커널입니다.<br>
 
 <p align="center">
-  <img src="/assets/images/posts/raspberrypi.png" alt="raspberrypi" width="640" height="480"><br>
+  <img src="/study/images/raspberrypi.png" alt="raspberrypi" width="640" height="480"><br>
   <span style="{{ site.img }}">raspberry Pi 4</span>
 </p>
 <br>

@@ -273,6 +273,9 @@ collections:
   portfolio:
     output: true
     permalink: /:collection/:path/
+  study:
+    output: true
+    permalink: /:collection/:path/
 
 
 # Defaults
@@ -339,3 +342,13 @@ defaults:
       layout: docs
       read_time: false
       share: true
+  # _study
+  - scope:
+      path: ""
+      type: study
+    values:
+      layout: single
+      read_time: true
+      share: true
+      related: true
+      show_date: true

@@ -289,7 +289,7 @@ defaults:
       comments: true
       sidebar:
         nav: "side_main"
-      toc_label: Index
+      toc_label: contents
       toc_sticky: true
       excerpt: "how2flow's site. how to use *? how to fix *? on Linux System."
   # _posts

@@ -191,6 +191,7 @@ An example of can oscilloscope Waveform (between CAN-rx and GND).
 
 This message is <span style="{{ site.code }}">ID: 500</span>, <span style="{{ site.code }}">DATA: 11 22 33</span>
 
-## From
+## Reference
 
-picture[1]:[TEXAS INSTRUMENTS Introduction to theController Area Network (CAN)](https://www.ti.com/lit/an/sloa101b/sloa101b.pdf?ts=1684085274811&ref_url=https%253A%252F%252Fwww.google.com%252F)
+[TEXAS INSTRUMENTS Introduction to theController Area Network (CAN)](https://www.ti.com/lit/an/sloa101b/sloa101b.pdf?ts=1684085274811&ref_url=https%253A%252F%252Fwww.google.com%252F)<br>
+[CSS ELECTRONICS](https://www.csselectronics.com/pages/can-bus-errors-intro-tutorial)

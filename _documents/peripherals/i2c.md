@@ -13,8 +13,8 @@ It is used to connect low-speed peripherals to motherboards, embedded systems, e
 ## Protocols
 
 The i2c bus consists of two signal lines: <span style="{{ site.code }}">SDA</span> and <span style="{{ site.code }}">SCL</span> .<br>
-SDA: Serial Data<br>
-SCL: Serial Clock<br>
+<span style="{{ site.code }}">SDA</span> : Serial Data<br>
+<span style="{{ site.code }}">SCL</span> : Serial Clock<br>
 
 I2C communication is a synchronous serial communication.<br>
 It is a <span style="{{ site.code }}">half-duplex</span> system.<br>

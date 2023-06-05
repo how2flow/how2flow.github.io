@@ -72,14 +72,33 @@ SCL
 #### Addressing
 
 Connect multiple devices with two lines,<br>
-System must be able to distinguish between devices.<br> 
+System must be able to distinguish between devices.<br>
+
+In Linux system, there is packages for i2c.<br>
+A typical example is <span style="{{ site.code }}">i2c-tools</span> .<br>
+
+Usage:
+```
+$ sudo apt install i2c-tools
+$ sudo i2cdetect -y 0
+     0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f
+00:          -- -- -- -- -- -- -- -- -- -- -- -- -- 
+10: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+20: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+30: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+40: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+50: -- UU -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+60: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+70: -- -- -- -- -- -- -- --                        
+```
+It shows i2c device addresses connected to the system.<br>
+There is <span style="{{ site.code }}">UU</span> , It is 0x51, It means that the Linux driver is using the address.<br>
 
 Most devices are assigned a unique address of i2c for the device from the manufacturer.<br>
 Of course, there is also an IC chip that supports the ability to change the address.<br>
 
 A device with the same address cannot be connected to one bus.<br>
-This is <span style="{{ site.code }}">address conflict</span><br>
-To avoid <span style="{{ site.code }}">address conflict</span> ,<br>
+This is <span style="{{ site.code }}">address conflict</span> . To avoid <span style="{{ site.code }}">address conflict</span> ,<br>
 Devices that can change addresses can change addresses or Use i2c multiplexer<br>
 
 #### Read/Write

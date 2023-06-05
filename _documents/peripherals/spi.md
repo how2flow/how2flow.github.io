@@ -61,12 +61,12 @@ The <span style="{{ site.code }}">SS</span> pin of the master increases.<br>
 This is Daisy Chained SPI circuit with multiple slaves<br>
 The 'Daisy-Chained' circuit that improves this shortcoming.<br>
 <p align="center">
-  <img src="/documents/images/peripherals/spi/spi-multiple-slaves.png" alt="spi-multiple-slaves" width="640" height="480"><br>
+  <img src="/documents/images/peripherals/spi/spi-daisy-chained.png" alt="spi-daisy-chained" width="640" height="480"><br>
   <span style="{{ site.img }}">picture [4] Daisy Chained SPI circuit: multiple slaves</span>
 </p>
 <br>
 
-The "Daisy Chain" circuit means that even if the slave device is increased,<br>
+The "Daisy Chained" circuit means that even if the slave device is increased,<br>
 Only one <span style="{{ site.code }}">SSu</span> pin of the master can be used.<br>
 
 ## Feature of spi

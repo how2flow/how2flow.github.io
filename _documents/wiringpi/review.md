@@ -1,5 +1,5 @@
 ---
-permalink: /documents/wiringpi/code/
+permalink: /documents/wiringpi/review/
 title: "The code review of wiringPi"
 excerpt: "wiringPi Programming with bitwise operations"
 comments: false
@@ -13,19 +13,16 @@ This document starts code analysis based on <span style="{{ site.code }}">Raspbe
 
 Once the code analysis is complete, proceed to the application case.<br>
 The target is the <span style="{{ site.code }}">odroid-wiringpi</span> that I ported directly to the odroid.<br>
-<span style="{{ site.code }}">odroid-wiringpi</span> can be uploaded to posting, not a document.<br>
-
-## Code Review
 
 It is assumed that the person looking at this document can understand the datasheet<br>
 and has a good understanding of C/C++ and bit operations.<br>
 
-### Requirements
+## Requirements
 
 Prepare what you need when analyzing the code.<br>
 It's a optional to be prepared, but I still recommend you to be prepared.<br>
 
-#### target
+### target
 
 <p align="center">
   <img src="/documents/images/wiringpi/raspberrypi.png" alt="raspberrypi" width="320" height="240">
@@ -34,28 +31,46 @@ It's a optional to be prepared, but I still recommend you to be prepared.<br>
 </p>
 <br>
 
-#### datasheet
+### datasheet
 
 GPIO control is a method of directly accessing memory addresses and entering values into registers.<br>
 After accessing memory addresses through memory mapping, control gpio with bit operations.<br>
 
 [bcm2711 datasheet](/documents/pdf/wiringpi/bcm2711.pdf)<br>
 
-#### source code
+### source code
 
 [Git source](https://github.com/WiringPi/WiringPi.git)
 ```
 $ git clone https://github.com/WiringPi/WiringPi.git
 ```
 
-### Review
+## Code Review
 
-#### memory mapping
+As I mentioned above, it goes on the assumption that you can understand C/C++ and read data sheet to some extent.<br>
+WiringPi also supports extension pins with <span style="{{ site.code }}">wiringPiNodeStruct</span> ,<br>
+But this document covers only the on-board case.<br>
 
-Memory mapping must precede access to the GPIO register.<br>
+### wiringPiSetup
+
+<span style="{{ site.code }}">wiringPiSetup</span> uses <span style="{{ site.code }}">mmap</span> to map memory.<br>
+Memory mapping(using mmap) must precede access to the GPIO register.<br>
 Check the model first and attach the correct memory address for the model.<br><br>
 
-<span style="{{ site.code }}">wiringPi/wiringPi.c</span>
+Usage:
+```
+#include <wiringPi.h>
+
+int main()
+{
+  wiringPiSetup();
+
+  return 0;
+}
+```
+
+<span style="{{ site.code }}">piBoardId, wiringPiSetup</span><br>
+code: <span style="{{ site.code }}">wiringPi/wiringPi.c</span>
 ```
 void piBoardId (int *model, int *rev, int *mem, int *maker, int *warranty)
 {
@@ -263,11 +278,26 @@ These cases can be found in <span style="{{ site.code }}">odroid-wiringpi: ODROI
 
 Anyway, It used <span style="{{ site.code }}">mmap</span> to map the gpio variable to the <span style="{{ site.code }}">0xFE200000</span> .<br>
 
-#### read/write pin registers
+### pinMode
 
 After <span style="{{ site.code }}">wiringPiSetup</span>, define pin using <span style="{{ site.code }}">pinMode</span> .<br><br>
 
-pinMode
+Usage
+```
+#include <wiringPi.h>
+
+int main()
+{
+  wiringPiSetup();
+  pinMode(0, INPUT);
+  pinMode(1, OUTPUT);
+
+  return 0;
+}
+```
+
+<span style="{{ site.code }}">pinMode</span><br>
+code: <span style="{{ site.code }}">wiringPi/wiringPi.c</span>
 ```
 void pinMode (int pin, int mode)
 {
@@ -279,6 +309,9 @@ void pinMode (int pin, int mode)
 
   if ((pin & PI_GPIO_MASK) == 0)        // On-board pin
   {
+    /**/ if (wiringPiMode == WPI_MODE_PINS)
+    pin = pinToGpio [pin] ;
+
     ...
 
     fSel    = gpioToGPFSEL [pin] ;
@@ -294,12 +327,76 @@ void pinMode (int pin, int mode)
     return ;
 
 ```
+The input pin number is the wiringPi pin number and converts it into a hardware gpio number inside the function.<br>
+In other words, the wiringPi pin number and the hardware gpio pin number are connected.<br>
+See <span style="{{ site.code }}">pinToGpio</span> array.<br>
+
+<span style="{{ site.code }}">pinToGpio</span><br>
+code: <span style="{{ site.code }}">wiringPi/wiringPi.c</span>
+```
+// in wiringPiSetup()
+
+...
+
+ /**/ if (piGpioLayout () == 1)    // A, B, Rev 1, 1.1
+  {
+     pinToGpio =  pinToGpioR1 ;
+    physToGpio = physToGpioR1 ;
+  }
+  else                  // A2, B2, A+, B+, CM, Pi2, Pi3, Zero, Zero W, Zero 2 W
+  {
+     pinToGpio =  pinToGpioR2 ;
+    physToGpio = physToGpioR2 ;
+  }
+
+...
+```
+```
+static int pinToGpioR1 [64] =
+{
+  17, 18, 21, 22, 23, 24, 25, 4,    // From the Original Wiki - GPIO 0 through 7:   wpi  0 -  7
+   0,  1,               // I2C  - SDA1, SCL1                wpi  8 -  9
+   8,  7,               // SPI  - CE1, CE0              wpi 10 - 11
+  10,  9, 11,               // SPI  - MOSI, MISO, SCLK          wpi 12 - 14
+  14, 15,               // UART - Tx, Rx                wpi 15 - 16
+
+// Padding:
+
+      -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,   // ... 31
+  -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,   // ... 47
+  -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,   // ... 63
+} ;
+
+// Revision 2:
+
+static int pinToGpioR2 [64] =
+{
+  17, 18, 27, 22, 23, 24, 25, 4,    // From the Original Wiki - GPIO 0 through 7:   wpi  0 -  7
+   2,  3,               // I2C  - SDA0, SCL0                wpi  8 -  9
+   8,  7,               // SPI  - CE1, CE0              wpi 10 - 11
+  10,  9, 11,               // SPI  - MOSI, MISO, SCLK          wpi 12 - 14
+  14, 15,               // UART - Tx, Rx                wpi 15 - 16
+  28, 29, 30, 31,           // Rev 2: New GPIOs 8 though 11         wpi 17 - 20
+   5,  6, 13, 19, 26,           // B+                       wpi 21, 22, 23, 24, 25
+  12, 16, 20, 21,           // B+                       wpi 26, 27, 28, 29
+   0,  1,               // B+                       wpi 30, 31
+
+// Padding:
+
+  -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,   // ... 47
+  -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,   // ... 63
+} ;
+```
+Depending on the return of <span style="{{ site.code }}">piGpioLayout</span> ,<br>
+an array of <span style="{{ site.code }}">pinToGpioR1</span> or <span style="{{ site.code }}">pinToGpioR2</span> is involved.<br>
+The index value of array is the pin number of wiringpi.<br><br>
 
 The values are written in the mapped <span style="{{ site.code }}">gpio</span>,<br>
 <span style="{{ site.code }}">fsel</span>, which is the register offset,<br>
 and <span style="{{ site.code }}">shift</span>, which is the bit shift value.<br><br>
 
-fsel, shift
+<span style="{{ site.code }}">gpioToGPFSEL, gpioToShift</span><br>
+code: <span style="{{ site.code }}">wiringPi/wiringPi.c</span>
 ```
 static uint8_t gpioToGPFSEL [] =
 {
@@ -409,3 +506,228 @@ if pinMode:GPIO3, shift is 9.<br>
 <span style="{{ site.code }}">(7 << shich)</span> is <span style="{{ site.code }}">1110 0000 0000</span> .<br>
 This means that you will force the 9th to 11th bit digits to zero.<br>
 This part is covered in the [bit operation part](/documents/wiringpi/bit-operation-programming/), so let's move on.<br>
+
+### digitalRead
+
+Read the value of a given Pin, returning HIGH or LOW.<br>
+
+Usage: digitalRead(int pin)
+```
+#include <stdio.h>
+#include <wiringPi.h>
+
+int main()
+{
+  int val;
+
+  wiringPiSetup();
+  pinMode(0, INPUT);
+
+  while (1) {
+    val = digitalRead(0);
+    printf("pin 0 status: %d\n", val);
+    delay(500);
+  }
+
+  return 0;
+}
+```
+
+<span style="{{ site.code }}">digitalRead</span><br>
+code: <span style="{{ site.code }}">wiringPi/wiringPi.c</span>
+```
+int digitalRead (int pin)
+{
+  char c ;
+  struct wiringPiNodeStruct *node = wiringPiNodes ;
+  if ((pin & PI_GPIO_MASK) == 0)        // On-Board Pin
+  {
+    /**/ if (wiringPiMode == WPI_MODE_GPIO_SYS) // Sys mode
+    {
+      ...
+    }
+
+    else if (wiringPiMode == WPI_MODE_PINS)
+      pin = pinToGpio [pin] ;
+    else if (wiringPiMode == WPI_MODE_PHYS)
+      pin = physToGpio [pin] ;
+    else if (wiringPiMode != WPI_MODE_GPIO)
+      return LOW ;
+    if ((*(gpio + gpioToGPLEV [pin]) & (1 << (pin & 31))) != 0)
+      return HIGH ;
+    else
+      return LOW ;
+  }
+  else
+  {
+    if ((node = wiringPiFindNode (pin)) == NULL)
+      return LOW ;
+    return node->digitalRead (node, pin) ;
+  }
+}
+```
+<span style="{{ site.code }}">gpioToGPLEV</span><br>
+code: <span style="{{ site.code }}">wiringPi/wiringPi.c</span>
+```
+// gpioToGPLEV:
+//  (Word) offset to the GPIO Input level registers for each GPIO pin
+
+static uint8_t gpioToGPLEV [] =
+{
+  13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,
+  14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,
+} ;
+```
+
+| GPIO | gpioToGPLEV |
+| :---: | :---: |
+|  0 ~ 31 | 13 |
+| 32 ~ 63 | 14 |
+
+<span style="{{ site.code }}">gpioToGPLEV</span> is the offset.<br>
+Let's go over the datasheet again.<br>
+A register indicating the gpio level is here.<br>
+<p align="center">
+  <img src="/documents/images/wiringpi/gplev.png" alt="gplev" width="640" height="480"><br>
+  <span style="{{ site.img }}">[picture 6] GPLEV offset[n]</span>
+</p>
+<br>
+
+The addresses match considering the nature of the pointer operation.<br>
+<span style="{{ site.code }}">(0xD)*4 = 0x34</span>, <span style="{{ site.code }}">(0xE)*4 = 0x38</span><br><br>
+
+The description of GPLEV is here.<br>
+<p align="center">
+  <img src="/documents/images/wiringpi/gplev-description.png" alt="gplev-des" width="640" height="480"><br>
+  <span style="{{ site.img }}">[picture 7] GPLEV description</span>
+</p>
+<br>
+
+In <span style="{{ site.code }}">digitalRead</span> ,<br>
+```
+    if ((*(gpio + gpioToGPLEV [pin]) & (1 << (pin & 31))) != 0)$
+      return HIGH ;$
+    else$
+      return LOW ;$
+
+```
+You can see two things.<br>
+Determining HIGH/LOW by using the <span style="{{ site.code }}">&</span> operation<br>
+And the '&' operation limits the pin maximum to 31.<br>
+
+This is because the <span style="{{ site.code }}">&</span> operation forces the conversion of all digits with zero to zero based on the operand that follows.<br>
+
+### digitalWrite
+
+As the review progresses, there is less content to deal with.<br>
+Because the code proceeds in the same way.<br>
+
+Usage: digitalWrite(int pin, int value)
+```
+#include <stdio.h>
+#include <wiringPi.h>
+
+int main()
+{ // connect wpi 0 and wpi 1.
+  int val;
+
+  wiringPiSetup();
+  pinMode(0, INPUT);
+  pinMode(1, OUTPUT);
+
+  while (1) {
+    digitalWrite(1, HIGH);
+    val = digitalRead(0);
+    printf("pin 1 is HIGH, pin 0 status: %d\n", val);
+    delay(500);
+    digitalWrite(1, LOW);
+    val = digitalRead(0);
+    printf("pin 1 is LOW, pin 0 status: %d\n", val);
+    delay(500);
+  }
+
+  return 0;
+}
+```
+
+<span style="{{ site.code }}">digitalRead</span><br>
+code: <span style="{{ site.code }}">wiringPi/wiringPi.c</span>
+```
+void digitalWrite (int pin, int value)
+{
+  struct wiringPiNodeStruct *node = wiringPiNodes ;
+
+  if ((pin & PI_GPIO_MASK) == 0)        // On-Board Pin
+  {
+    /**/ if (wiringPiMode == WPI_MODE_GPIO_SYS) // Sys mode
+    {
+      ...
+    }
+    else if (wiringPiMode == WPI_MODE_PINS)
+      pin = pinToGpio [pin] ;
+    else if (wiringPiMode == WPI_MODE_PHYS)
+      pin = physToGpio [pin] ;
+    else if (wiringPiMode != WPI_MODE_GPIO)
+      return ;
+
+    if (value == LOW)
+      *(gpio + gpioToGPCLR [pin]) = 1 << (pin & 31) ;
+    else
+      *(gpio + gpioToGPSET [pin]) = 1 << (pin & 31) ;
+  }
+  else
+  {
+    if ((node = wiringPiFindNode (pin)) != NULL)
+      node->digitalWrite (node, pin, value) ;
+  }
+}
+```
+
+<span style="{{ site.code }}">gpioToGPSET, gpioToGPCLR</span><br>
+code: <span style="{{ site.code }}">wiringPi/wiringPi.c</span>
+```
+// gpioToGPSET:
+//  (Word) offset to the GPIO Set registers for each GPIO pin
+
+static uint8_t gpioToGPSET [] =
+{
+   7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7,
+   8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8,
+} ;
+
+// gpioToGPCLR:
+//  (Word) offset to the GPIO Clear registers for each GPIO pin
+
+static uint8_t gpioToGPCLR [] =
+{
+  10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,
+  11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,
+} ;
+```
+
+See the <span style="{{ site.code }}">picture 6</span> .<br>
+You can check the register offset of the gpio output set and clear.<br>
+
+And , there are descriptions of them.<br>
+
+GPSET's description<br>
+<p align="center">
+  <img src="/documents/images/wiringpi/gpset-description.png" alt="gpset-des" width="640" height="480"><br>
+  <span style="{{ site.img }}">[picture 8] GPSET description</span>
+</p>
+<br>
+
+GPCLR's description<br>
+<p align="center">
+  <img src="/documents/images/wiringpi/gpclr-description.png" alt="gpclr-des" width="640" height="480"><br>
+  <span style="{{ site.img }}">[picture 9] GPCLR description</span>
+</p>
+<br>
+
+The mechanism is the same.<br>
+
+## General Review
+
+I reviewed some basic functions.<br>
+The rest of the functions have the same mechanism.<br>
+

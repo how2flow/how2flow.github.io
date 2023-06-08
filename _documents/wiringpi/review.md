@@ -433,7 +433,7 @@ At page 66,<br>
 
 At page 67-70, (gpfsel0 register)<br>
 <p align="center">
-  <img src="/documents/images/wiringpi/gpfsel0.png" alt="gpfsel0" width="640" height="480"><br>
+  <img src="/documents/images/wiringpi/gpfsel-description.png" alt="gpfsel-des" width="640" height="480"><br>
   <span style="{{ site.img }}">[picture 5] GPFSEL[n]</span>
 </p>
 <br>
@@ -705,22 +705,32 @@ static uint8_t gpioToGPCLR [] =
 } ;
 ```
 
-See the <span style="{{ site.code }}">picture 6</span> .<br>
 You can check the register offset of the gpio output set and clear.<br>
+<p align="center">
+  <img src="/documents/images/wiringpi/gpset.png" alt="gpset" width="640" height="480"><br>
+  <span style="{{ site.img }}">[picture 7] GPSET offset[n]</span>
+</p>
+<br>
 
-And , there are descriptions of them.<br>
+<p align="center">
+  <img src="/documents/images/wiringpi/gpclr.png" alt="gpclr" width="640" height="480"><br>
+  <span style="{{ site.img }}">[picture 8] GPCLR offset[n]</span>
+</p>
+<br>
+
+At page 70, There are GPSET and GPCLR descriptions.<br>
 
 GPSET's description<br>
 <p align="center">
   <img src="/documents/images/wiringpi/gpset-description.png" alt="gpset-des" width="640" height="480"><br>
-  <span style="{{ site.img }}">[picture 8] GPSET description</span>
+  <span style="{{ site.img }}">[picture 9] GPSET description</span>
 </p>
 <br>
 
 GPCLR's description<br>
 <p align="center">
   <img src="/documents/images/wiringpi/gpclr-description.png" alt="gpclr-des" width="640" height="480"><br>
-  <span style="{{ site.img }}">[picture 9] GPCLR description</span>
+  <span style="{{ site.img }}">[picture 10] GPCLR description</span>
 </p>
 <br>
 

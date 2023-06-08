@@ -1,7 +1,7 @@
 ---
 permalink: /documents/wiringpi/review/
-title: "The code review of wiringPi"
-excerpt: "wiringPi Programming with bitwise operations"
+title: "The Review of wiringPi"
+excerpt: "wiringPi code review: wiringPi Programming with bitwise operations"
 comments: false
 toc: true
 ---

@@ -1,5 +1,5 @@
 ---
-permalink: /study/static-ip/
+permalink: /study/deb-deployment/
 title: "[Linux] Debian 패키지 배포하기"
 excerpt: "데비안 패키지 배포하는 방법입니다. (with launchpad)"
 header:

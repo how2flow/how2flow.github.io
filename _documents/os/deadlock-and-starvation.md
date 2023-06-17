@@ -107,6 +107,12 @@ Resolving at the Application Layer<br>
 Running a program and the OS does not allocate resources in anticipation of a deadlock. <br>
 Resolving at the OS Layer. (dynamic)<br>
 
+Define two states for determination in os.<br>
+<span style="{{ site.code }}">Safe-state</span> that is safe from deadlocks and <span style="{{ site.code }}">unsafe-state</span> that may cause deadlocks.<br>
+
+It does not allocate resources to processes by comparing resources that have not yet been allocated,<br>
+resources currently allocated to processes, and resources that are needed for each process, or Not initialize them in the case of new processes.<br>
+
 ### Approach:detection
 
 It is to detect deadlocks.<br>

@@ -1,8 +1,8 @@
 main:
   - title: "About"
     url: /about/
-  - title: "Study"
-    url: /study/
+  - title: "Posts"
+    url: /posts/
   - title: "Documents"
     url: /documents/
   - title: "Help"
@@ -14,10 +14,12 @@ side_main:
       - title: "Author"
         url: /about/
 
-  - title: "Study"
+  - title: "Posts"
     children:
-      - title: "study lists"
-        url: /study/
+      - title: "categories"
+        url: /categories/
+      - title: "tags"
+        url: /tags/
 
   - title: "Documents"
     children:

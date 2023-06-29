@@ -1,9 +1,9 @@
 ---
-permalink: /study/deb-packaging/
+permalink: /posts/deb-packaging/
 title: "[Linux] Debian 패키지 만들기"
 excerpt: "데비안 패키지 만들기, 데비안 패키징하는 방법입니다."
 header:
-  teaser: /study/images/deb-packaging.png
+  teaser: /assets/images/posts/deb-packaging.png
 categories:
   - Ubuntu
 tags:

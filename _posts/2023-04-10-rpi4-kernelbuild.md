@@ -33,7 +33,7 @@ github page는 관리가 좀 귀찮은 단점이 있네요.<br>
 예시는 <span style="{{ site.code}}">raspberry Pi 4</span> , <span style="{{ site.code }}">5.4.y</span> 커널입니다.<br>
 
 <p align="center">
-  <img src="//assets/posts/images/raspberrypi.png" alt="raspberrypi" width="640" height="480"><br>
+  <img src="/assets/posts/images/raspberrypi.png" alt="raspberrypi" width="640" height="480"><br>
   <span style="{{ site.img }}">raspberry Pi 4</span>
 </p>
 <br>

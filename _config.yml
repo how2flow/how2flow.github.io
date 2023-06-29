@@ -24,7 +24,7 @@ url                      : "https://how2flow.net" # "https://how2flow.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : "how2flow/how2flow.github.io"
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
-logo                     : "/assets/images/site/logo.png"
+logo                     : "/assets/images/logo.png"
 masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
 breadcrumbs              : true
 breadcrumbs              : "Home"
@@ -87,7 +87,7 @@ facebook:
   username               :
   app_id                 :
   publisher              :
-og_image                 : "/assets/images/site/og.png"
+og_image                 : "/assets/images/og.png"
 # For specifying social profiles
 # - https://developers.google.com/structured-data/customize/social-profiles
 social:
@@ -106,7 +106,7 @@ analytics:
 # Site Author
 author:
   name             : "how2flow"
-  avatar           : "/assets/images/site/profile.png"
+  avatar           : "/assets/images/profile.png"
   bio              : "Steve Jeong"
 # location         : "Seoul"
   links:

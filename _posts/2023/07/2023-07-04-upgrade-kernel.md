@@ -196,7 +196,7 @@ root
 
 ## Git Rebase
 
-#### 카메라 관련 커밋 옮기기 (1)
+### 카메라 관련 커밋 옮기기 (1)
 
 먼저 카메라 관련 커밋부터 최신으로 올리겠습니다.<br>
 관련 키워드는 <span style="{{ site.code }}">ov5647</span> , <span style="{{ site.code }}">imx219</span>, <span style="{{ site.code }}">imx477</span> 입니다.<br>
@@ -653,7 +653,7 @@ pick aca1de1bc555 ODROID-M1: ov5647: Code Refactory.
 ov5647 관련 커밋들 모두 최신 커밋으로 올리는 데 성공했습니다.<br>
 이제 <span style="{{ site.code }}">imx219</span> , <span style="{{ site.code }}">imx477</span> 관련 커밋들만 올리면 됩니다.<br>
 
-#### 카메라 관련 커밋 옮기기 (2)
+### 카메라 관련 커밋 옮기기 (2)
 
 나머지 카메라 관련 커밋들을 올리기 위해, <span style="{{ site.code }}">ov5647</span> 과 <span style="{{ site.code }}">imx</span> 사이에 있는 엄청난 양의 defconfig와 dtbo 커밋들을 정리해 줄겁니다.<br>
 이 커밋들을 한데 모아서 defconfig 커밋들은 첫번째 커밋인 <span style="{{ site.code }}">dffdb03eb14f</span>에 합치고, dtbo 파일들은 <span style="{{ site.code }}>bfb15941df3c</span> 커밋 위로 쌓아 올릴 것입니다.<br>
@@ -932,3 +932,103 @@ kee34037298f ODROID-M1: arch/arm64: add new board Hardkernel's ODROID-M1
 ```
 
 이렇게 만들어 주면 됩니다.<br>
+dtbo도 마찬가지로 같은 과정을 반복해서 모아줍니다.<br>
+
+### 결과
+
+제가 정리한 rebase 결과물 입니다.
+```
+pick 513d1c0a5607 ODROID-M1: arch/arm64: add new board Hardkernel's ODROID-M1
+pick a389d36cdd44 ODROID-M1: dts/dtbo: Introduce device tree overlay
+pick 4a1d64fd862a ODROID-M1: dtb/dtbo: Add basic alt functions
+pick 001ccc656f3a ODROID-M1: driver/gpiomem: Add gpiomem driver for rk3568
+pick 66f75c8812b6 ODROID-M1: driver/gpiomem: Allow access pwm
+pick e961036f1468 ODROID-M1: driver/i2c: Add driver "speed" attribution
+pick 982f557ca70a ODROID-M1: dtb/dtbo: add fb_hktft32 and ads7846 dtbo for Hardkernel 3.2 inch TFT LCD
+pick 7df731c36c65 ODROID-M1: dtb/dtbo: Add NPU device tree overlay
+pick 12bd390f70c6 ODROID-M1: dtb/dtbo: Add onewire
+pick 7ede7e9ded0e ODROID-M1: dtb/dtbo: add support 115200bps at ttyFIQ0
+pick d9dc9dc5a277 ODROID-M1: dtb/dtbo: Add dht11 humidity sensor
+pick 0261326519a9 ODROID-M1: dtb/dtbo: Add MODULE_LICENSE to solve can drivers error.
+pick a8a2e80f39de ODROID-M1: dtb/dtbo: Add mcp2515 (can module)
+pick 4faa3019bf6b ODROID-M1: dtb/dtbo: add to off the blue LED by default
+pick e86d0054e3ab ODROID-M1: dtb/dtbo: Add can0 overlay
+pick 63008643e7d7 ODROID-M1: dtb/dtbo: pcf8563 is added.
+pick 93d03334a447 ODROID-COMMON: phy/realtek: add Wake-on-Lan to Realtek PHY
+pick d2638c8cfaec ODROID-M1: arm64/dts: add support Wake-On-Lan
+pick a640ab5db33e ODROID-COMMON: drm/panel: ilitek-ili9881c: prepare for adding support for extra panels
+pick d5db7d0174ef ODROID-COMMON: drm/panel: ilitek-ili9881c: add support for Feixin K101-IM2BYL02 panel
+pick 6694c5cd9d30 ODROID-COMMON: drm/panel: ilitek-ili9881c: add to set dsi format from device tree
+pick d830f5638c02 ODROID-COMMON: drm/panel: ilitek-ili9881c: add support for Elida HJ080BE31IA1 panel
+pick d8da7bebb809 ODROID-M1: arm64/dts: add reserved memory for PCIe
+pick c454f36da77f ODROID-M1: mmc/host: add to hardware reset capability
+pick 441ae9d013c5 ODROID-M1: add 'enable-active-high' to PCIe 3.3V regulator
+pick 48f67c173d4a ODROID-M1: arch/arm64: add hardware reset property to eMMC
+pick 7195cc8e79f8 ODROID-M1: arm64/dts: fix to access SPI flash memory
+pick c762c1570568 ODROID-M1: rkflash: enforce to disable 4bit bus access
+pick 804937d2788a ODROID-M1: arm64/dts: set 'GPIO0_B0' as 'Headphone Detect'
+pick d9c523804eae ODROID-M1: board: add provide board specific information
+pick d65af0023d09 ODROID-M1: dtb/dtbo: add 800x1280 8inch touch LCD
+pick 446fe109fde1 ODROID-M1: staging/fbtft: add fb_hktft32 module for Hardkernel 3.2 inch TFT LCD
+pick 59185e7b8b9e ODROID-M1: dtb/dtbo: add disable-vop2-fixup for ODROID-VU8M
+pick 856a51c58171 ODROID-M1: arm64/dts: change PIN_7 as GPIO0_B6
+pick 50c6f6472a44 ODROID-M1: board: add a missing offset when reading UUID from sysfs
+pick 9c31b9eb659d ODROID: arm64/dts: remotectl: add remotectl to dts
+pick 834089665359 ODROID-M1: arm64/dts: switch PWM7 to generic pwm port not IR port
+pick 88bf6af2e755 ODROID-COMMON: input/touchscreen: Add Vu5/Vu7+ multitouch driver
+pick d7447fec4fe7 ODROID-M1: arm64/dts: Support sound_card for odroid.
+pick 03067c615d9e ODROID-M1: arm64/dts: clean up audio properties
+pick 318728521d9a ODROID-M1: arm64/dts: add sound card names for HDMI and EARJACK
+pick d2a63b739179 ODROID-M1: arm64/dts: rename device tree name to 'display_vu8m.dtbo'
+pick faeaedc21357 ODROID-COMMON: net/wireless: add vendor Realtek USB wifi driver
+pick e375a562f188 ODROID-COMMON: net/wireless: add vendor Realtek USB wifi driver
+pick 1219c625c4cc ODROID-M1: arm64/dts: remove a property '/chosen/disable-vop2-fixup'
+pick 4e9e34678be5 ODROID-M1: net/wireless: update rtl88xx driver, now supports 8811, 8812 and 8814
+pick ebcc726a4378 ODROID-M1: dtb/dtbo: Support IMX219.
+pick 2037b07f0e25 ODROID: imx219: Add v4l2 enum_frame_size function.
+pick 39850a206f55 ODROID-M1: driver/imx219: improve driver
+pick 029113a87b3f ODROID: imx219: Code refactoring for test pattern.
+pick 7b939a472702 ODROID: imx219: Code refactoring.
+pick 40caca8a46fa ODROID: imx219: Optimized crop appling.
+pick 7b40728d1d44 ODROID: imx477: Add driver.
+pick 4c282e639c84 ODROID: imx477: dts/overlay: Add device tree overlay.
+pick 24776ab97758 ODROID: imx477: Add rk features, support some video ops.
+pick d976c86d17c7 ODROID: ov5647: Support ov5647, default setting.
+pick ccbe28f944ad ODROID: ov5647: Add rockchip implementation to support android.
+pick 18511af0a79c ODROID: dts/dtbo: Add OV5647 overlays.
+pick fda33b6c15a8 ODROID: ov5647: change power gpio setting.
+pick 32cf7cae854c ODROID-M1: ov5647: Support flip feature.
+pick 6bddcbda5862 ODROID-M1: ov5647: Support test pattern feature.
+pick 44f2fa4fac4f ODROID-M1: ov5647: changed color format x8 to x10.
+pick 7f599b243174 ODROID-M1: ov5647: Support v4l2 features.
+pick 45d644573f0c ODROID-M1: ov5647: Code Refactory.
+```
+
+conflict를 풀어주느라 애를 먹었네요..<br>
+
+원본 브렌치와 비교 해보면
+```
+$ git diff odroidm1-4.19.y
+```
+```
+```
+
+이렇게 차이가 없으면 성공입니다.<br>
+<br>
+
++<br>
+제 실수를 어떻게 커버했냐면
+```
+$ tig arch/arm64/boot/dts/rockchip/overlays/odroidm1/Makefile
+```
+
+<br>
+<p align="center">
+  <img src="/assets/posts/gif/m1-tig.gif" alt="m1-tig" width="640" height="480"><br>
+  <span style="{{ site.img }}">Git log</span>
+</p>
+<br>
+
+~~노가다~~ rebase 열심히 했습니다.<br>
+
+이제 remote 저장소에 푸쉬하고 테스트가 끝나면, 저와 협업하는 분들에게 bundle로 커밋들을 공유할 예정입니다.<br>

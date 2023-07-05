@@ -3,7 +3,7 @@ permalink: /posts/upgrade-kernel/
 title: "[Linux] 커널 버전 업그레이드 (with ODROID-M1)"
 excerpt: "ODROID -M1의 커널 버전을 4.19.y에서 5.10.y로 업그레이드 하는 과정입니다."
 header:
-  teaser:
+  teaser: /assets/posts/images/m1-kernelupgrade.png
 categories:
   - Linux
 tags:

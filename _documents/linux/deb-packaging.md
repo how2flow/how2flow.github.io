@@ -79,7 +79,7 @@ $ vi debian/control
 Source: deb-welcome
 Secstion: misc
 Prioriy: optional
-Maintainer: Steve Jeong <how2soft@gmail.com>
+Maintainer: Steve Jeong <steve@how2flow.net>
 Build-Depends: debhelper (>= 10)
 
 Package: deb-welcome
@@ -100,7 +100,7 @@ deb-welcome (0.0.1) unstable; urgency=medium
 
   * initial release.
 
- -- Steve Jeong <how2soft@gmail.com>  Fri, 19 May 2023 14:13:25 +0900
+ -- Steve Jeong <steve@how2flow.net>  Fri, 19 May 2023 14:13:25 +0900
 ```
 <span style="{{ site.code }}">debian/changelog</span> is a release note.<br>
 If you improved/modified the package and there is no change in changelog, the package will not be built.<br>
@@ -191,7 +191,7 @@ $ vi configure.ac
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.69])
-AC_INIT([debwelcome], [3.0], [how2soft@gmail.com])
+AC_INIT([debwelcome], [3.0], [steve@how2flow.net])
 AC_CONFIG_SRCDIR([Makefile.am])
 AC_CONFIG_HEADERS([config.h])
 AC_SUBST([EXTRA_CFLAGS], "-Wall -Werror")

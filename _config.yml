@@ -15,7 +15,7 @@ minimal_mistakes_skin    : "contrast"
 
 # Site Settings
 locale                   : "en-US"
-title                    : "How To Flow?"
+title                    : "How To Flow"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : "how2flow"
@@ -112,7 +112,7 @@ author:
   links:
     - label: "" # Email
       icon: "fas fa-fw fa-envelope-square"
-      url: "mailto:how2soft@gmail.com"
+      url: "mailto:steve@how2flow.net"
       itemprop: "sameAs"
     - label: "" # GitHub
       icon: "fab fa-fw fa-github"
@@ -128,7 +128,7 @@ footer:
   links:
     - label: "" # Email
       icon: "fas fa-fw fa-envelope-square"
-      url: "mailto:how2soft@gmail.com"
+      url: "mailto:steve@how2flow.net"
     - label: "" # Github
       icon: "fab fa-fw fa-github"
       url: "https://github.com/how2flow"

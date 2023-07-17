@@ -692,7 +692,7 @@ ov5647 관련 커밋들 모두 최신 커밋으로 올리는 데 성공했습니
 ### 카메라 관련 커밋 옮기기 (2)
 
 나머지 카메라 관련 커밋들을 올리기 위해, <span style="{{ site.code }}">ov5647</span> 과 <span style="{{ site.code }}">imx</span> 사이에 있는 엄청난 양의 defconfig와 dtbo 커밋들을 정리해 줄겁니다.<br>
-이 커밋들을 한데 모아서 defconfig 커밋들은 첫번째 커밋인 <span style="{{ site.code }}">dffdb03eb14f</span>에 합치고, dtbo 파일들은 <span style="{{ site.code }}>bfb15941df3c</span> 커밋 위로 쌓아 올릴 것입니다.<br>
+이 커밋들을 한데 모아서 defconfig 커밋들은 첫번째 커밋인 <span style="{{ site.code }}">dffdb03eb14f</span>에 합치고, dtbo 파일들은 <span style="{{ site.code }}">bfb15941df3c</span> 커밋 위로 쌓아 올릴 것입니다.<br>
 
 이렇게 하는 이유는<br>
 카메라 커밋을 최신으로 올리지 않고 나머지 커밋들을 이전 커밋으로 옮기는 것 역시<br>

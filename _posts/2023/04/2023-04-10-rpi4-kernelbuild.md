@@ -267,13 +267,20 @@ $ cd linux
 $ kernel-script --crosscompile
 
 [kernel build architecture]
+e.g 'arm64' or 'x86' or ...
 Input architecture: arm64
 
 [kernel build config]
+e.g 'i386_defconfig' or 'oldconfig' or ...
 Input config: bcm2711_defconfig
 
 [kernel build target]
+e.g 'dtbs' or 'modules' or 'vmlinux' or ...
 Input target: all
+
+Would you want to separate the result files? [Y/n]: n
 ```
 
-커널 빌드 output 파일들이 <span style="{{ site.code }}">out/</span> 에 있습니다.<br>
+마지막 질문의 default는 Y 입니다.<br>
+y/Y 선택하면 빌드 output 파일들이 <span style="{{ site.code }}">out/</span> 에 생성됩니다.<br>
+n/N 선택하면 소스파일들과 같은 경로에 빌드 output 파일들이 생성됩니다.<br>

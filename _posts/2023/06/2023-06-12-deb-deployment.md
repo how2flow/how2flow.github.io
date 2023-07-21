@@ -5,10 +5,11 @@ excerpt: "데비안 패키지 배포하는 방법입니다. (with launchpad)"
 header:
   teaser: /assets/posts/images/deb-deployment.webp
 categories:
-  - Ubuntu
+  - Linux
 tags:
   - debian
   - launchpad
+  - ubuntu
 toc: true
 ---
 

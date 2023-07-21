@@ -203,7 +203,7 @@ root
 
 ## Git Rebase
 
-### 카메라 관련 커밋 옮기기 (1)
+### 담당 아닌(카메라) 커밋 재배치 (1)
 
 먼저 카메라 관련 커밋부터 최신으로 올리겠습니다.<br>
 관련 키워드는 <span style="{{ site.code }}">ov5647</span> , <span style="{{ site.code }}">imx219</span>, <span style="{{ site.code }}">imx477</span> 입니다.<br>
@@ -689,7 +689,7 @@ pick aca1de1bc555 ODROID-M1: ov5647: Code Refactory.
 ov5647 관련 커밋들 모두 최신 커밋으로 올리는 데 성공했습니다.<br>
 이제 <span style="{{ site.code }}">imx219</span> , <span style="{{ site.code }}">imx477</span> 관련 커밋들만 올리면 됩니다.<br>
 
-### 카메라 관련 커밋 옮기기 (2)
+### 담당 아닌(카메라) 커밋 재배치 (2)
 
 나머지 카메라 관련 커밋들을 올리기 위해, <span style="{{ site.code }}">ov5647</span> 과 <span style="{{ site.code }}">imx</span> 사이에 있는 엄청난 양의 defconfig와 dtbo 커밋들을 정리해 줄겁니다.<br>
 이 커밋들을 한데 모아서 defconfig 커밋들은 첫번째 커밋인 <span style="{{ site.code }}">dffdb03eb14f</span>에 합치고, dtbo 파일들은 <span style="{{ site.code }}">bfb15941df3c</span> 커밋 위로 쌓아 올릴 것입니다.<br>

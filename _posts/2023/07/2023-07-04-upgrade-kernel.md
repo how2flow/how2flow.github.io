@@ -12,8 +12,6 @@ tags:
 toc: true
 ---
 
-## intro
-
 오드로이드 M1 커널 버전 업그레이드 포스팅입니다.<br>
 포스팅 날짜 기준으로 현재 ODROID-M1은 linux kernel 4.19 version을 지원합니다.<br>
 <span style="{{ site.code }}">linux-image-4.19.219-odroid-arm64</span><br>

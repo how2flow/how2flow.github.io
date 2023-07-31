@@ -13,8 +13,6 @@ tags:
 toc: true
 ---
 
-## intro
-
 [데비안 패키지를 만들었으면](/documents/linux/deb-packaging/), PPA를 만들고 배포해야 합니다.<br>
 launchpad를 사용해서 간단하게 PPA를 만들고 배포하는 과정을 정리합니다.<br>
 Git repo 기준으로 작성되었습니다.<br>

@@ -12,9 +12,7 @@ tags:
 toc: true
 ---
 
-## intro
-
-포스팅 읽기전에 참고하기 좋은 자료입니다.<br><br>
+다음 자료들을 참고해 보세요.<br><br>
 
 데비안 패키지 [가이드라인](https://www.debian.org/doc/manuals/debmake-doc/)<br>
 데비안 패키징 [사이트 내 문서](/documents/linux/deb-packaging/)<br>

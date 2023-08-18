@@ -10,20 +10,21 @@ main:
 
 side_main:
   - title: "About"
+    url: /about/
     children:
-      - title: "Author"
-        url: /about/
       - title: "Diary"
         url: /diary/
 
   - title: "Posts"
+    url: /posts/
     children:
-      - title: "categories"
+      - title: "Categories"
         url: /categories/
-      - title: "tags"
+      - title: "Tags"
         url: /tags/
 
   - title: "Documents"
+    url: /documents/
     children:
       - title: "Table of Contents"
         url: /documents/

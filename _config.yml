@@ -264,6 +264,9 @@ collections:
   apps:
     output: true
     permalink: /:collection/:path/
+  diary:
+    output: true
+    permalink: /:collection/:path/
   documents:
     output: true
     permalink: /:collection/:path/
@@ -293,6 +296,16 @@ defaults:
   - scope:
       path: ""
       type: posts
+    values:
+      layout: single
+      read_time: true
+      share: true
+      related: true
+      show_date: true
+  # _diary
+  - scope:
+      path: ""
+      type: diary
     values:
       layout: single
       read_time: true

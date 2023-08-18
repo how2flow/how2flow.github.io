@@ -13,6 +13,8 @@ side_main:
     children:
       - title: "Author"
         url: /about/
+      - title: "Diary"
+        url: /diary/
 
   - title: "Posts"
     children:

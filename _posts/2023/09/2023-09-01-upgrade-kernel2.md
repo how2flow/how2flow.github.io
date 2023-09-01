@@ -1,6 +1,6 @@
 ---
 permalink: /posts/upgrade-kernel2/
-title: "[Linux] 커널 버전 업그레이드 (with ODROID-M1)"
+title: "[Linux] 커널 버전 업그레이드 2(with ODROID-M1)"
 excerpt: "ODROID -M1의 커널 버전 올리기 (rebase)"
 header:
   teaser: /assets/posts/images/m1-kernelupgrade.png

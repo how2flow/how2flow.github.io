@@ -346,6 +346,13 @@ hello??? my name is steve
 
 Finally, debian package [example code](https://github.com/how2flow/kernel-scripts) that is released and used package.<br>
 
+#### Build External Package Repository
+
+If you need to download the package repository and build it locally,<br>
+The local environment must have all the <span style="{{ site.code }}">Build-Depends</span> packages installed in the <span style="{{ site.code }}">debian/control</span> file.<br>
+
+Use <span style="{{ site.code }}">mk-build-deps</span> which is part of <span style="{{ site.code }}">devscripts</span> .<br>
+
 ### Package Deployment
 
 how to deploy debian package?<br>

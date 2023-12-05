@@ -9,7 +9,7 @@ toc: true
 ## Kernel
 
 [Build](/documents/linux/kernel-build/)<br>
-[Device-driver](/documents/linux/device-driver/)<br>
+[Device-driver](/documents/linux/device-driver/) ([examples](/documents/linux/device-driver-examples/))<br>
 [Device-tree](/documents/linux/device-tree/)<br>
 
 ## Type

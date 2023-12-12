@@ -8,11 +8,47 @@ toc: true
 ## Case 1: New device driver
 
 This is How to add new device driver.<br>
-Add drivers for debugging the kernel of <span style="{{ site.code }}">ODROID-M1</span> .<br>
+If you add a new driver, you need a new configuration and source for the new driver.
+```
+Steps
+1. Add new config
+2. Add new driver code
+3. Build kernel
+```
+
+### add new driver and build kernel
+
+config files is in <span style="{{ site.code }}">arch/${ARCH}/configs/"target_config"</span> .
+```
+...
+CONFIG_NEW_DEVICE_DRIVER=y
+...
+```
+<br>
+
+The definition for config about the driver should be added to the <span style="{{ site.code }}">Kconfig</span> that exists in the same path as the <span style="{{ site.code }}">Makefile</span> to build.
+```
+# Kconfig
+...
+config NEW_DEVICE_DRIVER
+	tristate "USER DEBUG"
+	default m
+	help
+	  user debug driver.
+...
+```
+```
+# Makefile
+...
++obj-$(CONFIG_NEW_DEVICE_DRIVER) += new_device_driver.o
+```
+
+You can add the driver code to where you need it and build the kernel.<br>
 
 ### example
 
-- diff
+Add drivers for debugging the kernel of rockchip.<br>
+
 ```
   commit 74882ebe953d5e7e0a79e43a96176eb1223c44d2
   Author: Steve Jeong <steve@how2flow.net>
@@ -61,11 +97,10 @@ Add drivers for debugging the kernel of <span style="{{ site.code }}">ODROID-M1<
   index 000000000000..7be99ffcec4a
   --- /dev/null
   +++ b/drivers/soc/rockchip/user_debug.c
-  @@ -0,0 +1,84 @@
-  +/* Copyright (c) 2023 how2flow <steve@how2flow.net>
+  +/* Copyright (c) 2023 Steve Jeong <steve@how2flow.net>
   + *
   + * This program is free software; you can redistribute it and/or modify
-     + * it under the terms of the GNU General Public License version 2 as
+  + * it under the terms of the GNU General Public License version 2 as
   + * published by the Free Software Foundation.
   + *
   + * path: drivers/soc/${vendor}/user_debugfs.c
@@ -97,94 +132,65 @@ Add drivers for debugging the kernel of <span style="{{ site.code }}">ODROID-M1<
   +
   +static int user_kernel_debug_stat_get(void *data, u64 *val)
   +{
-  +     printk("===[%s][L:%d][val:%d]===\n", __func__, __LINE__, user_debug_state);
-  +     *val = user_debug_state;
+  +       printk("===[%s][L:%d][val:%d]===\n", __func__, __LINE__, user_debug_state);
+  +       *val = user_debug_state;
   +
-  +     return 0;
+  +       return 0;
   +}
-  +
   +static int user_kernel_debug_stat_set(void *data, u64 val)
   +{
-  +     user_debug_state = (uint32_t)val;
-  +     printk("===[user] [%s][L:%d], user_debug_state[%lu], value[%lu]===\n",
-  +                     __func__, __LINE__, (long unsigned int)user_debug_state, (long unsigned int)val);
+  +       user_debug_state = (uint32_t)val;
+  +       printk("===[user] [%s][L:%d], user_debug_state[%lu], value[%lu]===\n",
+  +                       __func__, __LINE__, (long unsigned int)user_debug_state, (long unsigned int)val);
   +
-  +     return 0;
+  +       return 0;
   +}
   +
   +DEFINE_SIMPLE_ATTRIBUTE(user_kernel_debug_stat_fops,
-  +             user_kernel_debug_stat_get, user_kernel_debug_stat_set, "%llu\n");
+  +               user_kernel_debug_stat_get, user_kernel_debug_stat_set, "%llu\n");
   +
   +static int user_kernel_debug_debugfs_driver_probe(struct platform_device *pdev)
   +{
-  +     printk("===[%s][L:%d]===\n", __func__, __LINE__);
- +
-  +uint32_t user_debug_state = 0x1000;
-  +static struct dentry *user_kernel_debug_debugfs_root;
+  +       printk("===[%s][L:%d]===\n", __func__, __LINE__);
   +
-  +static int user_kernel_debug_stat_get(void *data, u64 *val)
-  +{
-  +     printk("===[%s][L:%d][val:%d]===\n", __func__, __LINE__, user_debug_state);
-  +     *val = user_debug_state;
-  +
-  +     return 0;
-  +}
-  +
-  +static int user_kernel_debug_stat_set(void *data, u64 val)
-  +{
-  +     user_debug_state = (uint32_t)val;
-  +     printk("===[user] [%s][L:%d], user_debug_state[%lu], value[%lu]===\n",
-  +                     __func__, __LINE__, (long unsigned int)user_debug_state, (long unsigned int)val);
-  +
-  +     return 0;
-  +}
-  +
-  +DEFINE_SIMPLE_ATTRIBUTE(user_kernel_debug_stat_fops,
-  +             user_kernel_debug_stat_get, user_kernel_debug_stat_set, "%llu\n");
-  +
-  +static int user_kernel_debug_debugfs_driver_probe(struct platform_device *pdev)
-  +{
-  +     printk("===[%s][L:%d]===\n", __func__, __LINE__);
-  +
-  +     return 0;
+  +       return 0;
   +}
   +
   +static struct platform_driver user_kernel_debug_debugfs_driver = {
-  +     .probe = user_kernel_debug_debugfs_driver_probe,
-  +     .driver = {
-  +             .owner = THIS_MODULE,
-  +             .name = "user_debug",
-  +     },
+  +       .probe = user_kernel_debug_debugfs_driver_probe,
+  +       .driver = {
+  +               .owner = THIS_MODULE,
+  +               .name = "user_debug",
+  +       },
   +};
   +
   +static int __init user_kernel_debug_debugfs_init(void)
   +{
-  +     printk("===[%s][L:%d]===\n", __func__, __LINE__);
+  +       printk("===[%s][L:%d]===\n", __func__, __LINE__);
   +
-  +     user_kernel_debug_debugfs_root = debugfs_create_dir("user_debug", NULL);
-  +     debugfs_create_file("state", S_IRUGO, user_kernel_debug_debugfs_root,
-  +                     NULL, &user_kernel_debug_stat_fops);
+  +       user_kernel_debug_debugfs_root = debugfs_create_dir("user_debug", NULL);
+  +       debugfs_create_file("state", S_IRUGO, user_kernel_debug_debugfs_root,
+  +                       NULL, &user_kernel_debug_stat_fops);
   +
-  +     return platform_driver_register(&user_kernel_debug_debugfs_driver);
+  +       return platform_driver_register(&user_kernel_debug_debugfs_driver);
   +}
   +
   +late_initcall(user_kernel_debug_debugfs_init);
   +
   +MODULE_DESCRIPTION("user debug interface driver");
-  +MODULE_AUTHOR("steve.jeong <steve@how2flow.net>");
+  +MODULE_AUTHOR("steve.jeong <how2soft@gmail.com>");
   +MODULE_LICENSE("GPL");
 ```
+I will post a separate description of the code.<br>
 
-#### example-debugging code
-- example: Add it to the kernel code you want.
+<br>
+Add it to the kernel code you want.<br>
+Log the dmesg to a particular driver whenever that function is called from a particular function.
 ```
 extern uint32_t user_debug_state;
 ...
 if (1 == user_debug_state) printk("steve %s %d\n", __func__, __LINE__);
 ```
-
-
-
 
 ## Case 2: New device's Attr
 
@@ -357,8 +363,13 @@ index 62715a318fde..be119745bae5 100644
 
 ## Case 3: New Kernel params
 
-Boot param is in <span style="{{ site.code }}">/proc/cmdline</span>
+Boot param is in <span style="{{ site.code }}">/proc/cmdline</span><br>
 I will use kernel macro <span style="{{ site.code }}">__setup</span> and <span style="{{ site.code }}">kstrtoul</span> to add new boot parameters.
+```
+Steps
+1. Use __setup macro with function that retrun params
+2. Export symbol that is call the function (step 1)
+```
 
 ### make boot parameter
 

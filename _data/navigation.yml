@@ -19,9 +19,9 @@ side_main:
     url: /posts/
     children:
       - title: "Categories"
-        url: /categories/
+        url: /posts/categories/
       - title: "Tags"
-        url: /tags/
+        url: /posts/tags/
 
   - title: "Documents"
     url: /documents/

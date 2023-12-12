@@ -3,8 +3,12 @@ permalink: /posts/
 title: Posts
 comments: false
 entries_layout: grid
-layout: home
+layout: single
 ---
+
+It is a space where you record and post simple development projects or things you need while developing.<br>
+The posting is written in Korean.<br>
+So it's convenient to visit via Google Chrome browser and use translation.<br>
 
 <details>
   <summary>Translation</summary>
@@ -16,3 +20,9 @@ layout: home
   <br>
   </p>
 </details>
+
+<br><br>
+You can<br>
+find various posts through search,<br>
+find it through the sorted pages by [category](/posts/categories/), or,<br>
+find it on the sorted pages by [tag](/posts/tags/).<br>

@@ -1,5 +1,5 @@
 ---
 title: "Posts by Tag"
-permalink: /tags/
+permalink: /posts/tags/
 layout: tags
 ---

@@ -1,13 +1,13 @@
 ---
 permalink: /posts/build-scripts/
-title: "Make와 CMake 작성방법"
+title: "[Linux] Make와 CMake"
 excerpt: "리눅스의 빌드 자동화 도구인 Make와 Cmake 사용 포스팅 입니다."
 header:
   teaser: /assets/posts/images/note.jpg
 categories:
   - Linux
 tags:
-  - build
+  - ubuntu/debian
   - utility
 toc: true
 ---

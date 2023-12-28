@@ -7,10 +7,9 @@ header:
 categories:
   - Linux
 tags:
-  - build
-  - make
+  - kernel
   - raspberry
-  - "raspberry pi 4"
+  - utility
 toc: true
 ---
 

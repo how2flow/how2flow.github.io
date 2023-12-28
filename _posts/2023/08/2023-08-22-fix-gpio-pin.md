@@ -7,8 +7,8 @@ header:
 categories:
   - Linux
 tags:
-  - device-tree
-  - gpio
+  - kernel
+  - interfaces
 toc: true
 ---
 

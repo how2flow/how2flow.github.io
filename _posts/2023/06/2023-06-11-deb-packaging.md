@@ -7,8 +7,8 @@ header:
 categories:
   - Linux
 tags:
-  - debian
-  - ubuntu
+  - ubuntu/debian
+  - utility
 toc: true
 ---
 

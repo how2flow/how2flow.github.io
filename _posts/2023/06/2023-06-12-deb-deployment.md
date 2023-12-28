@@ -7,9 +7,8 @@ header:
 categories:
   - Linux
 tags:
-  - debian
-  - launchpad
-  - ubuntu
+  - ubuntu/debian
+  - utility
 toc: true
 ---
 

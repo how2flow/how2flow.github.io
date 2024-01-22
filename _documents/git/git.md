@@ -68,24 +68,18 @@ Staged files are in the state where commit was created with the <span style="{{ 
 Status of files modified from the current commit.<br>
 You must perform a stage to reflect the changes in the next commit.<br>
 
-### git-add
+**git-add**<br>
 
 It is a command to add untracked or modified files in a stage state that can be registered to the commit.
 ```
 $ git add <target>
 ```
 
-### git-restore
+**git-restore**<br>
 
 Restore the modified files to the criteria currently stored in the commit.
 ```
 $ git restore <target>
-```
-
-#### --staged
-It is a command that returns a staged file to an Untracked or modified file.
-```
-$ git restore --staged <target> 
 ```
 
 ## Functions
@@ -195,6 +189,23 @@ Merging commits using the <span style="{{ site.code }}">rebase</span> cleans up 
 
 #### rebase --interactive
 
+You can proceed with the rebase in multiple options at once.
+```
+$ git rebase -i <target-commit>
+```
+<br>
+
+From the head commit to the child commit of the target commit, it is subject to rebase.<br>
+The target commit may use a hash like other commands that receive the commit as a parameter,<br>
+or may use any representation method that may specify the commit, such as a branch name, tag name, and location from HEAD.<br>
+
+There are several options that are supported when performing interactive.<br>
+<span style="{{ site.code }}">edit/e</span> : Modifying the contents of the commit operation<br>
+<span style="{{ site.code }}">exec/x</span> : Commands that allow you to enter shell commands to run during the database<br>
+<span style="{{ site.code }}">pick/p</span> : Use the commit as it is. You can also rearrange or delete the commit<br>
+<span style="{{ site.code }}">reword/r</span> : Commands to modify commit messages<br>
+<span style="{{ site.code }}">squash/s</span> : Commands that combine that commit with the previous commit<br>
+
 ### cherry-pick
 
 take a commit you want and stack it over the current HEAD.<br>
@@ -205,4 +216,4 @@ $ git cherry-pick <target-branch|target-commit>
 
 ## Others
 
-Refer to [Documentation](https://github.com/how2flow)<br>
+Refer to [Documentation](https://git-scm.com/docs/git)<br>

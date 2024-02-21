@@ -20,8 +20,8 @@ side_main:
     children:
       - title: "Categories"
         url: /posts/categories/
-      - title: "Tags"
-        url: /posts/tags/
+      - title: "(translate)"
+        url: /posts/translation/
 
   - title: "Documents"
     url: /documents/

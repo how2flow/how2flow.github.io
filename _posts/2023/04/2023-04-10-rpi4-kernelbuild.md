@@ -8,8 +8,11 @@ categories:
   - Linux
 tags:
   - kernel
+  - kernel build
   - raspberry
-  - utility
+  - raspberry pi
+  - rpi
+  - rpi4
 toc: true
 ---
 

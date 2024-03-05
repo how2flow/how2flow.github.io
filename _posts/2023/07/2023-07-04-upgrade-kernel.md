@@ -7,8 +7,17 @@ header:
 categories:
   - Linux
 tags:
-  - odroid
+  - 4.19.y
+  - 5.10.y
   - kernel
+  - kernel merge
+  - kernel rebase
+  - kernel upgrade
+  - rebase
+  - rebase --onto
+  - rebase -i
+  - rebase interactive
+  - rebase onto
 toc: true
 ---
 

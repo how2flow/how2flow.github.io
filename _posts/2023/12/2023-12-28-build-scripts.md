@@ -7,8 +7,13 @@ header:
 categories:
   - Linux
 tags:
-  - ubuntu/debian
-  - utility
+  - build
+  - cmake
+  - compile
+  - debian
+  - languages
+  - make
+  - ubuntu
 toc: true
 ---
 

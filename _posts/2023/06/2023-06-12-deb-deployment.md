@@ -7,8 +7,19 @@ header:
 categories:
   - Linux
 tags:
-  - ubuntu/debian
-  - utility
+  - apt
+  - autoconf
+  - automake
+  - deb
+  - debhelper
+  - debian
+  - debuild
+  - devscripts
+  - dpkg
+  - launchpad
+  - packaging
+  - ppa
+  - ubuntu
 toc: true
 ---
 

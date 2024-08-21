@@ -19,4 +19,4 @@ These are the contents that I studied and organized.<br>
 | **D** | | **K** | | **R** | | **Y** | |
 | **E** | | **L** | [Linux](/documents/linux/) | **S** | | **Z** | |
 | **F** | | **M** | | **T** | | **-** | |
-| **G** | [Git](/documents/git/) | **N** | | **U** | | **-** | |
+| **G** | [Git](/documents/git/)<br>[GIC](/documents/gic/) | **N** | | **U** | | **-** | |

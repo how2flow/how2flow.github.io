@@ -78,9 +78,6 @@ CT: Collection Table (ICID -> Translate Interrupt)<br>
 ```
 <br>
 
-
-
-
 ## Interrupts
 
 인터럽트는 하던 작업을 중단하고, 바로 처리해야 하는 것<br>
@@ -141,7 +138,24 @@ SGIs는 인터럽트 번호 0 ~ 15번을 사용한다.<br>
 PPIs는 인터럽트 번호 16 ~ 31번을 사용한다.<br>
 
 PPIs는 인터럽트 번호 16(16 + 0)번 부터 시작한다.<br>
-16(16 + 0)이라고 표현한 이유는 SPIs 설명을 보면 알 수 있다.<br>
+(16(16 + 0)이라고 표현한 이유는 SPIs 설명을 보면 알 수 있다.)<br>
+
+PPIs는 SoC마다 제각각이지만, 주로 사용되는 번호가 몇가지 존재한다.<br>
+ARM Developer documents에서 <span style="{{ site.code }}">den0094c</span> 을 참조하면 된다.<br>
+해당 문서에서 설명하는 <span style="{{ site.code }}">PPIs assignments</span> 중에서<br>
+가상 인터럽트(for vPE)를 처리하기 위한 GIC의 고유 PPI는 25(16 + 9)를 사용한다.<br>
+
+커널 디바이스 트리에서 GIC 정의부분을 보면 다음과 같이 표현된 경우가 많다.
+```
+	gic: gic@19960000 {
+		compatible = "arm,gic-v3";
+		regs = <0x0 0x19960000 0x0 0x10000>,
+			<0x0 0x19980000 0x0 0x20000>;
+		interrupt-controller;
+		interrupts = <GIC_PPI 9 IRQ_TYPE_LEVEL_HIGH>;
+		...
+	}
+```
 
 ### SPIs
 

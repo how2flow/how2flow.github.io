@@ -18,5 +18,5 @@ These are the contents that I studied and organized.<br>
 | **C** | | **J** | | **Q** | | **X** | |
 | **D** | | **K** | | **R** | | **Y** | |
 | **E** | | **L** | [Linux](/documents/linux/) | **S** | | **Z** | |
-| **F** | | **M** | | **T** | | **-** | |
+| **F** | | **M** | | **T** | [Trace32](/documents/trace32/) | **-** | |
 | **G** | [Git](/documents/git/)<br>[GIC](/documents/gic/) | **N** | | **U** | | **-** | |

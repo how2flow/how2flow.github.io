@@ -279,14 +279,13 @@ $ cat /proc/interrupts
 ### LPIs
 
 2가지 보안상태를 지원하는 환경에서,<br>
-<span style="{{ site.code }}">LPIs</span> 는 항상 Non-secure Gruop 1 이다.<br>
+<span style="{{ site.code }}">LPIs</span> 는 <U>항상 Non-secure Group 1 이다</U>.<br>
 <br>
 
 2가지 보안상태란,(GICD_CTLR.DS=0)<br>
-첫번째는, Group 0 와 Gruop 1으로 나누는 것,<br>
+첫번째는, Group 0 와 Group 1으로 나누는 것,<br>
 두번째는, Secure Group 1과 Non-secure Group 1 으로 나누기 때문에<br>
 2가지 보안상태를 지원하고, 2가지 보안상태라고 한다.<br>
-1가지 보안상태라면(GICD_CTLR.DS=0), Group 1 이다.<br>
 <br>
 
 LPIs는 무조건 <span style="{{ site.code }}">Edge-Trigger</span> 방식을 지원한다.<br>
@@ -344,9 +343,26 @@ ITS는 LPIs를 특정 Redistributor에 전달하는 역할을 한다.<br>
 Redistributor마다 담당하는 LPI가 고정적으로 할당되어 있으며,<br>
 이 Redistributor는 자신의 프로세서에 해당하는 LPI들의 대기 상태와 우선순위를 관리한다.<br>
 
+#### LPIs 사용 조건 확인
 
+LPI를 사용하기 위해 확인해야 하는 checklist는 다음과 같다.
+```
+/* LPI configs */
+1. GICD_CTLR.DS == ? (0 or 1)
+   ` 0: Nonsecure Group 1
+     1: Group 1
+2. GICR_CTLR.EnableLPIs == 1
+3. GICR_TYPER.CommonLPIAff (Optional)
 
+/* Address infomation */
+1. GITS_BASER (memory structure)
+2. GITS_CBASER (ITS command queue)
 
+/* LPI tables */
+1. GICR_PROPBASER
+2. GICR_PENDBASER
+```
+<br>
 
 ## Power management
 

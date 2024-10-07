@@ -33,3 +33,16 @@ GIC is 'Generic Interrupt Contoller'.<br>
     <span style="{{ site.code }}">You can do interrupt set/clear just by toggling the polarity</span> .<br>
   </p>
 </details>
+
+## Trace32
+
+Set GIC peri
+```
+B:: System.CONFIG.GICD Base a:{gicd base address}
+B:: PER.Reprograming
+```
+```
+B:: System.CONFIG.GICR Base a:{gicr base address}
+B:: PER.Reprograming
+```
+<br>

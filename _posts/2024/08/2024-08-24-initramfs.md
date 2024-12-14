@@ -66,23 +66,33 @@ $ mkimage -A arm64 -O linux -T ramdisk -d initramfs.cpio.gz uInitrd.img
 ```
 <br>
 
+lzop 형식으로 다음과 같이 압축할 수 있습니다.
+```
+$ croot # move to file-tree root path
+$ find . | cpio -H newc -ov --owner root:root > ../initramfs.cpio
+$ cd ..
+$ lzop -9 initramfs.cpio
+```
+<br>
+
 파일 트리에는 init 스크립트가 포함되어 있어야 합니다.<br>
 U-boot의 root 파라미터는 init 스크립트의 위치를 지정합니다.<br>
+
+### 이미 존재하는 아카이브 initramfs 에서 필요한 파일 추가하기
+
+기존의 initramfs파일에서 특정 파일만 추가하여 다시 아카이브 하는 방법 입니다.
+```
+$ lzop -d initramfs.cpio.lzo
+$ mkdir -p initramfs/home/root # add files that you want in 'home/root'
+$ cd initramfs
+$ find . -depth | cpio -oA -H newc -F ../initramfs.cpio
+```
+<br>
 
 #### boot script 만들기
 추가로 부트 스크립트를 따로 만드는 방법은 다음과 같습니다.<br>
 U-boot에서 입력해야할 커맨드들을 boot.cmd 파일에 저장한 이후 다음을 실행합니다.
 ```
 $ mkimage -A arm64 -O linux -T script -C none -d boot.cmd boot.scr
-```
-<br>
-
-### initramfs 에서 필요한 파일 추가하기
-
-처음 이미지 만들 때 아카이브 하는 방법을 활용합니다.
-```
-$ mkdir initramfs
-$ mkdir initramfs -p home/root # add any files in home/root
-$ find . -depth | cpio -oA -H newc -F ../initramfs.cpio
 ```
 <br>

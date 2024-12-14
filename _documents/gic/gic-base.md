@@ -10,6 +10,7 @@ toc: true
 
 GIC is 'Generic Interrupt Contoller'. 요약을 보려면, [GIC summary](/documents/gic-summary) 참조 하세요.<br>
 GIC는 ARM에서 제공하는 ARM 전용 인터럽트 컨트롤러 이다.<br>
+이 문서는 <B>GICv3</B>를 기준으로 서술합니다.<br>
 
 ### Introduction
 
@@ -61,6 +62,11 @@ LPIs의 메세지 기반의 인터럽트가 번역된 정보가 저장된<br>
 cpu interface는 GIC가 core로 보내는 인터럽트 신호(IRQ/FIQ)를 Core에 전달하는 역할,<br>
 Core의 Ack 신호를 GIC에 전달하는 역할을 한다.<br>
 즉, GIC와 Core 사이의 소통을 위한 장치라고 보면 된다.<br>
+
+GICv2에서는 GIC내의 components 중 하나였으나, <U>GICv3부터 ARMv8의 시스템 레지스터가 되었다.</U><br>
+그래서 관련 레지스터들은 memory-map되어 있지 않다.<br>
+ARM의 시스템 레지스터는 아키텍처에서 인코딩된 주소로 매핑되어 있다.<br>
+Trace32 디버거에서 레지스터 접근을 위해 <span style="{{ site.code }}">SPR:</span> class를 사용해야 한다.<br>
 
 ### ITS (optional)
 
@@ -116,6 +122,33 @@ Active & Pending 상태라고 보면 된다.<br>
 실제 인터럽트의 life-cycle에서 해당 상태에 따라 상태값을 저장하는 레지스터가 존재한다.<br>
 이 부분은 GIC register set을 참조하면 된다.<br>
 <br>
+
+인터럽트는 그룹으로 관리된다.<br>
+인터럽트 그룹은 SPIs는<br>
+<span style="{{ site.code }}">GICD_IGROUPRn</span> 및 <span style="{{ site.code }}">GICD_IGRPMODRn</span> 레지스터 값, 그리고<br>
+인터럽트 그룹은 SGIs와 PPIs는<br>
+<span style="{{ site.code }}">GICR_IGROUPR0</span> 및 <span style="{{ site.code }}">GICR_IGRPMODR0</span> 레지스터 값, 그리고<br>
+<span style="{{ site.code }}">GICD_CTLR.DS</span> 레지스터 값에 따라 결정된다.<br>
+
+<B>GICD_CTLR.DS == 0</B>
+
+| GICD_IGROUPR | GICD_IGRPMODR | Interrupt Group |
+|--------------|---------------|-----------------|
+| 0            | 0             | G0S             |
+| 0            | 1             | G1S             |
+| 1            | 0             | NSG1            |
+| 1            | 1             | x               |
+<br>
+
+<B>GICD_CTLR.DS == 1</B>
+
+| GICD_IGROUPR | Interrupt Group |
+|--------------|-----------------|
+| 0            | G0              |
+| 1            | G1              |
+<br>
+
+인터럽트 핸들링관련 레지스터들은 그룹에 따라 구분되어 있다.<br>
 
 인터럽트의 종류에는 SGIs, PPIs, SPIs, LPIs가 있다.<br>
 이 다음부터는 각 인터럽트 종류별 특성에 대해 서술한다.<br>
@@ -275,6 +308,23 @@ $ cat /proc/interrupts
   </p>
 </details>
 
+#### interrupt life-cycle 확인
+
+인터럽트 life-cycle을 확인하는 방법은<br>
+해당 인터럽트의 enable 레지스터와 pending 레지스터가 모두 '1'인 상태여야 하고,<br>
+<span style="{{ site.code }}">ICC_HPPIRn_EL1</span> 레지스터 값이 유효한 레지스터 ID를 가지고 있을 때,<br>
+<span style="{{ site.code }}">ICC_IARn_EL1</span> 레지스터를 직접 읽었을 경우,<br>
+해당 인터럽트의 active 레지스터가 0에서 1로 set 된다.<br>
+
+인터럽트가 active -> end 상태가 되려면,<br>
+<span style="{{ site.code }}">eoimode</span> 에 따라, 0이면 <span style="{{ site.code }}">ICC_EOIRn_ELx</span> 레지스터에<br>
+<span style="{{ site.code }}">ICC_IARn_EL1</span> 에서 마지막으로 읽은 유효한 인터럽트 ID값을 쓰면, 인터럽트 우선순위와 상태가 함께 클리어되고,<br>
+<span style="{{ site.code }}">eoimode</span> 이 1이면, 인터럽트 우선순위만 클리어 된다.<br>
+이때, <span style="{{ site.code }}">ICC_DIRn_ELx</span> 에 해당 인터럽트 id를 쓰면 인터럽트 상태도 클리어 된다.<br>
+익셉션 레벨에 따라 라우팅 옵션을 바꾸기 위해선, ARMv8a architecture의 <span style="{{ site.code }}">SCR_EL3</span> 레지스터를 참조하면 된다.<br>
+
+<br>
+n은 인터럽트 그룹이다.<br>
 
 ### LPIs
 

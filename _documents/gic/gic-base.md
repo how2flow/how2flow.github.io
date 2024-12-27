@@ -12,6 +12,9 @@ GIC is 'Generic Interrupt Contoller'. 요약을 보려면, [GIC summary](/docume
 GIC는 ARM에서 제공하는 ARM 전용 인터럽트 컨트롤러 이다.<br>
 이 문서는 <B>GICv3</B>를 기준으로 서술합니다.<br>
 
+소프트웨어 예시는 대표적으로 Linux Kernel이 있습니다.<br>
+관련 내용은 [IRQ management in Linux kernel](/posts/linux_irq_manage)을 참조하세요.<br>
+
 ### Introduction
 
 Interrupt Controller란,<br>

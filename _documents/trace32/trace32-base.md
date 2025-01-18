@@ -1,7 +1,7 @@
 ---
 permalink: /documents/trace32-base/
 title: Trace32 basic Usage
-excerpt: "Generic Interrupt Controller"
+excerpt: "Trace32 basic guide"
 comments: false
 toc: true
 ---

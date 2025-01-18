@@ -50,8 +50,8 @@ print "Attached"
 ENDDO
 
 DEACTIVATE_WDT:
-	Data.Set AHD:0x15000000 %LE %Long 0x0
-	Data.Set AHD:0x15001000 %LE %Long 0x0
+	Data.Set AD:0x15000000 %LE %Long 0x0
+	Data.Set AD:0x15001000 %LE %Long 0x0
 
 UPLOAD_ELF:
 	d.load.elf Z:\linux\vmlinux. /nocode

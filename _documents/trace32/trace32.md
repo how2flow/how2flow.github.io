@@ -64,9 +64,9 @@ If any of the following lists are applicable, a debugger is not available.
     leaving no time for initialization. Use 'SYStem.Option ResBreak' or 'SYStem.Option WaitReset'
     to grant the target setup time.
 
-12. Core-base or CTI-base is not set:
-    Use the SYStem.CONFIG COREDEBUG Base and SYStem.CONFIG CTI Base commands to set them.
-    The Core-base is needed for communication, and the CTI-base is needed for start/stop control.
+12. Core-base or CLI-base is not set:
+    Use the SYStem.CONFIG COREDEBUG Base and SYStem.CONFIG CLI Base commands to set them.
+    The Core-base is needed for communication, and the CLI-base is needed for start/stop control.
 
 13. The watchdog timer is not disabled.
 

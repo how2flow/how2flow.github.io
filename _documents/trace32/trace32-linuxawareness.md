@@ -37,8 +37,8 @@ Finally, register the Linux awareness configuration and menu provided by the TRA
 B:: Data.LOAD.elf "path_of_vmlinux" /NoCODE                       ; ... line 1
 B:: sYmbol.sourcePATH "invalid_part" "correct_part"               ; ... line 2
 B:: SYStem.OPTION MMUSPACES ON                                    ; ... line 3
-B:: task.CONFIG "~~/demo/arm/kernel/linux/awareness/linux3.t32"   ; ... line 4
-B:: MENU.ReProgram "~~/demo/arm/kernel/linux/awareness/linux.men" ; ... line 5
+B:: task.CONFIG * // or "~~/demo/arm/kernel/linux/awareness/linux3.t32"   ; ... line 4
+B:: MENU.ReProgram * // or "~~/demo/arm/kernel/linux/awareness/linux.men" ; ... line 5
 B:: if !run() go
 B:: break
 ```

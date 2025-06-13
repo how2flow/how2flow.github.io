@@ -16,3 +16,4 @@ The process broadly involves <B>MMU setup</B>, <B>TASK config</B>, and <B>MENU r
 <B>Awareness List</B><br>
 
 - [Linux awareness](/documents/trace32/os_awareness/t32linux)<br>
+- [Xen awareness](/documents/trace32/os_awareness/t32xen)<br>

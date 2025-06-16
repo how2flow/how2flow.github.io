@@ -1,7 +1,7 @@
 ---
-permalink: /documents/trace32/t32debug/
-title: Trace32
-excerpt: "Trace32 debug setup"
+permalink: /documents/trace32/t32-debug-ap/
+title: Trace32 debug setting on AP
+excerpt: "Trace32 debug setup (AP)"
 comments: false
 toc: true
 ---

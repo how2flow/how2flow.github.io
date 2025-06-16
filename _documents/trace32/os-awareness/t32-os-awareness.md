@@ -1,5 +1,5 @@
 ---
-permalink: /documents/trace32/t32os/
+permalink: /documents/trace32/t32-os-awareness/
 title: Trace32
 excerpt: "Trace32 OS awareness"
 comments: false
@@ -15,5 +15,5 @@ The process broadly involves <B>MMU setup</B>, <B>TASK config</B>, and <B>MENU r
 
 <B>Awareness List</B><br>
 
-- [Linux awareness](/documents/trace32/os_awareness/t32linux)<br>
-- [Xen awareness](/documents/trace32/os_awareness/t32xen)<br>
+- [Linux awareness](/documents/trace32/t32-linux-awareness)<br>
+- [Xen awareness](/documents/trace32/t32-xen-awareness)<br>

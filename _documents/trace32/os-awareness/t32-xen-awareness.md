@@ -1,6 +1,6 @@
 ---
-permalink: /documents/trace32/os_awareness/t32xen/
-title: Trace32
+permalink: /documents/trace32/t32-xen-awareness/
+title: Trace32 xen awareness
 excerpt: "Trace32 xen awareness"
 comments: false
 toc: true

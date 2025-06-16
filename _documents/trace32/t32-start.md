@@ -1,6 +1,6 @@
 ---
-permalink: /documents/trace32/t32start/
-title: Trace32
+permalink: /documents/trace32/t32-start/
+title: Trace32 Install & Start
 excerpt: "Start Trace32 Debugger"
 comments: false
 toc: true

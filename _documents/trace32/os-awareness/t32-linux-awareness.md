@@ -1,6 +1,6 @@
 ---
-permalink: /documents/trace32/os_awareness/t32linux/
-title: Trace32
+permalink: /documents/trace32/t32-linux-awareness/
+title: Trace32 Linux awareness
 excerpt: "Trace32 linux awareness"
 comments: false
 toc: true

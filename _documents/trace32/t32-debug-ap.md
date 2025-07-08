@@ -181,6 +181,7 @@ By selecting Mode, you can also analyze atomic operations.<br>
 When debugging by stepping through the code,<br>
 <span style="{{ site.code }}">Step</span> executes one command at a time depending on the selected Mode.<br>
 <span style="{{ site.code }}">Over</span> executes code line by line.<br>
+<span style="{{ site.code }}">Up</span> executes all the depth at once, that is, executes all the first callers.<br>
 <span style="{{ site.code }}">Go</span> and <span style="{{ site.code }}">Break</span> are used to release or hold the CPU.<br>
 <br>
 

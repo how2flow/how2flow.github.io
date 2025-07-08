@@ -14,8 +14,8 @@ This document covers AP processor debugging.<br>
 This is because a virtual memory system exists in an AP environment and the powerful functions of a debugger can be fully utilized.<br>
 <br>
 
-Chap 1. [Trace32 Start](/documents/trace32/t32start/)
+Chap 1. [Trace32 Start](/documents/trace32/t32-start/)
 
-Chap 2. [Trace32 Debug](/documents/trace32/t32debug/)
+Chap 2. [Trace32 Debug](/documents/trace32/t32-debug-ap/)
 
-Chap 3. [Trace32 OS awareness](/documents/trace32/t32os/)
+Chap 3. [Trace32 OS awareness](/documents/trace32/t32-os-awareness/)

@@ -18,4 +18,6 @@ Chap 1. [Trace32 Start](/documents/trace32/t32-start/)
 
 Chap 2. [Trace32 Debug](/documents/trace32/t32-debug-ap/)
 
-Chap 3. [Trace32 OS awareness](/documents/trace32/t32-os-awareness/)
+Chap 3. [Trace32 Relocation](/documents/trace32/t32-reloc/)
+
+Chap 4. [Trace32 OS awareness](/documents/trace32/t32-os-awareness/)

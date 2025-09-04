@@ -96,7 +96,7 @@ dummy device를 probe 합니다. 예제 코드는 다음과 같습니다.
 ```
 // SPDX-License-Identifier: GPL-2.0-or-later
 /*
- * Copyright (C) Steve Jeong <steve@how2flow.net>
+ * Copyright (C) 2025 Steve Jeong <steve@how2flow.net>
  */
 
 

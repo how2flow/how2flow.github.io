@@ -36,7 +36,7 @@ In short, relocation ensures U-Boot can run reliably in a larger, fully initiali
 Please refer to the basic [debug posting](/documents/trace32/t32-debug-ap/) for instructions on how to load symbols.<br>
 <br>
 
-<img src="/documents/images/trace32/t32reloc0.png" alt="t32reloc0" width="640" height="480"><br>
+<img src="/assets/images/documents/trace32/t32reloc0.png" alt="t32reloc0" width="640" height="480"><br>
 relocation view..<br>
 <br>
 
@@ -101,7 +101,7 @@ If the console is not available,<br>
 you need to find the relocation offset using the ELF symbol information.<br>
 Information related to relocation is stored in the gd(Global Data) symbol.
 
-<img src="/documents/images/trace32/t32reloc1.png" alt="t32reloc1" width="640" height="480"><br>
+<img src="/assets/images/documents/trace32/t32reloc1.png" alt="t32reloc1" width="640" height="480"><br>
 
 In this case, reloc offset is <span style="{{ site.code }}">0x7f42000</span> .<br>
 then, run this command in Trace32 PowerView
@@ -113,11 +113,11 @@ B:: sYmbol.RELOCate.shift 0x7f42000
 ### Result
 
 <B>Before relocation</B>:
-<img src="/documents/images/trace32/t32reloc2.png" alt="t32reloc2" width="640" height="480"><br>
+<img src="/assets/images/documents/trace32/t32reloc2.png" alt="t32reloc2" width="640" height="480"><br>
 <br>
 
 <B>After relocation</B>:
-<img src="/documents/images/trace32/t32reloc3.png" alt="t32reloc3" width="640" height="480"><br>
+<img src="/assets/images/documents/trace32/t32reloc3.png" alt="t32reloc3" width="640" height="480"><br>
 <br>
 
 ## Appendix

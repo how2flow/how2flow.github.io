@@ -1,4 +1,4 @@
----
+--- 
 permalink: /documents/gic-t32/
 title: GIC
 excerpt: "Generic Interrupt Controller"
@@ -8,16 +8,16 @@ toc: true
 
 ## GIC Trace32
 
-이 문서는 Trace32 디버거 사용시, GIC 관련 유용한 내용을 정리했습니다.<br>
-GICv3 기준입니다.<br>
+This document summarizes useful information regarding GIC when using the Trace32 debugger.<br>
+It is based on GICv3.<br>
 
 ### Peribrowser
 
-GIC CPU interface는 ARMv8-A architecture의 시스템 레지스터 일부여서<br>
-CPU attach 순간 peribrowse가능하다.<br>
-그 외에, Distributor나 Redistributor 레지스터는 peri reprogram이 필요하다.<br>
+Since the GIC CPU interface is part of the system registers in the ARMv8-A architecture,<br>
+it is possible to use Peribrowser as soon as the CPU is attached.<br>
+Besides that, Distributor or Redistributor registers require peri reprogramming.<br>
 
-peri 등록은 다음과 같다.
+Peri registration is as follows:
 ```
 B:: sys.config.gicd type gic600
 B:: sys.config.gicd base a:{gicd base address}
@@ -28,11 +28,10 @@ B:: per.reprogram
 
 ### CMM script
 
-GICv3 하드웨어 인터럽트 동작을 확인할 수 있는<br>
-CMM 스크립트
+CMM script to check GICv3 hardware interrupt operation
 
 <details>
-  <summary><B>Chip boot 직후(core0 only) GIC ON script</B></summary>
+  <summary><B>GIC ON script immediately after Chip boot (core0 only)</B></summary>
   <p>
   <pre><code>
 /////////////////////////////
@@ -57,8 +56,8 @@ CMM 스크립트
 &sgi_offset=0x10000
 
 
-/////////////
-// Example //
+///////////// 
+// Example // 
 /////////////
 GOSUB GICV3_DISTIF_INIT &gicd_base
 GOSUB GICV3_RDISTIF_INIT &gicr_base &gicr_num_of_regs
@@ -171,18 +170,18 @@ GICV3_RDISTIF_INIT:
 
         RETURN
   </code></pre>
-사용자는 User Configuration 파트만 수정해주면 된다.<br>
+Users only need to modify the User Configuration part.<br>
 
 <B>User Configuration</B><br>
-gicd_base: gicd base address를 작성한다.<br>
-gicr_base: gicr core 0 lpi base address를 작성한다.<br>
-gicr_num_of_regs: Chip boot 직후는 core 0 만 켜져있기 때문에 거의 1 고정<br>
+gicd_base: Write the gicd base address.<br>
+gicr_base: Write the gicr core 0 lpi base address.<br>
+gicr_num_of_regs: Since only core 0 is on immediately after chip boot, it is almost fixed to 1.<br>
   <p>
 </details>
 <br>
 
 <details>
-  <summary><B>GIC PPIs SPIs 테스트 스크립트</B></summary>
+  <summary><B>GIC PPIs SPIs test script</B></summary>
   <p>
   <pre><code>
 /////////////////////////////
@@ -217,7 +216,7 @@ gicr_num_of_regs: Chip boot 직후는 core 0 만 켜져있기 때문에 거의 1
 //////////////////////////
 // User Configuration 3 //
 //////////////////////////
-&gic_target_core=0.
+&gic_target_core=0. 
 
 
 ////////////////////////////
@@ -636,29 +635,29 @@ OFF_SYS_COUNTER:
   </code></pre>
 <br>
 
-사용자는 User Configuration 파트만 수정해주면 된다.<br>
+Users only need to modify the User Configuration part.<br>
 
 <B>User Configuration</B><br>
-num_of_chip: 디버거 사용 타겟 칩의 최대 core 수를 작성한다.<br>
-cluster: 멀티 클러스터 구조가 아니라면 main이 디폴트 값이다.<br>
-gicd_base_addr: gicd의 시작 주소를 작성한다.<br>
-gicr_base_addr: gicr core0 lpi 시작 주소를 작성한다.<br>
-in_el3: el3 환경에서 테스트하면 1. 작성, el1 환경에서 테스트하면 0. 을 작성한다.<br>
-eoi_mode: eoi mode 0 이면 0., 1이면 1. <br>
+num_of_chip: Write the maximum number of cores of the target chip using the debugger.<br>
+cluster: The default value is main if it is not a multi-cluster structure.<br>
+gicd_base_addr: Write the gicd starting address.<br>
+gicr_base_addr: Write the gicr core0 lpi starting address.<br>
+in_el3: Write 1. if testing in el3 environment, 0. if testing in el1 environment.<br>
+eoi_mode: Write 0. if eoi mode 0, 1. if eoi mode 1.<br>
 <br>
 
 <B>User Configuration 2</B><br>
-start_irq: 테스트 시작 인터럽트 번호를 작성한다. 보통은 PPIs 시작주소인 16을 쓴다.<br>
-gic_max_irq: SoC에서 제공하는 SPI 인터럽트 최대 수를 작성한다. +1. 은 수정하지 않는다.<br>
+start_irq: Write the test start interrupt number. Usually, write 16 which is the start address of PPIs.<br>
+gic_max_irq: Write the maximum number of SPI interrupts provided by the SoC. +1. Do not modify.<br>
 
 <B>User Configuration 3</B><br>
-gic_target_core: 인터럽트 테스트할 타겟 cpu 번호를 작성한다. num_of_chip값 보다 크면 안된다.<br>
+gic_target_core: Write the target cpu number to test interrupt. It must not be greater than num_of_chip.<br>
   </p>
 </details>
 <br>
 
 <details>
-  <summary><B>GIC SGIs GENERATE & ROUTING 테스트 스크립트</B></summary>
+  <summary><B>GIC SGIs GENERATE & ROUTING test script</B></summary>
   <p>
   <pre><code>
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -749,8 +748,8 @@ gic_target_core: 인터럽트 테스트할 타겟 cpu 번호를 작성한다. nu
 &gicr_isactiver=&gicr_sgi_base_addr+&active_offset
 &gicr_icactiver=&gicr_sgi_base_addr+&active_clr_offset
 
-/////////////
-// vmlinux //
+///////////// 
+// vmlinux // 
 /////////////
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -759,13 +758,13 @@ gic_target_core: 인터럽트 테스트할 타겟 cpu 번호를 작성한다. nu
 // --- a/drivers/irqchip/irq-gic-v3.c                                                                  //
 // +++ b/drivers/irqchip/irq-gic-v3.c                                                                  //
 // @@ -1298,7 +1298,7 @@ static u16 gic_compute_target_list(int *base_cpu, const struct cpumask *mask, //
-//         (MPIDR_AFFINITY_LEVEL(cluster_id, level) \                                                  //
+//         (MPIDR_AFFINITY_LEVEL(cluster_id, level) \
 //                 << ICC_SGI1R_AFFINITY_## level ##_SHIFT)                                            //
 //                                                                                                     //
 // -static void gic_send_sgi(u64 cluster_id, u16 tlist, unsigned int irq)                              //
 // +void gic_send_sgi(u64 cluster_id, u16 tlist, unsigned int irq)                                     //
-//  {                                                                                                  //
-//         u64 val;                                                                                    //
+//  {
+//         u64 val;
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
 &break_point=gic_send_sgi+0x40
 
@@ -979,27 +978,26 @@ OFF_SYS_COUNTER:
 	RETURN
   </code></pre>
 
-사용자는 User Configuration 파트만 수정해주면 된다.<br>
+Users only need to modify the User Configuration part.<br>
 
 <B>User Configuration</B><br>
-num_of_chip: 디버거 사용 타겟 칩의 최대 core 수를 작성한다.<br>
-cluster: 멀티 클러스터 구조가 아니라면 main이 디폴트 값이다.<br>
-gicd_base_addr: gicd의 시작 주소를 작성한다.<br>
-gicr_base_addr: gicr core0 lpi 시작 주소를 작성한다.<br>
-in_el3: el3 환경에서 테스트하면 1. 작성, el1 환경에서 테스트하면 0. 을 작성한다.<br>
-eoi_mode: eoi mode 0 이면 0., 1이면 1. <br>
+num_of_chip: Write the maximum number of cores of the target chip using the debugger.<br>
+cluster: The default value is main if it is not a multi-cluster structure.<br>
+gicd_base_addr: Write the gicd starting address.<br>
+gicr_base_addr: Write the gicr core0 lpi starting address.<br>
+in_el3: Write 1. if testing in el3 environment, 0. if testing in el1 environment.<br>
+eoi_mode: Write 0. if eoi mode 0, 1. if eoi mode 1.<br>
 <br>
 
 <B>User Configuration 2</B><br>
-remote_storage: nfs나 samaba 같은 remote 환경 사용 시, 1. 아니면 0.을 작성한다.<br>
-vmlinux: remote_storage가 1일 경우, 빌드한 커널의 vmlinux 경로를 작성한다.<br>
-invalid_part: remote_storage가 1일 경우, remote 입장에서의 변환이 필요한 경로를 작성한다.<br>
-correct_part: remote_storage가 1일 경우, cmm script 실행 경로에서의 변환이 필요한 경로를 작성한다.<br>
+remote_storage: Write 1. if using remote environment like nfs or samaba, otherwise 0.<br>
+vmlinux: If remote_storage is 1, write the path of the built kernel vmlinux.<br>
+invalid_part: If remote_storage is 1, write the path that needs conversion from the remote perspective.<br>
+correct_part: If remote_storage is 1, write the path that needs conversion from the cmm script execution path perspective.<br>
 
 <B>User Configuration 3</B><br>
-&sgi_create_core: SGI를 트리거할 core 번호를 작성한다.<br>
-&sgi_target_core: SGI를 처리할 core 번호를 작성한다.<br>
+&sgi_create_core: Write the core number to trigger the SGI.<br>
+&sgi_target_core: Write the core number to process the SGI.
   </p>
 </details>
 <br>
-

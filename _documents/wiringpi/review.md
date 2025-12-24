@@ -25,8 +25,8 @@ It's a optional to be prepared, but I still recommend you to be prepared.<br>
 ### target
 
 <p align="center">
-  <img src="/documents/images/wiringpi/raspberrypi.png" alt="raspberrypi" width="320" height="240">
-  <img src="/documents/images/wiringpi/rpi-header.png" alt="rpi-header" width="320" height="240"><br>
+  <img src="/assets/images/documents/wiringpi/raspberrypi.png" alt="raspberrypi" width="320" height="240">
+  <img src="/assets/images/documents/wiringpi/rpi-header.png" alt="rpi-header" width="320" height="240"><br>
   <span style="{{ site.img }}">Raspberry Pi 4 & gpio header</span>
 </p>
 <br>
@@ -225,7 +225,7 @@ GPIO_BASE = piGpioBase + 0x00200000;
 Now let's find out what this value means in the data sheet.<br>
 At page 66,<br>
 <p align="center">
-  <img src="/documents/images/wiringpi/gpio_base.png" alt="gpio_base" width="640" height="240"><br>
+  <img src="/assets/images/documents/wiringpi/gpio_base.png" alt="gpio_base" width="640" height="240"><br>
   <span style="{{ site.img }}">[picture 2] gpio_base</span>
 </p>
 <br><br>
@@ -233,7 +233,7 @@ At page 66,<br>
 But look at the code, it's <span style="{{ site.code }}">0xFE200000</span>, not <span style="{{ site.code }}">0x7e200000</span>. Let's find the reason.<br>
 At page 5,<br>
 <p align="center">
-  <img src="/documents/images/wiringpi/address_maps.png" alt="address_maps" width="640" height="480"><br>
+  <img src="/assets/images/documents/wiringpi/address_maps.png" alt="address_maps" width="640" height="480"><br>
   <span style="{{ site.img }}">[picture 3] address_maps</span>
 </p>
 <br>
@@ -426,14 +426,14 @@ static uint8_t gpioToShift [] =
 Find what these values mean.<br>
 At page 66,<br>
 <p align="center">
-  <img src="/documents/images/wiringpi/gpfsel.png" alt="gpfsel" width="640" height="480"><br>
+  <img src="/assets/images/documents/wiringpi/gpfsel.png" alt="gpfsel" width="640" height="480"><br>
   <span style="{{ site.img }}">[picture 4] GPFSEL Maps</span>
 </p>
 <br>
 
 At page 67-70, (gpfsel0 register)<br>
 <p align="center">
-  <img src="/documents/images/wiringpi/gpfsel-description.png" alt="gpfsel-des" width="640" height="480"><br>
+  <img src="/assets/images/documents/wiringpi/gpfsel-description.png" alt="gpfsel-des" width="640" height="480"><br>
   <span style="{{ site.img }}">[picture 5] GPFSEL[n]</span>
 </p>
 <br>
@@ -588,7 +588,7 @@ static uint8_t gpioToGPLEV [] =
 Let's go over the datasheet again.<br>
 A register indicating the gpio level is here.<br>
 <p align="center">
-  <img src="/documents/images/wiringpi/gplev.png" alt="gplev" width="640" height="480"><br>
+  <img src="/assets/images/documents/wiringpi/gplev.png" alt="gplev" width="640" height="480"><br>
   <span style="{{ site.img }}">[picture 6] GPLEV offset[n]</span>
 </p>
 <br>
@@ -598,7 +598,7 @@ The addresses match considering the nature of the pointer operation.<br>
 
 The description of GPLEV is here.<br>
 <p align="center">
-  <img src="/documents/images/wiringpi/gplev-description.png" alt="gplev-des" width="640" height="480"><br>
+  <img src="/assets/images/documents/wiringpi/gplev-description.png" alt="gplev-des" width="640" height="480"><br>
   <span style="{{ site.img }}">[picture 7] GPLEV description</span>
 </p>
 <br>
@@ -707,13 +707,13 @@ static uint8_t gpioToGPCLR [] =
 
 You can check the register offset of the gpio output set and clear.<br>
 <p align="center">
-  <img src="/documents/images/wiringpi/gpset.png" alt="gpset" width="640" height="480"><br>
+  <img src="/assets/images/documents/wiringpi/gpset.png" alt="gpset" width="640" height="480"><br>
   <span style="{{ site.img }}">[picture 7] GPSET offset[n]</span>
 </p>
 <br>
 
 <p align="center">
-  <img src="/documents/images/wiringpi/gpclr.png" alt="gpclr" width="640" height="480"><br>
+  <img src="/assets/images/documents/wiringpi/gpclr.png" alt="gpclr" width="640" height="480"><br>
   <span style="{{ site.img }}">[picture 8] GPCLR offset[n]</span>
 </p>
 <br>
@@ -722,14 +722,14 @@ At page 70, There are GPSET and GPCLR descriptions.<br>
 
 GPSET's description<br>
 <p align="center">
-  <img src="/documents/images/wiringpi/gpset-description.png" alt="gpset-des" width="640" height="480"><br>
+  <img src="/assets/images/documents/wiringpi/gpset-description.png" alt="gpset-des" width="640" height="480"><br>
   <span style="{{ site.img }}">[picture 9] GPSET description</span>
 </p>
 <br>
 
 GPCLR's description<br>
 <p align="center">
-  <img src="/documents/images/wiringpi/gpclr-description.png" alt="gpclr-des" width="640" height="480"><br>
+  <img src="/assets/images/documents/wiringpi/gpclr-description.png" alt="gpclr-des" width="640" height="480"><br>
   <span style="{{ site.img }}">[picture 10] GPCLR description</span>
 </p>
 <br>

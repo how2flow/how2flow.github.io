@@ -12,7 +12,7 @@ This document introduces the basic usage and API of wiringpi with examples.<br>
 Wiringpi is a package made to control gpio 40pin with <span style="{{ site.code }}">C</span> in <span style="{{ site.code }}">Raspberry Pi</span>.<br>
 
 <p align="center">
-  <img src="/documents/images/wiringpi/rpi-header.png" alt="raspberrypi" width="320" height="240"><br>
+  <img src="/assets/images/documents/wiringpi/rpi-header.png" alt="raspberrypi" width="320" height="240"><br>
   <span style="{{ site.img }}">[picture 1] gpio header</span>
 </p>
 <br>

@@ -14,27 +14,27 @@ proceed sequentially with MMU setup, Task config, and Menu reprogramming.<br>
 
 ### MMU setup
 
-<img src="/documents/images/trace32/t32linux0.png" alt="t32linux0" width="640" height="480"><br>
+<img src="/assets/images/documents/trace32/t32linux0.png" alt="t32linux0" width="640" height="480"><br>
 In <span style="{{ site.code }}">B::SYStem</span> , check MMUSPACES or use the command <span style="{{ site.code }}">B::SYStem.Option.MMUSPACES ON</span><br>
 to enable the MMUSPACES option.<br>
 <br>
 
-<img src="/documents/images/trace32/t32linux1.png" alt="t32linux1" width="640" height="480"><br>
+<img src="/assets/images/documents/trace32/t32linux1.png" alt="t32linux1" width="640" height="480"><br>
 Use <span style="{{ site.code }}">B::y.list</span> to find the text symbol, which is the starting point of the code.<br>
 The starting virtual address is <span style="{{ site.code }}">0xFFFF8000800000000</span> .<br>
 <br>
 
-<img src="/documents/images/trace32/t32linux2.png" alt="t32linux2" width="640" height="480"><br>
+<img src="/assets/images/documents/trace32/t32linux2.png" alt="t32linux2" width="640" height="480"><br>
 Find the end address of the virtual address, which is <span style="{{ site.code }}">0xFFFF800082030000</span> .<br>
 <br>
 
-<img src="/documents/images/trace32/t32linux3.png" alt="t32linux3" width="640" height="480"><br>
+<img src="/assets/images/documents/trace32/t32linux3.png" alt="t32linux3" width="640" height="480"><br>
 Use the <span style="{{ site.code }}">B::MMU.List.PageTable</span> or <span style="{{ site.code }}">B::MMU.List.EL1PageTable</span> command to check the MMU VA-to-PA mapping table.<br>
 You can also see why there’s a slight difference from the text virtual address <B>(0xFFFF8000800000000)</B>.<br>
 This is because it’s not the exact starting address.<br>
 <br>
 
-<img src="/documents/images/trace32/t32linux5.png" alt="t32linux5" width="640" height="480"><br>
+<img src="/assets/images/documents/trace32/t32linux5.png" alt="t32linux5" width="640" height="480"><br>
 To set up MMU translation, find the swapper_pg_dir symbol.<br>
 <br>
 Use the command:<br>
@@ -95,8 +95,8 @@ While MMU setup is complex, TASK setup and MENU addition are not as difficult.<b
 
 ### Task config
 
-<img src="/documents/images/trace32/t32linux6.png" alt="t32linux6" width="640" height="480"><br>
-<img src="/documents/images/trace32/t32linux7.png" alt="t32linux7" width="640" height="480"><br>
+<img src="/assets/images/documents/trace32/t32linux6.png" alt="t32linux6" width="640" height="480"><br>
+<img src="/assets/images/documents/trace32/t32linux7.png" alt="t32linux7" width="640" height="480"><br>
 Using <span style="{{ site.code }}">B::TASK.CONFIG {task file}</span> to proceed.<br>
 Just like when loading an ELF file,<br>
 you can either directly specify the file path or use \* to select the file manually.<br>
@@ -105,7 +105,7 @@ Using <span style="{{ site.code }}">B::cd</span> will display the current path w
 You can confirm that a new ‘linux’ toolbar has been created.<br>
 <br>
 
-<img src="/documents/images/trace32/t32linux8.png" alt="t32linux8" width="640" height="480"><br>
+<img src="/assets/images/documents/trace32/t32linux8.png" alt="t32linux8" width="640" height="480"><br>
 Using <span style="{{ site.code }}">B::MENU.REPROGRAM {menu file}</span> to proceed.<br>
 Just like when loading an ELF file,<br>
 you can either directly specify the file path or use \* to select the file manually.<br>
@@ -131,10 +131,10 @@ Now, through the ‘linux’ menu, you can use various powerful awareness featur
 You can debug on a task-by-task basis or verify things in the debugging program<br>
 that can also be checked on the system.<br>
 
-<img src="/documents/images/trace32/t32linux9.png" alt="t32linux9" width="640" height="480"><br>
+<img src="/assets/images/documents/trace32/t32linux9.png" alt="t32linux9" width="640" height="480"><br>
 Like this, you can check the currently running processes,<br>
 <br>
 
-<img src="/documents/images/trace32/t32linux10.png" alt="t32linux10" width="640" height="480"><br>
+<img src="/assets/images/documents/trace32/t32linux10.png" alt="t32linux10" width="640" height="480"><br>
 Like this, you can also check kernel messages.<br>
 <br>

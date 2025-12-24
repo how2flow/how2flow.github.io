@@ -27,3 +27,11 @@ codekit-config.json
 .sass-cache
 _asset_bundler_cache
 _site
+
+# GEMINI
+GEMINI.md
+bin
+draft.md
+search.md
+.gemini
+.env

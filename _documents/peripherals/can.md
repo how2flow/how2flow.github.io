@@ -28,7 +28,7 @@ If there is a voltage difference, it is <span style="{{ site.code }}">dominent</
 The signal value that the MCU receives through the transceiver is<br>
 
 <p align="center">
-  <img src="/documents/images/peripherals/can/canbus.png" alt="atomic1" width="640" height="480"><br>
+  <img src="/assets/images/documents/peripherals/can/canbus.png" alt="atomic1" width="640" height="480"><br>
   <span style="{{ site.img }}">picture [1] CANBUS states</span>
 </p>
 <br>
@@ -61,7 +61,7 @@ Suppose 3 nodes are connected by a CAN interface.<br>
 The message being sent is determined by the priority of the **ID**.<br>
 
 <p align="center">
-  <img src="/documents/images/peripherals/can/can-competition.png" alt="can-competition" width="640" height="480"><br>
+  <img src="/assets/images/documents/peripherals/can/can-competition.png" alt="can-competition" width="640" height="480"><br>
   <span style="{{ site.img }}">picture [2] CAN messages competition</span>
 </p>
 <br>
@@ -91,7 +91,7 @@ Further, the process helps identify and disconnect CAN nodes that consistently t
 step-by-step
 
 <p align="center">
-  <img src="/documents/images/peripherals/can/can-errors-handle.png" alt="can-errors-handle" width="640" height="180"><br>
+  <img src="/assets/images/documents/peripherals/can/can-errors-handle.png" alt="can-errors-handle" width="640" height="180"><br>
   <span style="{{ site.img }}">picture [3] CAN errors handling sequence</span>
 </p>
 <br>
@@ -134,7 +134,7 @@ If the <span style="{{ site.code }}">TEC</span> value exceeds 255, the node is d
 It is <span style="{{ site.code }}">BUS-OFF</span> .
 
 <p align="center">
-  <img src="/documents/images/peripherals/can/can-node-states.png" alt="can-node-sates" width="640" height="480"><br>
+  <img src="/assets/images/documents/peripherals/can/can-node-states.png" alt="can-node-sates" width="640" height="480"><br>
   <span style="{{ site.img }}">picture [4] CAN node states</span>
 </p>
 <br>
@@ -160,7 +160,7 @@ A CAN node enters the Bus Off state if the TEC exceeds 255
 An example of can oscilloscope Waveform (between CAN-rx and GND).
 
 <p align="center">
-  <img src="/documents/images/peripherals/can/can-example.png" alt="can-example" width="640" height="480"><br>
+  <img src="/assets/images/documents/peripherals/can/can-example.png" alt="can-example" width="640" height="480"><br>
   <span style="{{ site.img }}">picture [5] CAN example</span>
 </p>
 <br>

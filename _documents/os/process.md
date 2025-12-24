@@ -21,7 +21,7 @@ The CPU splits time to ensure isolation,<br>
 Memory guarantees isolation by dividing space.<br>
 
 <p align="center">
-  <img src="/documents/images/os/process/isolation.png" alt="isolation" width="640" height="480"><br>
+  <img src="/assets/images/documents/os/process/isolation.png" alt="isolation" width="640" height="480"><br>
   <span style="{{ site.img }}">picture [1] Process isolation</span>
 </p>
 <br>
@@ -35,7 +35,7 @@ It can be one, it can be more than two.<br>
 A program with multiple processes in one program.<br>
 
 <p align="center">
-  <img src="/documents/images/os/process/data.png" alt="data" width="640" height="480"><br>
+  <img src="/assets/images/documents/os/process/data.png" alt="data" width="640" height="480"><br>
   <span style="{{ site.img }}">picture [2] 1 Program with n process</span>
 </p>
 <br>
@@ -48,7 +48,7 @@ A process has various properties.
 The set of these properties is called a "Process Control Block."
 
 <p align="center">
-  <img src="/documents/images/os/process/pcb.png" alt="pcb" width="640" height="480"><br>
+  <img src="/assets/images/documents/os/process/pcb.png" alt="pcb" width="640" height="480"><br>
   <span style="{{ site.img }}">picture [3] 1 Program n process</span>
 </p>
 
@@ -73,13 +73,13 @@ for the next process is called context switching when the allocated time is over
 Context switching is done by the Dispatcher(OS).<br>
 
 <p align="center">
-  <img src="/documents/images/os/process/context-switching.png" alt="context-switching" width="640" height="480"><br>
+  <img src="/assets/images/documents/os/process/context-switching.png" alt="context-switching" width="640" height="480"><br>
   <span style="{{ site.img }}">picture [4-1] Context switching</span>
 </p>
 <br>
 
 <p align="center">
-  <img src="/documents/images/os/process/dispatcher.png" alt="dispatcher" width="640" height="480"><br>
+  <img src="/assets/images/documents/os/process/dispatcher.png" alt="dispatcher" width="640" height="480"><br>
   <span style="{{ site.img }}">picture [4-2] Dispatcher</span>
 </p>
 <br>
@@ -93,7 +93,7 @@ Process state model.<br>
 Nothing is fixed, efficiency is important.<br>
 
 <p align="center">
-  <img src="/documents/images/os/process/state.png" alt="state" width="640" height="480"><br>
+  <img src="/assets/images/documents/os/process/state.png" alt="state" width="640" height="480"><br>
   <br>
   <span style="{{ site.img }}">picture [5] process state model</span>
 </p>
@@ -111,7 +111,7 @@ Nothing is fixed, efficiency is important.<br>
 The OS has several tables to manage the process.<br>
 
 <p align="center">
-  <img src="/documents/images/os/process/tables.png" alt="tables" width="640" height="480"><br>
+  <img src="/assets/images/documents/os/process/tables.png" alt="tables" width="640" height="480"><br>
   <span style="{{ site.img }}">picture [6] Tables</span>
 </p>
 <br>
@@ -134,7 +134,7 @@ It is stored separately in the file table, also known as the **F**ile **A**lloca
 Recently, many **NTFS** methods have been adopted, but this is the traditional method of storing files on hard disks.<br>
 
 <p align="center">
-  <img src="/documents/images/os/process/hdd.png" alt="hdd" width="640" height="480"><br>
+  <img src="/assets/images/documents/os/process/hdd.png" alt="hdd" width="640" height="480"><br>
   <span style="{{ site.img }}">picture [7] FAT</span>
 </p>
 <br>
@@ -152,7 +152,7 @@ In Linux, it is also called a file system.<br>
 The process consists largely of attributes and locations.<br>
 
 <p align="center">
-  <img src="/documents/images/os/process/struct.png" alt="struct" width="640" height="480"><br>
+  <img src="/assets/images/documents/os/process/struct.png" alt="struct" width="640" height="480"><br>
   <span style="{{ site.img }}">picture [8] Process Struct</span>
 </p>
 <br>
@@ -162,7 +162,7 @@ Global, static, array, structure vars, and so on are stored in the data area. (+
 User functions are in stack area. It gets bigger or smaller by its user functions.<br>
 
 <p align="center">
-  <img src="/documents/images/os/process/phym.png" alt="phym" width="640" height="480"><br>
+  <img src="/assets/images/documents/os/process/phym.png" alt="phym" width="640" height="480"><br>
   <span style="{{ site.img }}">picture [9] Virtual memory vs Physical memory</span>
 </p>
 <br>

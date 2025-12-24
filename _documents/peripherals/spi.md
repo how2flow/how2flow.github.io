@@ -15,7 +15,7 @@ It is a <span style="{{ site.code }}">full-duplex</span> system.<br>
 The SPI bus consists of four elements.<br>
 
 <p align="center">
-  <img src="/documents/images/peripherals/spi/spi-circuit.png" alt="spi-circuit" width="640" height="480"><br>
+  <img src="/assets/images/documents/peripherals/spi/spi-circuit.png" alt="spi-circuit" width="640" height="480"><br>
   <span style="{{ site.img }}">picture [1] SPI circuit</span>
 </p>
 <br>
@@ -43,14 +43,14 @@ This order is maintained even if only one-way data transfers are intended.<br>
 <span style="{{ site.code }}">MOSI</span> and <span style="{{ site.code }}">MISO</span> look like one shift register.<br>
 The reason for this is to form a circulation buffer between the chips.<br>
 <p align="center">
-  <img src="/documents/images/peripherals/spi/spi-mosi-miso.png" alt="spi-mosi-miso" width="640" height="480"><br>
+  <img src="/assets/images/documents/peripherals/spi/spi-mosi-miso.png" alt="spi-mosi-miso" width="640" height="480"><br>
   <span style="{{ site.img }}">picture [2] SPI MOSI and MISO</span>
 </p>
 <br>
 
 This is Typical SPI circuit with multiple slaves.<br>
 <p align="center">
-  <img src="/documents/images/peripherals/spi/spi-multiple-slaves.png" alt="spi-multiple-slaves" width="640" height="480"><br>
+  <img src="/assets/images/documents/peripherals/spi/spi-multiple-slaves.png" alt="spi-multiple-slaves" width="640" height="480"><br>
   <span style="{{ site.img }}">picture [3] Typical SPI circuit: multiple slaves</span>
 </p>
 <br>
@@ -61,7 +61,7 @@ The <span style="{{ site.code }}">SS</span> pin of the master increases.<br>
 This is Daisy Chained SPI circuit with multiple slaves<br>
 The 'Daisy-Chained' circuit that improves this shortcoming.<br>
 <p align="center">
-  <img src="/documents/images/peripherals/spi/spi-daisy-chained.png" alt="spi-daisy-chained" width="640" height="480"><br>
+  <img src="/assets/images/documents/peripherals/spi/spi-daisy-chained.png" alt="spi-daisy-chained" width="640" height="480"><br>
   <span style="{{ site.img }}">picture [4] Daisy Chained SPI circuit: multiple slaves</span>
 </p>
 <br>

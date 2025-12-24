@@ -27,7 +27,7 @@ or communicate with each other.<br>
 It is a diagram illustrating a typical deadlock case.<br>
 
 <p align="center">
-  <img src="/documents/images/os/deadlock-and-starvation/case-simple.png" alt="case-simple" width="640" height="480"><br>
+  <img src="/assets/images/documents/os/deadlock-and-starvation/case-simple.png" alt="case-simple" width="640" height="480"><br>
   <span style="{{ site.img }}">picture [1] permanent deadlock</span>
 </p>
 <br>
@@ -35,7 +35,7 @@ It is a diagram illustrating a typical deadlock case.<br>
 But it doesn't really look as pretty as the picture above.<br>
 
 <p align="center">
-  <img src="/documents/images/os/deadlock-and-starvation/case-load.png" alt="case-load" width="640" height="480"><br>
+  <img src="/assets/images/documents/os/deadlock-and-starvation/case-load.png" alt="case-load" width="640" height="480"><br>
   <span style="{{ site.img }}">picture [2] The load: illustrate of deadlock</span>
 </p>
 <br>
@@ -50,7 +50,7 @@ And look at the next picture.<br>
 The part where the arrow progression is deflected to 90 degrees is the <span style="{{ site.code }}">context switching</span> .<br>
 
 <p align="center">
-  <img src="/documents/images/os/deadlock-and-starvation/case-example.png" alt="case-example" width="640" height="480"><br>
+  <img src="/assets/images/documents/os/deadlock-and-starvation/case-example.png" alt="case-example" width="640" height="480"><br>
   <span style="{{ site.img }}">picture [3] deadlock example</span>
 </p>
 <br>

@@ -21,7 +21,7 @@ Thread exchange is also called context switching.<br>
 If there is a difference, switching between threads occurs very quickly.<br>
 
 <p align="center">
-  <img src="/documents/images/os/thread/process_vs_thread.png" alt="p_vs_t" width="640" height="480"><br>
+  <img src="/assets/images/documents/os/thread/process_vs_thread.png" alt="p_vs_t" width="640" height="480"><br>
   <span style="{{ site.img }}">picture [1] Threads in Process</span>
 </p>
 <br>
@@ -47,7 +47,7 @@ It is not physically executed, but it can be said to be executed because it has 
 <span style="{{ site.code }}">TCB</span> : thread control block<br>
 
 <p align="center">
-  <img src="/documents/images/os/thread/multithread.png" alt="multithread" width="640" height="480"><br>
+  <img src="/assets/images/documents/os/thread/multithread.png" alt="multithread" width="640" height="480"><br>
   <span style="{{ site.img }}">picture [2] multi thread model</span>
 </p>
 <br>
@@ -60,7 +60,7 @@ As mentioned above, they can access to the memory and resorces of its process.<b
 This is types of multithread model<br>
 
 <p align="center">
-  <img src="/documents/images/os/thread/type.png" alt="type" width="640" height="480"><br>
+  <img src="/assets/images/documents/os/thread/type.png" alt="type" width="640" height="480"><br>
   <span style="{{ site.img }}">picture [3] types of multithread</span>
 </p>
 <br>
@@ -118,7 +118,7 @@ and when the process is terminated, all threads under it are terminated.<br>
 **R**emote(server) **P**rocedure(function) **C**all<br>
 
 <p align="center">
-  <img src="/documents/images/os/thread/rpc.png" alt="rpc" width="640" height="480"><br>
+  <img src="/assets/images/documents/os/thread/rpc.png" alt="rpc" width="640" height="480"><br>
   <span style="{{ site.img }}">picture [4] Remote Procedure Call</span>
 </p>
 <br>
@@ -135,7 +135,7 @@ Synchronization proceeds on with blocking.<br>
 Asynchronization proceeds on its own without blocking.<br>
 
 <p align="center">
-  <img src="/documents/images/os/thread/sync.png" alt="sync" width="640" height="480"><br>
+  <img src="/assets/images/documents/os/thread/sync.png" alt="sync" width="640" height="480"><br>
   <span style="{{ site.img }}">picture [5] Sync vs Async</span>
 </p>
 <br>
@@ -151,7 +151,7 @@ but, <span style="color: red">It should be implemented by the programmer.</span>
 null-fork/signal wait is very fast.<br>
 
 <p align="center">
-  <img src="/documents/images/os/thread/mode1.png" alt="sync" width="320" height="240"><img src="/documents/images/os/thread/mode2.png" alt="sync" width="320" height="240">
+  <img src="/assets/images/documents/os/thread/mode1.png" alt="sync" width="320" height="240"><img src="/assets/images/documents/os/thread/mode2.png" alt="sync" width="320" height="240">
   <span style="{{ site.img }}">picture [6] ULT</span>
 </p>
 <br>

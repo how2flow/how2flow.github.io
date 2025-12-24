@@ -9,6 +9,28 @@ toc: true
 
 These are the contents that I studied and organized.<br>
 
+## List
+
+### Application
+
+- [wiringPi](/documents/wiringpi/)
+
+### SoC IP
+
+- [GIC](/documents/gic/)
+
+### Software
+
+- [Linux](/documents/linux/)
+- [ODROID](/documents/odroid/)
+- [OS](/documents/os/)
+- [Peripherals](/documents/peripherals/)
+
+### Tools
+
+- [Git](/documents/git/)
+- [Trace32](/documents/trace32/)
+
 ## Table
 
 | **Index** | Contents | **Index** | Contents | **Index** | Contents | **Index** | Contents |

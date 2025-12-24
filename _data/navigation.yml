@@ -18,8 +18,10 @@ side_main:
   - title: "Posts"
     url: /posts/
     children:
-      - title: "Categories"
-        url: /posts/categories/
+      - title: "Contents"
+        url: /posts/
+      - title: "Legacy"
+        url: /legacy/
       - title: "(translate)"
         url: /posts/translation/
 
@@ -27,7 +29,7 @@ side_main:
     url: /documents/
     children:
       - title: "Table of Contents"
-        url: /documents/
+        url: /documents/#table
 
   - title: "Etc"
     children:

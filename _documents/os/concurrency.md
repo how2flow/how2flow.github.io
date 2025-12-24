@@ -84,7 +84,7 @@ It is assumed that concurrency is guaranteed by time quantum of time.<br>
 Of course, C Program is eventually converted into assembly instructions.<br>
 
 <p align="center">
-  <img src="/documents/images/os/concurrency/atomic1.png" alt="atomic1" width="640" height="480"><br>
+  <img src="/assets/images/documents/os/concurrency/atomic1.png" alt="atomic1" width="640" height="480"><br>
   <span style="{{ site.img }}">picture [1] Atomic Operation 1</span>
 </p>
 <br>
@@ -93,7 +93,7 @@ When two processes are completed, the result should be 100.<br>
 However, if context switching occurs as follows, the result will be different.<br>
 
 <p align="center">
-  <img src="/documents/images/os/concurrency/atomic2.png" alt="atomic2" width="640" height="480"><br>
+  <img src="/assets/images/documents/os/concurrency/atomic2.png" alt="atomic2" width="640" height="480"><br>
   <span style="{{ site.img }}">picture [2] Atomic Operation 2</span>
 </p>
 <br>
@@ -105,7 +105,7 @@ The exclusion use of <span style="{{ site.code }}">a</span> should be guaranteed
 Here's an example.<br>
 
 <p align="center">
-  <img src="/documents/images/os/concurrency/mutualexclusion.png" alt="mutual_ex" width="640" height="480"><br>
+  <img src="/assets/images/documents/os/concurrency/mutualexclusion.png" alt="mutual_ex" width="640" height="480"><br>
   <span style="{{ site.img }}">picture [3] Mutual Exclusion</span>
 </p>
 <br>
@@ -134,7 +134,7 @@ and when resource 1 is allocated to process 1 and resource 2 is allocated to pro
 Process 1 and process 2 are not executed forever.<br>
 
 <p align="center">
-  <img src="/documents/images/os/concurrency/deadlock.png" alt="deadlock" width="640" height="480"><br>
+  <img src="/assets/images/documents/os/concurrency/deadlock.png" alt="deadlock" width="640" height="480"><br>
   <span style="{{ site.img }}">picture [4] Dead Lock</span>
 </p>
 <br>
@@ -421,11 +421,11 @@ It can be seen that the state of the process changes<br>
 while ensuring mutual exclusion as shared resources are used and access to critical sections.<br>
 
 <p align="center">
-  <img src="/documents/images/os/concurrency/semaphoreq1.png" alt="semaphoreq1" width="640" height="480"><br>
+  <img src="/assets/images/documents/os/concurrency/semaphoreq1.png" alt="semaphoreq1" width="640" height="480"><br>
   <span style="{{ site.img }}">picture [5-1] Semaphore Queue 1</span>
 </p>
 <p align="center">
-  <img src="/documents/images/os/concurrency/semaphoreq2.png" alt="semaphoreq2" width="640" height="480"><br>
+  <img src="/assets/images/documents/os/concurrency/semaphoreq2.png" alt="semaphoreq2" width="640" height="480"><br>
   <span style="{{ site.img }}">picture [5-2] Semaphore Queue 2</span>
 </p>
 <br>
@@ -440,17 +440,17 @@ and the result is a program that wants the same value as the first one.<br>
 Let's compare inter-exclusion with blocking interrupt and semaphore.<br>
 
 <p align="center">
-  <img src="/documents/images/os/concurrency/sharedi1.png" alt="sharedi1" width="640" height="480"><br>
+  <img src="/assets/images/documents/os/concurrency/sharedi1.png" alt="sharedi1" width="640" height="480"><br>
   <span style="{{ site.img }}">picture [6-1] No ensure mutual exclsion</span>
 </p>
 <br>
 <p align="center">
-  <img src="/documents/images/os/concurrency/sharedi2.png" alt="sharedi2" width="640" height="480"><br>
+  <img src="/assets/images/documents/os/concurrency/sharedi2.png" alt="sharedi2" width="640" height="480"><br>
   <span style="{{ site.img }}">picture [6-2] Blocking Interrupt</span>
 </p>
 <br>
 <p align="center">
-  <img src="/documents/images/os/concurrency/sharedi3.png" alt="sharedi3" width="640" height="480"><br>
+  <img src="/assets/images/documents/os/concurrency/sharedi3.png" alt="sharedi3" width="640" height="480"><br>
   <span style="{{ site.img }}">picture [6-3] Using Semaphore </span>
 </p>
 <br>
@@ -494,7 +494,7 @@ csignal(c): resume execution of some process blocked after a cwait on the same c
 Direct communication between processes with <span style="{{ site.code }}">IPC</span> .<br>
 
 <p align="center">
-  <img src="/documents/images/os/concurrency/ipc.png" alt="ipc" width="640" height="480"><br>
+  <img src="/assets/images/documents/os/concurrency/ipc.png" alt="ipc" width="640" height="480"><br>
   <span style="{{ site.img }}">picture [7] Message Passing </span>
 </p>
 <br>
@@ -510,7 +510,7 @@ receive(source, message)
 ```
 
 <p align="center">
-  <img src="/documents/images/os/concurrency/message-format.png" alt="message-format" width="640" height="480"><br>
+  <img src="/assets/images/documents/os/concurrency/message-format.png" alt="message-format" width="640" height="480"><br>
   <span style="{{ site.img }}">picture [8] Message Format</span>
 </p>
 <br>
@@ -518,7 +518,7 @@ receive(source, message)
 Message Passing are exchanged in TLV format after the source and destination addresses are determined.<br>
 
 <p align="center">
-  <img src="/documents/images/os/concurrency/TLV.png" alt="message-format" width="640" height="480"><br>
+  <img src="/assets/images/documents/os/concurrency/TLV.png" alt="message-format" width="640" height="480"><br>
   <span style="{{ site.img }}">picture [9] TLV</span>
 </p>
 <br>
@@ -532,8 +532,8 @@ It is usually used variable types because processes don't know the length of mes
 There are two types of addressing: direct and indirect.<br>
 
 <p align="center">
-  <img src="/documents/images/os/concurrency/direct-addressing.png" alt="direct-addressing" width="320" height="240">
-  <img src="/documents/images/os/concurrency/indirect-addressing.png" alt="indirect-addressing" width="320" height="240"><br>
+  <img src="/assets/images/documents/os/concurrency/direct-addressing.png" alt="direct-addressing" width="320" height="240">
+  <img src="/assets/images/documents/os/concurrency/indirect-addressing.png" alt="indirect-addressing" width="320" height="240"><br>
   <span style="{{ site.img }}">picture [10] addressing</span>
 </p>
 <br>

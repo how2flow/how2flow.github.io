@@ -20,11 +20,11 @@ title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : "how2flow"
 description              : "An Embedded engineer's site."
-url                      : "https://how2flow.net" # "https://how2flow.github.io"
+url                      : "https://www.how2flow.net" # "https://how2flow.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : "how2flow/how2flow.github.io"
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
-logo                     : "/assets/images/logo.png"
+logo                     : "/assets/images/site/logo.png"
 masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
 breadcrumbs              : true
 breadcrumbs              : "Home"
@@ -74,9 +74,9 @@ google:
   search_engine_id       : "73c861f31f1d54930"
   instant_search         : # false (default), true
 # SEO Related
-google_site_verification : 9LKKGJUwLYfqaZ6dOej17YCM9u3urYQskujx515DKaw
-bing_site_verification   : AD001A16D2F44A7C4F968A344E2D2DD0
-naver_site_verification  : 20e70b3bd163ddf469f0ec561a468c7473169947
+google_site_verification : H3e_82BvIJ4icbQRLyHXaArLb_PlJXvpS279ioeOgHA
+bing_site_verification   : ABE0437CAB76FE5F2A6B80AC8532C56F
+naver_site_verification  : 80e3ff149f33ceef871478861a67c10e94d7b7d2
 yandex_site_verification :
 baidu_site_verification  :
 
@@ -87,7 +87,7 @@ facebook:
   username               :
   app_id                 :
   publisher              :
-og_image                 : "/assets/images/og.png"
+og_image                 : "/assets/images/site/og.png"
 # For specifying social profiles
 # - https://developers.google.com/structured-data/customize/social-profiles
 social:
@@ -106,7 +106,7 @@ analytics:
 # Site Author
 author:
   name             : "how2flow"
-  avatar           : "/assets/images/profile.png"
+  avatar           : "/assets/images/site/profile.png"
   bio              : "Steve Jeong"
 # location         : "Seoul"
   links:
@@ -139,6 +139,7 @@ footer:
 # Reading Files
 include:
   - .htaccess
+  - _legacy
   - _documents
   - _pages
 exclude:
@@ -271,6 +272,9 @@ collections:
   documents:
     output: true
     permalink: /:collection/:path/
+  legacy:
+    output: true
+    permalink: /:collection/:path/
   project:
     output: true
     permalink: /:collection/:path/
@@ -353,3 +357,13 @@ defaults:
       layout: docs
       read_time: false
       share: true
+  # _legacy
+  - scope:
+      path: "/legacy/"
+      type: posts
+    values:
+      layout: single
+      read_time: true
+      share: true
+      related: true
+      show_date: true

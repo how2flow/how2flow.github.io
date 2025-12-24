@@ -49,7 +49,7 @@ $ systemctl stop xen-watchdog.service
 
 ### MMU setup
 
-<img src="/documents/images/trace32/t32xen0.png" alt="t32xen0" width="640" height="480"><br>
+<img src="/assets/images/documents/trace32/t32xen0.png" alt="t32xen0" width="640" height="480"><br>
 In <span style="{{ site.code }}">B::SYStem</span> , check MMUSPACES or use the command <span style="{{ site.code }}">B::SYStem.Option.MMUSPACES ON</span><br>
 to enable the MMUSPACES option.<br>
 and check MACHINESPACES or use the command <span style="{{ site.code }}">B::SYStem.Option.MACHINESPACES ON</span><br>
@@ -124,16 +124,16 @@ The Trace32 debugger uses ' <span style="{{ site.code }}">I</span> ' as a class 
 The process for <span style="{{ site.code }}">dom0</span> mmu setup is as follows.<br>
 <br>
 
-<img src="/documents/images/trace32/t32xen1.png" alt="t32xen1" width="640" height="480"><br>
+<img src="/assets/images/documents/trace32/t32xen1.png" alt="t32xen1" width="640" height="480"><br>
 Use <span style="{{ site.code }}">B::y.list</span> to find the text symbol, which is the starting point of the code.<br>
 The starting virtual address is <span style="{{ site.code }}">NP:1:0xFFFFFFC010000000</span> .<br>
 <br>
 
-<img src="/documents/images/trace32/t32xen2.png" alt="t32xen2" width="640" height="480"><br>
+<img src="/assets/images/documents/trace32/t32xen2.png" alt="t32xen2" width="640" height="480"><br>
 Find the end address of the virtual address, which is <span style="{{ site.code }}"> NP:1:0xFFFFFFC0110E0000</span> .<br>
 <br>
 
-<img src="/documents/images/trace32/t32xen3.png" alt="t32xen3" width="640" height="480"><br>
+<img src="/assets/images/documents/trace32/t32xen3.png" alt="t32xen3" width="640" height="480"><br>
 Use the <span style="{{ site.code }}">B::MMU.List.EL1PageTable /MACHINE 1</span> command to check the MMU VA-to-IPA mapping table.<br>
 When machine space is allocated in this way, it can be distinguished by the MACHINE option.<br>
 You can also see why there’s a slight difference from the text virtual address <B>(I:1:::0x60000000)</B>.<br>
@@ -173,16 +173,16 @@ sYmbol.sourcePATH.Translate "&domu1_invalid_path" "&domu1_correct_path"
 ```
 <br>
 
-<img src="/documents/images/trace32/t32xen4.png" alt="t32xen4" width="640" height="480"><br>
+<img src="/assets/images/documents/trace32/t32xen4.png" alt="t32xen4" width="640" height="480"><br>
 Use <span style="{{ site.code }}">B::y.list</span> to find the text symbol, which is the starting point of the code.<br>
 The starting virtual address is <span style="{{ site.code }}">NP:2:0xFFFFFFC010000000</span> .<br>
 <br>
 
-<img src="/documents/images/trace32/t32xen5.png" alt="t32xen5" width="640" height="480"><br>
+<img src="/assets/images/documents/trace32/t32xen5.png" alt="t32xen5" width="640" height="480"><br>
 Find the end address of the virtual address, which is <span style="{{ site.code }}"> NP:2:0xFFFFFFC0110E0000</span> .<br>
 <br>
 
-<img src="/documents/images/trace32/t32xen6.png" alt="t32xen6" width="640" height="480"><br>
+<img src="/assets/images/documents/trace32/t32xen6.png" alt="t32xen6" width="640" height="480"><br>
 Use the <span style="{{ site.code }}">B::MMU.List.EL1PageTable /MACHINE 2</span> command to check the MMU VA-to-IPA mapping table.<br>
 When machine space is allocated in this way, it can be distinguished by the MACHINE option.<br>
 You can also see why there’s a slight difference from the text virtual address <B>(I:2:::0x40000000)</B>.<br>

@@ -6,10 +6,16 @@ entries_layout: grid
 layout: single
 ---
 
-It is a space where you record and post simple development projects<br>
-or things you need while developing.<br>
-<br>
-You can also find various posts through search.<br>
+<div class="home-intro" style="margin-bottom: 2em; padding: 1.5em; background: #fdfdfd;">
+  <h2 style="margin-top: 0; color: #222;">🌊 How Should It Flow?</h2>
+  <p style="font-size: 1.1em; line-height: 1.6; color: #444;">
+    안녕하세요, <strong>How To Flow</strong> post 공간에 오신 것을 환영합니다. <br>
+    저는 효율적인 드라이버 설계와 최적의 워크플로우를 고민하는 임베디드 소프트웨어 엔지니어 <strong>Steve Jeong</strong>입니다.
+  </p>
+  <p style="font-size: 1.0em; line-height: 1.6; color: #666;">
+    이곳은 <strong>기술의 흐름</strong>과 <strong>경제의 흐름</strong>을 끄적이는 개인 공간입니다.<br>
+  </p>
+</div>
 
 <h3 class="archive__subtitle">{{ "Lists" }}</h3>
 

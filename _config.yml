@@ -292,7 +292,7 @@ defaults:
         nav: "side_main"
       toc_label: contents
       toc_sticky: true
-      excerpt: "This is the personal space of the Linux/Embedded developer 'Steve Jeong'."
+      excerpt: "A developer’s blog covering IT technology and economic topics."
   # _posts
   - scope:
       path: ""

@@ -26,6 +26,10 @@ These are the contents that I studied and organized.<br>
 - [OS](/documents/os/)
 - [Peripherals](/documents/peripherals/)
 
+### Standard
+
+- [ASPICE](/documents/aspice/)
+
 ### Tools
 
 - [Git](/documents/git/)
@@ -35,7 +39,7 @@ These are the contents that I studied and organized.<br>
 
 | **Index** | Contents | **Index** | Contents | **Index** | Contents | **Index** | Contents |
 | :---: | :--- | :---: | :--- | :---: | :--- | :---: | :--- |
-| **A** | | **H** | | **O** | [OS](/documents/os/)<br>[ODROID](/documents/odroid/) | **V** | |
+| **A** | [ASPICE](/documents/aspice/) | **H** | | **O** | [OS](/documents/os/)<br>[ODROID](/documents/odroid/) | **V** | |
 | **B** | | **I** | | **P** | [Peripherals](/documents/peripherals/) | **W** | [wiringPi](/documents/wiringpi/) |
 | **C** | | **J** | | **Q** | | **X** | |
 | **D** | | **K** | | **R** | | **Y** | |

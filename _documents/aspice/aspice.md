@@ -86,6 +86,7 @@ ASPICE defines six capability levels (0 to 5) to assess the maturity of organiza
 ### SMMU
 
 *   [SMMU Software Requirements Specification (SWE.1)](/documents/aspice/smmu/smmu-requirements-specification/)
+*   [SMMU Software Architectural Design (SWE.2)](/documents/aspice/smmu/smmu-architecture-design/)
 
 ## Conclusion
 

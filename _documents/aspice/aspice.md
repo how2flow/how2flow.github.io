@@ -83,6 +83,10 @@ ASPICE defines six capability levels (0 to 5) to assess the maturity of organiza
 *   [GIC Software Detailed Design (SWE.3)](/documents/aspice/gic/gic-detailed-design/)
 *   [GIC Software Functional Test Specification (SWE.4)](/documents/aspice/gic/gic-functional-test-specification/)
 
+### SMMU
+
+*   [SMMU Software Requirements Specification (SWE.1)](/documents/aspice/smmu/smmu-requirements-specification/)
+
 ## Conclusion
 
 The ASPICE V-model offers a <span style="{{ site.code }}">systematic and quality-oriented approach</span> in automotive software development, ranging from requirements definition to final testing and functional safety integration.<br>

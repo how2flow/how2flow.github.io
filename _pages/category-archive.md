@@ -1,5 +1,5 @@
 ---
 title: "Posts by Category"
-permalink: /posts/categories/
+permalink: /categories/
 layout: categories
 ---

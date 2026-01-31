@@ -7,42 +7,9 @@ layout: single
 toc: true
 ---
 
-These are the contents that I studied and organized.<br>
+These are the contents that I studied and organized.
 
-## List
+## Coming Soon
 
-### Application
-
-- [wiringPi](/documents/wiringpi/)
-
-### SoC IP
-
-- [GIC](/documents/gic/)
-
-### Software
-
-- [Linux](/documents/linux/)
-- [ODROID](/documents/odroid/)
-- [OS](/documents/os/)
-- [Peripherals](/documents/peripherals/)
-
-### Standard
-
-- [ASPICE](/documents/aspice/)
-
-### Tools
-
-- [Git](/documents/git/)
-- [Trace32](/documents/trace32/)
-
-## Table
-
-| **Index** | Contents | **Index** | Contents | **Index** | Contents | **Index** | Contents |
-| :---: | :--- | :---: | :--- | :---: | :--- | :---: | :--- |
-| **A** | [ASPICE](/documents/aspice/) | **H** | | **O** | [OS](/documents/os/)<br>[ODROID](/documents/odroid/) | **V** | |
-| **B** | | **I** | | **P** | [Peripherals](/documents/peripherals/) | **W** | [wiringPi](/documents/wiringpi/) |
-| **C** | | **J** | | **Q** | | **X** | |
-| **D** | | **K** | | **R** | | **Y** | |
-| **E** | | **L** | [Linux](/documents/linux/) | **S** | | **Z** | |
-| **F** | | **M** | | **T** | [Trace32](/documents/trace32/) | **-** | |
-| **G** | [Git](/documents/git/)<br>[GIC](/documents/gic/) | **N** | | **U** | | **-** | |
+This space is reserved for future technical archives, comprehensive guides, and manuals.
+New content will be updated here soon!

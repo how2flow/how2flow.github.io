@@ -6,4 +6,4 @@ if ! command -v bundle > /dev/null; then
   gem install bundler && bundle install
 fi
 
-bundle exec jekyll serve --host 0.0.0.0
+bundle exec jekyll serve --host 127.0.0.1

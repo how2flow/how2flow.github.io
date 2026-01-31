@@ -80,6 +80,7 @@ ASPICE defines six capability levels (0 to 5) to assess the maturity of organiza
 
 *   [GIC Software Requirements Specification (SWE.1)](/documents/aspice/gic/gic-requirements/)
 *   [GIC Software Architectural Design (SWE.2)](/documents/aspice/gic/gic-architecture/)
+*   [GIC Software Detailed Design (SWE.3)](/documents/aspice/gic/gic-detailed-design/)
 
 ## Conclusion
 

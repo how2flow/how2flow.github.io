@@ -74,6 +74,12 @@ ASPICE defines six capability levels (0 to 5) to assess the maturity of organiza
 *   <span style="{{ site.code }}">Level 4 (Predictable)</span>: Processes are executed with predictable outcomes, controlled by metrics.
 *   <span style="{{ site.code }}">Level 5 (Innovating)</span>: Processes are continuously optimized based on metrics and innovation.
 
+## Example
+
+### GIC
+
+*   [GIC Software Requirements Specification (SWE.1)](/documents/aspice/gic/gic-requirements/)
+
 ## Conclusion
 
 The ASPICE V-model offers a <span style="{{ site.code }}">systematic and quality-oriented approach</span> in automotive software development, ranging from requirements definition to final testing and functional safety integration.<br>

@@ -15,7 +15,7 @@ So it's convenient to visit via Google Chrome browser and use translation.<br>
   Posts page is korean.<br>
   If you want to see the text in English, use <span style="{{ site.code }}">Chrome</span> 's translation function. <br>
   
-  <img src="/assets/posts/gif/tr.gif" alt="translate" width="640" height="480"><br>
+  <img src="/assets/gif/legacy/tr.gif" alt="translate" width="640" height="480"><br>
   <br>
   </p>
 </details>
